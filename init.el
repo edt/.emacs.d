@@ -100,6 +100,8 @@
 
  (blink-cursor-mode 0)                           ; No blinking cursor
 
+ (global-linum-mode t)                           ; Show line numbers
+
 ;;;;;;;;;;;;;;;;;;== Modeline ==;;;;;;;;;;;;;;;;;;
 
 (display-time-mode t)                            ; display time

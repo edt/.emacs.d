@@ -171,12 +171,4 @@
 (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
 
 
-(defun create-comment ()
-  (interactive)
-  (insert "Hello World")
-
-
-  (insert "/// ")
-  (insert "@brief")
-)
  

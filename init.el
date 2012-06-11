@@ -11,7 +11,7 @@
 (load "modes.el")
 (load "programming.el")
 
-(require 'color-theme)
+;(require 'color-theme)
 
 ;; ========== Support Wheel Mouse Scrolling ==========
  (mouse-wheel-mode t)
@@ -75,9 +75,10 @@
 ;;;;; uniquify ;;;;;
 ;; give buffers more intelligent names.
 ;; standard emacs/xemacs package.
-;(require 'uniquify)
+(require 'uniquify)
 ; create unique buffer names with shared directoy components.
 ;(setq uniquify-buffer-name-style 'forward)
+(setq uniquify-buffer-name-style 'reverse)
 
 ;;;;;;;;;;;;;;;;;;; Appearance ;;;;;;;;;;;;;;;;;;;
 
@@ -100,7 +101,7 @@
 
  (blink-cursor-mode 0)                           ; No blinking cursor
 
- (global-linum-mode t)                           ; Show line numbers
+ ;(global-linum-mode t)                           ; Show line numbers
 
 ;;;;;;;;;;;;;;;;;;== Modeline ==;;;;;;;;;;;;;;;;;;
 
@@ -111,7 +112,20 @@
 
 ;;;;;;;;;;;;;;;;;;;;; Behavior ;;;;;;;;;;;;;;;;;;;
 
-;;(setq scroll-conservatively 5) not found
+(setq scroll-conservatively 5)                   ; not found
+;; scroll one line at a time (less "jumpy" than defaults)
+    
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+    
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+    
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+    
+(setq scroll-step 1) ;; keyboard scroll one line at a time
+
+
+
+
 
 (setq shell-file-name "/bin/bash")               ; Set Shell for M-| command
 (setq tex-shell-file-name "/bin/bash")           ; Set Shell used by TeX
@@ -125,8 +139,6 @@
 
 (setq next-line-add-newlines nil)                ; no new line at the end of file during scrolling
 (delete-selection-mode t)                        ; replace highlighted text with what I type rather than just inserting at point
-
-(setq scroll-step 1)                             ; Line by line scrolling
 
 (setq standard-indent 4)                         ; Set standard indent to 4
 (setq tab-width 4)                               ; Length of tab is 4 SPC

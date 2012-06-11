@@ -1,5 +1,9 @@
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 (add-to-list 'load-path "/home/edt/.emacs.d")
+(add-to-list 'load-path "/home/edt/.emacs.d/lisp")
+
+(add-to-list 'load-path
+           "~/.emacs.d/plugins/yasnippet")
 
 ;; Save comstum stuff in own file
 (setq custom-file "~/.emacs.d/custom.el")
@@ -13,9 +17,6 @@
 
 ;(require 'color-theme)
 
-;; ========== Support Wheel Mouse Scrolling ==========
- (mouse-wheel-mode t)
-
 ;; ========== Set key binding for GOTO
 ;(global-set-key "\C-l" 'goto-line)
 
@@ -28,7 +29,7 @@
 (setq-default indicate-empty-lines t)          ; Show empty lines
 (setq track-eol nil)                           ; Cursor don't track end-of-line
 (setq mouse-yank-at-point t)                   ; Paste at cursor position
-(setq scroll-preserve-screen-position nil)       ; Scroll without moving cursor
+;(setq scroll-preserve-screen-position nil)       ; Scroll without moving cursor
 (mouse-avoidance-mode 'jump)                   ; Mouse avoids cursor
 ; (setq require-final-newline 't)                ; Always newline at end of file
  ;(setq next-line-add-newlines t)                ; Add newline when at buffer end
@@ -48,8 +49,7 @@
 (winner-mode t)                                ;
  ;(setq confirm-kill-emacs 'yes-or-no-p)          ; Confirm quit
  ;(setq ispell-dictionary "english")             ; Set ispell dictionary
-(setq calendar-week-start-day 1)               ; Week starts monday
-(setq european-calendar-style 't)              ; European style calendar
+
  ;(global-unset-key "\C-x\C-v")                  ; Suppress a shortcut
 (setq grep-command "grep -i -nH -e ")          ; Set grep command options
  
@@ -62,11 +62,9 @@
                                                 ;  to just use it when compiling
                                                 ; elisp files, see the elisp manual.
 
-;; we want fontification in all modes
-;;(global-font-lock-mode t t)
 ;; maximum possible fontification
 ;;not functioning
-;(setq font-lock-maximum-decoration t)
+(setq font-lock-maximum-decoration t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                    GENERAL
@@ -77,8 +75,8 @@
 ;; standard emacs/xemacs package.
 (require 'uniquify)
 ; create unique buffer names with shared directoy components.
-;(setq uniquify-buffer-name-style 'forward)
-(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-buffer-name-style 'forward)
+;(setq uniquify-buffer-name-style 'reverse)
 
 ;;;;;;;;;;;;;;;;;;; Appearance ;;;;;;;;;;;;;;;;;;;
 
@@ -87,8 +85,8 @@
 
 (define-key menu-bar-tools-menu [games] nil)     ; Remove games menu
 
-(scroll-bar-mode nil)
-(tool-bar-mode nil)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
 
  ;(add-to-list 'default-frame-alist '(font . "")); Change fonts
  (put 'narrow-to-region  'disabled nil)         ; Allow narrow-to-region command
@@ -105,17 +103,35 @@
 
 ;;;;;;;;;;;;;;;;;;== Modeline ==;;;;;;;;;;;;;;;;;;
 
-(display-time-mode t)                            ; display time
+;; Show date and time in 24h format in modeline
+;;(setq display-time-day-and-date t)
+(setq display-time-24hr-format t)
+(display-time-mode 1)
+
+(setq calendar-week-start-day 1)               ; Week starts monday
+(setq european-calendar-style 't)              ; European style calendar
+
 (setq column-number-mode t)                      ; display time
 (setq size-indication-mode t)                    ; display file-size
 
 
+     (defun fullscreen ()
+       "Tells Window Manager to toggle fullscreen mode"
+       (interactive)
+       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+	    		 '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
+
+(global-set-key [f11] 'fullscreen)
+
 ;;;;;;;;;;;;;;;;;;;;; Behavior ;;;;;;;;;;;;;;;;;;;
 
-(setq scroll-conservatively 5)                   ; not found
+;; ========== Support Wheel Mouse Scrolling ==========
+ (mouse-wheel-mode t)
+
+(setq scroll-conservatively 10000)                   ; not found
 ;; scroll one line at a time (less "jumpy" than defaults)
     
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-scroll-amount '(5 ((shift) . 1))) ;; one line at a time
     
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
     
@@ -124,11 +140,15 @@
 (setq scroll-step 1) ;; keyboard scroll one line at a time
 
 
+;; enable clipboard interaction between emacs and system
+(setq x-select-enable-clipboard t)
 
 
 
 (setq shell-file-name "/bin/bash")               ; Set Shell for M-| command
 (setq tex-shell-file-name "/bin/bash")           ; Set Shell used by TeX
+
+
 
 (setq inhibit-startup-message t)                 ; No message at startup
 (desktop-save-mode t)                            ; Save session before quitting
@@ -163,12 +183,3 @@
 ;(setq case-fold-search t)
 
 
-
-(add-to-list 'load-path
-           "~/.emacs.d/plugins/yasnippet")
-(require 'yasnippet)
-(yas/global-mode 1)
-(yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
-
-
- 

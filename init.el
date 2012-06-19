@@ -1,9 +1,40 @@
+;;------------------------------------------------------------------------------
+;; el-get
+;;------------------------------------------------------------------------------
+
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+;; Wenn el-get nicht geladen werden kann, lädt er die aktuelle (development)
+;; Version herunter und installiert es.
+(unless (require 'el-get nil t)
+  (with-current-buffer
+      (url-retrieve
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+       (lambda (s)
+	 (let (el-get-master-branch)
+	   (goto-char (point-max))
+	   (eval-print-last-sexp))))))
+
+;; Hier die packages hinzufügen
+;; Namen kann man im el-get repository nachschauen (recipes ordner) 
+;; Alternativ auch halt eigene recipes schreiben
+(setq my-packages
+      '(el-get
+	cedet
+        yasnippet))
+
+;; Initialisiere alles und so...
+(el-get 'sync my-packages)
+
+;;------------------------------------------------------------------------------
+
+
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 (add-to-list 'load-path "/home/edt/.emacs.d")
 (add-to-list 'load-path "/home/edt/.emacs.d/lisp")
 
-(add-to-list 'load-path
-           "~/.emacs.d/plugins/yasnippet")
+;; (add-to-list 'load-path
+;;            "~/.emacs.d/plugins/yasnippet")
 
 ;; Save comstum stuff in own file
 (setq custom-file "~/.emacs.d/custom.el")
@@ -11,9 +42,9 @@
 
 ;; Load the following configuration files
 (load "user_profile.el")
-(load "keybindings.el")
 (load "modes.el")
 (load "programming.el")
+(load "keybindings.el")
 
 ;(require 'color-theme)
 

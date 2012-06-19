@@ -6,8 +6,6 @@
 ;;make delete button actually delete
 (global-set-key [delete] 'delete-char)
 
-
-
 ;; Move between windows with META - direction
 
 (global-set-key (kbd "M-<left>")  'windmove-left)

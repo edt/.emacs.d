@@ -11,9 +11,9 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 
-(require 'yasnippet)
-(yas/global-mode 1)
-(yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
+;(require 'yasnippet)
+;(yas/global-mode 1)
+;(yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
 
 
 (require 'buffer-move)

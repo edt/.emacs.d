@@ -37,3 +37,11 @@
                 (setq indent-tabs-mode nil)
                 (setq c-indent-level 4))))
 
+;; Perl section
+
+    ;;; cperl-mode is preferred to perl-mode                                        
+    (defalias 'perl-mode 'cperl-mode)
+
+
+
+

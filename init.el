@@ -1,7 +1,3 @@
-
-;(load-file "~/.emacs.d/cedet.el")
-
-
 ;;------------------------------------------------------------------------------
 ;; el-get
 ;;------------------------------------------------------------------------------
@@ -24,9 +20,7 @@
 ;; Alternativ auch halt eigene recipes schreiben
 (setq my-packages
       '(el-get
-;	cedet
-        color-theme
-        auto-complete
+	cedet
         yasnippet))
 
 ;; Initialisiere alles und so...
@@ -35,14 +29,10 @@
 ;;------------------------------------------------------------------------------
 
 
-
-
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 (add-to-list 'load-path "/home/edt/.emacs.d")
 (add-to-list 'load-path "/home/edt/.emacs.d/lisp")
 
-
-;(load "cedet.el")
 ;; (add-to-list 'load-path
 ;;            "~/.emacs.d/plugins/yasnippet")
 
@@ -56,45 +46,7 @@
 (load "programming.el")
 (load "keybindings.el")
 
-
-
-;; (require 'auto-complete-clang-async)
-
-;; (defun ac-cc-mode-setup ()
-;;   (setq clang-complete-executable "~/work/emacs/emacs-clang-complete-async/clang-complete")
-;;   (setq ac-sources '(ac-source-clang-async))
-;;   (launch-completion-proc)
-;; )
-
-;; (defun my-ac-config ()
-;;   (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-;; ;  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
-;;   (global-auto-complete-mode t))
-
-;; (my-ac-config)
-
-
-
-;; taken from curiousprogrammer.wordpress.com/2009/02/11/simple-emacs-shortcut
-
-;; (defun duplicate-current-line ()
-;;   (interactive)
-;;   (beginning-of-line nil)
-;;   (let ((b (point)))
-;;     (end-of-line nil)
-;;     (copy-region-as-kill b (point)))
-;;   (beginning-of-line 2)
-;;   (open-line 1)
-;;   (yank)
-;;   (back-to-indentation))
-
-;; ;(global-set-key "\C-cd" 'duplicate-current-line)
-
-;; (global-set-key (kbd "<C-d>")     'duplicate-current-line)
-
-
-
-
+;(require 'color-theme)
 
 ;; ========== Set key binding for GOTO
 ;(global-set-key "\C-l" 'goto-line)
@@ -103,7 +55,7 @@
 (global-font-lock-mode 1)                      ; Color enabled
 (show-paren-mode 1)                            ; Highlight parenthesis pairs
 (setq blink-matching-paren-distance nil)       ; Blinking parenthesis
-;(setq show-paren-style 'expression)            ; Highlight text between parens
+(setq show-paren-style 'expression)            ; Highlight text between parens
 
 (setq-default indicate-empty-lines t)          ; Show empty lines
 (setq track-eol nil)                           ; Cursor don't track end-of-line
@@ -223,15 +175,11 @@
 (setq x-select-enable-clipboard t)
 
 
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode)
-                              '("\\.C\\'" . c++-mode))
-
-
-
-
 
 (setq shell-file-name "/bin/bash")               ; Set Shell for M-| command
 (setq tex-shell-file-name "/bin/bash")           ; Set Shell used by TeX
+
+
 
 (setq inhibit-startup-message t)                 ; No message at startup
 (desktop-save-mode t)                            ; Save session before quitting
@@ -259,10 +207,10 @@
 
 ;;; == Search & Destroy == ;;  ;; Is this section obsolete???
 
-(setq search-highlight t)
+;(setq search-highlight t)
 
-(setq query-replace-highlight t)
+;(setq query-replace-highlight t)
 
-(setq case-fold-search t)
+;(setq case-fold-search t)
 
 

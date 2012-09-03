@@ -20,7 +20,6 @@
 ;; Alternativ auch halt eigene recipes schreiben
 (setq my-packages
       '(el-get
-	cedet
         yasnippet))
 
 ;; Initialisiere alles und so...
@@ -55,7 +54,7 @@
 (global-font-lock-mode 1)                      ; Color enabled
 (show-paren-mode 1)                            ; Highlight parenthesis pairs
 (setq blink-matching-paren-distance nil)       ; Blinking parenthesis
-(setq show-paren-style 'expression)            ; Highlight text between parens
+;(setq show-paren-style 'expression)            ; Highlight text between parens
 
 (setq-default indicate-empty-lines t)          ; Show empty lines
 (setq track-eol nil)                           ; Cursor don't track end-of-line

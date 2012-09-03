@@ -13,7 +13,7 @@
 
 (require 'yasnippet)
 (yas/global-mode 1)
-(yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
+(yas/load-directory "~/.emacs.d/el-get/yasnippet/snippets")
 
 
 (require 'buffer-move)

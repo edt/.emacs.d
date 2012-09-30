@@ -20,6 +20,7 @@
 ;; Alternativ auch halt eigene recipes schreiben
 (setq my-packages
       '(el-get
+        color-theme
         yasnippet))
 
 ;; Initialisiere alles und so...
@@ -45,7 +46,13 @@
 (load "programming.el")
 (load "keybindings.el")
 
-;(require 'color-theme)
+; directories for .emacs.desktop and .emacs.desktop.lock files
+(setq desktop-path '("~/.emacs.d/"))
+(setq desktop-dirname "~/.emacs.d/")
+
+
+(require 'color-theme)
+;(require 'w3m-load)
 
 ;; ========== Set key binding for GOTO
 ;(global-set-key "\C-l" 'goto-line)
@@ -95,6 +102,14 @@
 ;; maximum possible fontification
 ;;not functioning
 (setq font-lock-maximum-decoration t)
+
+;; highlight the search string for recursive searches
+(setq search-highlight t)
+
+;; prefer vertical window split over horizontal
+;; http://stackoverflow.com/questions/2081577/setting-emacs-split-to-horizontal
+(setq split-height-threshold nil)
+(setq split-width-threshold 0)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                    GENERAL
@@ -199,9 +214,23 @@
 
 ;; == Files == ;;
 
-(setq make-backup-files nil)
-(setq auto-save-default nil)
+;; == Backup == ;;
+;; http://emacswiki.org/emacs/BackupDirectory
+;; check if folder exists, and create if it doesn't
+(unless (file-exists-p "~/.emacs.d/tmp/")
+  (make-directory "~/.emacs.d/tmp/" 'parent))
 
+;; set directory for backups
+(setq backup-directory-alist (".", "~/.emacs.d/tmp"))
+
+;; make backups by copying 
+;; this prevents emacs from changing the creation time of the original file
+(setq backup-by-copying t)
+
+;; set directory for auto saved files
+(setq auto-save-directory "~/.emacs.d/tmp/")
+
+;; always have an empty line at end of file
 (setq require-final-newline t)
 
 ;;; == Search & Destroy == ;;  ;; Is this section obsolete???
@@ -211,5 +240,10 @@
 ;(setq query-replace-highlight t)
 
 ;(setq case-fold-search t)
+
+
+
+
+
 
 

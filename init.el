@@ -104,6 +104,11 @@
                                                 ;  to just use it when compiling
                                                 ; elisp files, see the elisp manual.
 
+
+;; http://hustoknow.blogspot.de/2011/05/removing-trailing-whitespace-in-emacs.html
+;; delete trailing whitespaces before saving a file
+;(add-hook 'before-save-hook '(delete-trailing-whitespace (untabify start end))
+
 ;; maximum possible fontification
 ;;not functioning
 (setq font-lock-maximum-decoration t)

@@ -47,6 +47,7 @@
 
 ;; Load the following configuration files
 (load "user_profile.el")
+(load "functions.el")
 (load "modes.el")
 (load "programming.el")
 (load "keybindings.el")

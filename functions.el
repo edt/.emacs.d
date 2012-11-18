@@ -5,6 +5,8 @@
       (duplicate-region)
     (duplicate-line)))
 
+;; taken from 
+;; http://www.appdesign.com/blog/2007/04/24/clone-a-line-of-text-in-emacs/
 (defun duplicate-line ()
   "Clones the current line of text."
   (interactive)

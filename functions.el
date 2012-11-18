@@ -1,5 +1,3 @@
-;; duplication functions taken from 
-;; http://www.emacswiki.org/emacs/DuplicateStartOfLineOrRegion
 
 (defun duplicate-line-or-region ()
   (interactive)
@@ -8,19 +6,21 @@
     (duplicate-line)))
 
 (defun duplicate-line ()
-  (let ((text (buffer-substring (point)
-                                (beginning-of-thing 'line))))
-    (forward-line)
-    (push-mark)
-    (insert text)
-    (open-line 1)))
+  "Clones the current line of text."
+  (interactive)
+  (save-excursion
+    (copy-region-as-kill (line-beginning-position) (line-end-position))
+    (end-of-line)
+    (newline)
+    (yank)
+    (current-kill 1)))
 
 (defun duplicate-region ()
-  (let* ((end (region-end))
-         (text (buffer-substring (region-beginning)
-                                 end)))
-    (goto-char end)
-    (insert text)
-    (push-mark end)
-    (setq deactivate-mark nil)
-    (exchange-point-and-mark)))
+  "Clones mark region."
+  (interactive)
+  (save-excursion
+    (copy-region-as-kill (region-beginning) (region-end))
+    (region-end)
+    (newline)
+    (yank)
+    (current-kill 1)))

@@ -5,6 +5,10 @@
 ;; define meta-shift-t as a reverse transpose to switch words backwards
 (global-set-key (kbd "M-T") (lambda () (interactive) (transpose-words -1)))
 
+;; copy line or region
+(global-unset-key (kbd "C-z"))
+(global-set-key (kbd "C-z") 'duplicate-line-or-region)
+
 ;;make delete button actually delete
 (global-set-key [delete] 'delete-char)
 

@@ -30,6 +30,7 @@
 
 
 ;; http://www.chemie.fu-berlin.de/chemnet/use/info/elisp/elisp_16.html
+;; automatically start the debugger if something bad happens
 (add-hook 'after-init-hook
           '(lambda () (setq debug-on-error t)))
 
@@ -38,8 +39,6 @@
 (add-to-list 'load-path "/home/edt/.emacs.d")
 (add-to-list 'load-path "/home/edt/.emacs.d/lisp")
 
-;; (add-to-list 'load-path
-;;            "~/.emacs.d/plugins/yasnippet")
 
 ;; Save comstum stuff in own file
 (setq custom-file "~/.emacs.d/custom.el")
@@ -57,12 +56,6 @@
 (setq desktop-dirname "~/.emacs.d/")
 
 
-(require 'color-theme)
-;(require 'w3m-load)
-
-;; ========== Set key binding for GOTO
-;(global-set-key "\C-l" 'goto-line)
-
 (defalias 'qrr 'query-replace-regexp)          ; Define an alias
 (global-font-lock-mode 1)                      ; Color enabled
 (show-paren-mode 1)                            ; Highlight parenthesis pairs
@@ -74,8 +67,6 @@
 (setq mouse-yank-at-point t)                   ; Paste at cursor position
 ;(setq scroll-preserve-screen-position nil)       ; Scroll without moving cursor
 (mouse-avoidance-mode 'jump)                   ; Mouse avoids cursor
-; (setq require-final-newline 't)                ; Always newline at end of file
- ;(setq next-line-add-newlines t)                ; Add newline when at buffer end
 (setq truncate-partial-width-windows nil)      ; Don't truncate long lines
 (setq visible-bell t)                          ; No beep when reporting errors
 (setq window-min-height 10)                    ; Minimal height of windows
@@ -93,18 +84,10 @@
  ;(setq confirm-kill-emacs 'yes-or-no-p)          ; Confirm quit
  ;(setq ispell-dictionary "english")             ; Set ispell dictionary
 
- ;(global-unset-key "\C-x\C-v")                  ; Suppress a shortcut
 (setq grep-command "grep -i -nH -e ")          ; Set grep command options
  
 (setq ps-paper-type 'a4)                       ; Specify printing format
 (setq-default case-fold-search t)              ; Search is case sensitive
-
- ;(require 'cl)                                  ; Use Common Lisp features
-                                                ; Note: There are some problems
-                                                ;  with this. It might be better
-                                                ;  to just use it when compiling
-                                                ; elisp files, see the elisp manual.
-
 
 ;; http://hustoknow.blogspot.de/2011/05/removing-trailing-whitespace-in-emacs.html
 ;; delete trailing whitespaces before saving a file
@@ -113,9 +96,6 @@
 ;; maximum possible fontification
 ;;not functioning
 (setq font-lock-maximum-decoration t)
-
-;; highlight the search string for recursive searches
-(setq search-highlight t)
 
 ;; prefer vertical window split over horizontal
 ;; http://stackoverflow.com/questions/2081577/setting-emacs-split-to-horizontal
@@ -136,6 +116,7 @@
 
 ;;;;;;;;;;;;;;;;;;; Appearance ;;;;;;;;;;;;;;;;;;;
 
+(require 'color-theme)
 (load "my-color-theme.el")
 (my-color-theme )
 
@@ -158,8 +139,6 @@
 
  (blink-cursor-mode 0)                           ; No blinking cursor
 
- ;(global-linum-mode t)                           ; Show line numbers
-
 ;;;;;;;;;;;;;;;;;;== Modeline ==;;;;;;;;;;;;;;;;;;
 
 ;; Show date and time in 24h format in modeline
@@ -174,14 +153,6 @@
 (setq size-indication-mode t)                    ; display file-size
 
 
-     (defun fullscreen ()
-       "Tells Window Manager to toggle fullscreen mode"
-       (interactive)
-       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-	    		 '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
-
-(global-set-key [f11] 'fullscreen)
-
 ;;;;;;;;;;;;;;;;;;;;; Behavior ;;;;;;;;;;;;;;;;;;;
 
 ;; ========== Support Wheel Mouse Scrolling ==========
@@ -192,11 +163,14 @@
     
 (setq mouse-wheel-scroll-amount '(5 ((shift) . 1))) ;; one line at a time
     
-(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-    
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-    
-(setq scroll-step 1) ;; keyboard scroll one line at a time
+;; don't accelerate scrolling
+(setq mouse-wheel-progressive-speed nil)
+
+;; scroll window under mouse    
+(setq mouse-wheel-follow-mouse 't)   
+
+;; keyboard scroll one line at a time
+(setq scroll-step 1) 
 
 
 ;; enable clipboard interaction between emacs and system
@@ -214,28 +188,21 @@
 
 ;;;;;;;;;;;;;;;;;;;== Editing ==;;;;;;;;;;;;;;;;;;
 
-
-
 (setq next-line-add-newlines nil)                ; no new line at the end of file during scrolling
 (delete-selection-mode t)                        ; replace highlighted text with what I type rather than just inserting at point
 
 (setq standard-indent 4)                         ; Set standard indent to 4
 (setq tab-width 4)                               ; Length of tab is 4 SPC
   
-
+(setq-default standard-indent 4)
 (setq-default indent-tabs-mode nil)              ; Use spaces instead of tabs
 (setq sentence-end-double-space nil)             ; Sentences end with one space
-
-;; == Files == ;;
 
 ;; == Backup == ;;
 ;; http://emacswiki.org/emacs/BackupDirectory
 ;; check if folder exists, and create if it doesn't
 (unless (file-exists-p "~/.emacs.d/tmp/")
   (make-directory "~/.emacs.d/tmp/" 'parent))
-
-;; set directory for backups
-;;(setq backup-directory-alist "~/.emacs.d/tmp")
 
 ;; make backups by copying 
 ;; this prevents emacs from changing the creation time of the original file
@@ -250,50 +217,12 @@
 ;; always have an empty line at end of file
 (setq require-final-newline t)
 
-;;; == Search & Destroy == ;;  ;; Is this section obsolete???
+;;; == Search & Destroy == ;;;
 
-;(setq search-highlight t)
+(setq search-highlight t)
 
 ;(setq query-replace-highlight t)
 
 ;(setq case-fold-search t)
-
-
-;; https://sites.google.com/site/steveyegge2/my-dot-emacs-file
-;;
-;; Never understood why Emacs doesn't have this function.
-;;
-(defun rename-file-and-buffer (new-name)
- "Renames both current buffer and file it's visiting to NEW-NAME." (interactive "sNew name: ")
- (let ((name (buffer-name))
-	(filename (buffer-file-name)))
- (if (not filename)
-	(message "Buffer '%s' is not visiting a file!" name)
- (if (get-buffer new-name)
-	 (message "A buffer named '%s' already exists!" new-name)
-	(progn 	 (rename-file name new-name 1)
-                 (rename-buffer new-name)
-                 (set-visited-file-name new-name)
-                 (set-buffer-modified-p nil)))))) ;;
-;; Never understood why Emacs doesn't have this function, either.
-;;
-(defun move-buffer-file (dir)
- "Moves both current buffer and file it's visiting to DIR." (interactive "DNew directory: ")
- (let* ((name (buffer-name))
-	 (filename (buffer-file-name))
-	 (dir
-	 (if (string-match dir "\\(?:/\\|\\\\)$")
-	 (substring dir 0 -1) dir))
-	 (newname (concat dir "/" name)))
-
- (if (not filename)
-	(message "Buffer '%s' is not visiting a file!" name)
- (progn 	(copy-file filename newname 1)
-                (delete-file filename)
-                (set-visited-file-name newname)
-                (set-buffer-modified-p nil) 	t))))
-
-
-
 
 

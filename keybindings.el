@@ -9,6 +9,9 @@
 (global-unset-key (kbd "C-z"))
 (global-set-key (kbd "C-z") 'duplicate-line-or-region)
 
+;; Keybinding to allow fullscreen operations
+(global-set-key [f11] 'fullscreen)
+
 ;;make delete button actually delete
 (global-set-key [delete] 'delete-char)
 

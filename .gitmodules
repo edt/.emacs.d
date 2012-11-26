@@ -1,6 +1,0 @@
-[submodule "plugins/yasnippet"]
-	path = plugins/yasnippet
-	url = https://github.com/capitaomorte/yasnippet
-[submodule "plugins/cedet"]
-	path = plugins/cedet
-	url = git://git.randomsample.de/cedet.git

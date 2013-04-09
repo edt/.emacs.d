@@ -21,7 +21,9 @@
 (setq my-packages
       '(el-get
         color-theme
-        yasnippet))
+	highlight-symbol
+        yasnippet
+	gtags))
 
 ;; Initialisiere alles und so...
 (el-get 'sync my-packages)

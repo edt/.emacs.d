@@ -8,6 +8,7 @@
 (ido-mode t)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
+(setq ido-max-directory-size 1000000)
 
 (require 'yasnippet)
 (yas/global-mode 1)

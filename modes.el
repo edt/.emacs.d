@@ -22,4 +22,8 @@
 (global-set-key (kbd "S-<f3>") 'highlight-symbol-prev)
 (global-set-key (kbd "M-<f3>") 'highlight-symbol-remove-all)
 
-
+(add-hook 'gtags-mode-hook 
+  (lambda()
+    (local-set-key (kbd "M-.") 'gtags-find-tag)   ; find a tag, also M-.
+    (local-set-key (kbd "M-,") 'gtags-find-rtag)  ; reverse tag
+    (local-set-key (kbd "M-*") 'gtags-pop-stack))); go back 

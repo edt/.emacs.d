@@ -35,6 +35,14 @@
     (yank)
     (current-kill 1)))
 
+; source http://ergoemacs.org/emacs/modernization_mark-word.html
+(defun select-current-line ()
+  "Select the current line"
+  (interactive)
+  (end-of-line) ; move to end of line
+  (set-mark (line-beginning-position)))
+
+(global-set-key (kbd "C-=") 'select-current-line)
 
 
 ;; https://sites.google.com/site/steveyegge2/my-dot-emacs-file

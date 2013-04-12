@@ -22,8 +22,7 @@
       '(el-get
         color-theme
 	highlight-symbol
-        yasnippet
-	gtags))
+        yasnippet))
 
 ;; Initialisiere alles und so...
 (el-get 'sync my-packages)

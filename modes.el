@@ -12,7 +12,7 @@
 
 (require 'yasnippet)
 (yas/global-mode 1)
-(yas/load-directory "~/.emacs.d/el-get/yasnippet/snippets")
+(yas/load-directory "~/.emacs.d/snippets")
 (setq yas/indent-line nil) ;disable yasnippet auto-indent
 
 (require 'buffer-move)

@@ -22,6 +22,7 @@
       '(el-get
         color-theme
 	highlight-symbol
+        multiple-cursors
         yasnippet))
 
 ;; Initialisiere alles und so...

@@ -21,6 +21,7 @@
 (setq my-packages
       '(el-get
         color-theme
+        smex
 	highlight-symbol
         multiple-cursors
         yasnippet))

@@ -29,6 +29,10 @@
     (local-set-key (kbd "M-,") 'gtags-find-rtag)  ; reverse tag
     (local-set-key (kbd "M-*") 'gtags-pop-stack))); go back 
 
+(setq smex-save-file "~/.emacs.d/smex.save") ;; keep my ~/ clean                                      
+(require 'smex)                                                  
+(smex-initialize) 
+
 (global-set-key [(meta x)] (lambda ()
                              (interactive)
                              (or (boundp 'smex-cache)
@@ -43,3 +47,5 @@
                                    (global-set-key [(shift meta x)] 'smex-major-mode-commands)
                                    (smex-major-mode-commands)))
 
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)

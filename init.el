@@ -58,6 +58,7 @@
 (setq desktop-path '("~/.emacs.d/"))
 (setq desktop-dirname "~/.emacs.d/")
 
+(set-default-font "Monospace-10")
 
 (defalias 'qrr 'query-replace-regexp)          ; Define an alias
 (global-font-lock-mode 1)                      ; Color enabled

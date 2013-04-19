@@ -1,4 +1,4 @@
-;;; Color theme based on Tango Palette. Created by danranx@gmail.com
+;; Color theme based on Tango Palette. Created by danranx@gmail.com
 (require 'color-theme)
 
 

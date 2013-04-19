@@ -35,7 +35,7 @@
     (yank)
     (current-kill 1)))
 
-; source http://ergoemacs.org/emacs/modernization_mark-word.html
+;; source http://ergoemacs.org/emacs/modernization_mark-word.html
 (defun select-current-line ()
   "Select the current line"
   (interactive)

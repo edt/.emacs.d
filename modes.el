@@ -25,9 +25,9 @@
 
 (add-hook 'gtags-mode-hook 
   (lambda()
-    (local-set-key (kbd "M-.") 'gtags-find-tag)   ; find a tag, also M-.
-    (local-set-key (kbd "M-,") 'gtags-find-rtag)  ; reverse tag
-    (local-set-key (kbd "M-*") 'gtags-pop-stack))); go back 
+    (local-set-key (kbd "M-.") 'gtags-find-tag)   ;; find a tag, also M-.
+    (local-set-key (kbd "M-,") 'gtags-find-rtag)  ;; reverse tag
+    (local-set-key (kbd "M-*") 'gtags-pop-stack)));; go back 
 
 (setq smex-save-file "~/.emacs.d/smex.save") ;; keep my ~/ clean                                      
 (require 'smex)                                                  

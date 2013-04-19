@@ -58,23 +58,17 @@
 (setq desktop-path '("~/.emacs.d/"))
 (setq desktop-dirname "~/.emacs.d/")
 
-(set-default-font "Monospace-10")
-
 (defalias 'qrr 'query-replace-regexp)          ; Define an alias
 (global-font-lock-mode 1)                      ; Color enabled
 (show-paren-mode 1)                            ; Highlight parenthesis pairs
 (setq blink-matching-paren-distance nil)       ; Blinking parenthesis
-;(setq show-paren-style 'expression)            ; Highlight text between parens
-
 (setq-default indicate-empty-lines t)          ; Show empty lines
 (setq track-eol nil)                           ; Cursor don't track end-of-line
 (setq mouse-yank-at-point t)                   ; Paste at cursor position
-;(setq scroll-preserve-screen-position nil)       ; Scroll without moving cursor
 (mouse-avoidance-mode 'jump)                   ; Mouse avoids cursor
 (setq truncate-partial-width-windows nil)      ; Don't truncate long lines
 (setq visible-bell t)                          ; No beep when reporting errors
 (setq window-min-height 10)                    ; Minimal height of windows
-;; (setq auto-save-timeout 60)                    ; Autosave every minute
 (setq default-major-mode 'text-mode)           ; Text-mode is default mode
 (add-hook 'text-mode-hook 'turn-on-auto-fill)  ; auto-formatting in text-mode
 (defalias 'yes-or-no-p 'y-or-n-p)              ; y/n instead of yes/no
@@ -86,7 +80,6 @@
 
 (winner-mode t)                                ;
  ;(setq confirm-kill-emacs 'yes-or-no-p)          ; Confirm quit
- ;(setq ispell-dictionary "english")             ; Set ispell dictionary
 
 (setq grep-command "grep -i -nH -e ")          ; Set grep command options
  
@@ -98,13 +91,8 @@
 ;(add-hook 'before-save-hook '(delete-trailing-whitespace (untabify start end))
 
 ;; maximum possible fontification
-;;not functioning
+;; not functioning
 (setq font-lock-maximum-decoration t)
-
-;; prefer vertical window split over horizontal
-;; http://stackoverflow.com/questions/2081577/setting-emacs-split-to-horizontal
-;;(setq split-height-threshold nil)
-;;(setq split-width-threshold 0)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                    GENERAL
@@ -124,7 +112,8 @@
 (load "my-color-theme.el")
 (my-color-theme )
 
-
+(set-default-font "Monospace-10")
+(blink-cursor-mode 0)                           ; No blinking cursor
 ;;;;;;;;;;;;;;;;;;;;== Menu ==;;;;;;;;;;;;;;;;;;;;
 
 (define-key menu-bar-tools-menu [games] nil)     ; Remove games menu
@@ -132,21 +121,15 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 
- ;(add-to-list 'default-frame-alist '(font . "")); Change fonts
- (put 'narrow-to-region  'disabled nil)         ; Allow narrow-to-region command
- (setq disabled-command-hook nil)               ; Allow all disabled commands
+(put 'narrow-to-region  'disabled nil)         ; Allow narrow-to-region command
+(setq disabled-command-hook nil)               ; Allow all disabled commands
 
- (setq undo-limit 100000)                       ; Increase number of undo
-;(setq exec-path (append exec-path '("/bin")))  ; Change binary path
-
-;;;;;;;;;;;;;;;;;;;== Editing ==;;;;;;;;;;;;;;;;;;
-
- (blink-cursor-mode 0)                           ; No blinking cursor
+(setq undo-limit 100000)                       ; Increase number of undo
 
 ;;;;;;;;;;;;;;;;;;== Modeline ==;;;;;;;;;;;;;;;;;;
 
 ;; Show date and time in 24h format in modeline
-;;(setq display-time-day-and-date t)
+(setq display-time-day-and-date t)
 (setq display-time-24hr-format t)
 (display-time-mode 1)
 
@@ -156,11 +139,10 @@
 (setq column-number-mode t)                      ; display time
 (setq size-indication-mode t)                    ; display file-size
 
-
 ;;;;;;;;;;;;;;;;;;;;; Behavior ;;;;;;;;;;;;;;;;;;;
 
 ;; ========== Support Wheel Mouse Scrolling ==========
- (mouse-wheel-mode t)
+(mouse-wheel-mode t)
 
 (setq scroll-conservatively 10000)                   ; not found
 ;; scroll one line at a time (less "jumpy" than defaults)
@@ -180,12 +162,8 @@
 ;; enable clipboard interaction between emacs and system
 (setq x-select-enable-clipboard t)
 
-
-
 (setq shell-file-name "/bin/bash")               ; Set Shell for M-| command
 (setq tex-shell-file-name "/bin/bash")           ; Set Shell used by TeX
-
-
 
 (setq inhibit-startup-message t)                 ; No message at startup
 (desktop-save-mode t)                            ; Save session before quitting
@@ -222,11 +200,5 @@
 (setq require-final-newline t)
 
 ;;; == Search & Destroy == ;;;
-
 (setq search-highlight t)
-
-;(setq query-replace-highlight t)
-
-;(setq case-fold-search t)
-
 

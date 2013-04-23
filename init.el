@@ -131,7 +131,7 @@
 (load "my-color-theme.el")
 (my-color-theme )
 
-(set-default-font "Monospace-10")
+(set-frame-font "Monospace-10" t t)
 
 ;; No blinking cursor
 (blink-cursor-mode 0)

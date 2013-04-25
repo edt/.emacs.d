@@ -1,3 +1,8 @@
+(set-frame-font "Monospace-10" t t)
+
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+
 ;;------------------------------------------------------------------------------
 ;; el-get
 ;;------------------------------------------------------------------------------
@@ -131,17 +136,12 @@
 (load "my-color-theme.el")
 (my-color-theme )
 
-(set-frame-font "Monospace-10" t t)
-
 ;; No blinking cursor
 (blink-cursor-mode 0)
 ;;;;;;;;;;;;;;;;;;;;== Menu ==;;;;;;;;;;;;;;;;;;;;
 
 ;; Remove games menu
 (define-key menu-bar-tools-menu [games] nil)
-
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
 
 ;; Allow narrow-to-region command
 (put 'narrow-to-region  'disabled nil)

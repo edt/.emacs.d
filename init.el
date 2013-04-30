@@ -29,6 +29,7 @@
         smex
         highlight-symbol
         multiple-cursors
+        ace-jump-mode
         yasnippet))
 
 ;; Initialisiere alles und so...

@@ -9,6 +9,8 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (setq ido-max-directory-size 1000000)
+(setq ido-default-buffer-method 'selected-window)
+
 
 (require 'yasnippet)
 (yas/global-mode 1)

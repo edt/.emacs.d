@@ -19,6 +19,10 @@
 
 (require 'buffer-move)
 
+(require 'window-number)
+(window-number-mode t)
+(window-number-meta-mode)
+
 (require 'highlight-symbol)
 (global-set-key (kbd "C-<f3>") 'highlight-symbol-at-point)
 (global-set-key (kbd "<f3>") 'highlight-symbol-next)

@@ -2,6 +2,7 @@
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
+(menu-bar-mode -1)
 
 ;;------------------------------------------------------------------------------
 ;; el-get
@@ -58,6 +59,7 @@
 (load "functions.el")
 (load "modes.el")
 (load "programming.el")
+(load "compilation.el")
 (load "keybindings.el")
 
 ;; directories for .emacs.desktop and .emacs.desktop.lock files

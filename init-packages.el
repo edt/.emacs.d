@@ -22,6 +22,7 @@
 (setq my-packages
       '(el-get
         color-theme
+        ido-ubiquitous
         smex
         highlight-symbol
         multiple-cursors

@@ -128,30 +128,20 @@ by using nxml's indentation rules."
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
 
-  (defun my-recompile ()
-    "Run compile and resize the compile window closing the old one if necessary"
-    (interactive)
-    (progn
-      (if (get-buffer "*compilation*") ; If old compile window exists
-     (progn
-      (delete-windows-on (get-buffer "*compilation*")) ; Delete the compilation windows
-      (kill-buffer "*compilation*") ; and kill the buffers
-       ))
-      (call-interactively 'compile)
-      (enlarge-window 20)))
+(defadvice comment-dwim (around comment-line-maybe activate)
+  "If invoked from the beginning of a line or the beginning of
+text on a line, comment the current line instead of appending a
+comment to the line."
+  (if (and (not (use-region-p))
+	   (not (eq (line-end-position)
+		    (save-excursion (back-to-indentation) (point))))
+	   (or (eq (point) (line-beginning-position))
+	       (eq (point) (save-excursion (back-to-indentation) (point)))))
+      (comment-or-uncomment-region (line-beginning-position)
+				   (line-end-position))
+    ad-do-it
+    (setq deactivate-mark nil)))
 
-  (defun my-next-error ()
-    "Move point to next error and highlight it"
-    (interactive)
-    (progn
-      (next-error)
-      (end-of-line-nomark)
-      (beginning-of-line-mark)))
+(global-set-key (kbd "<M-;>")  'comment-dwim)
 
-  (defun my-previous-error ()
-    "Move point to previous error and highlight it"
-    (interactive)
-    (progn
-      (previous-error)
-      (end-of-line-nomark)
-      (beginning-of-line-mark)))
+

@@ -11,6 +11,9 @@
 (setq ido-max-directory-size 1000000)
 (setq ido-default-buffer-method 'selected-window)
 
+(require 'ido-ubiquitous)
+(ido-ubiquitous-mode t)
+
 ;; save a bunch of variables to the desktop file
 ;; for lists specify the len of the maximal saved data also
 (setq desktop-globals-to-save

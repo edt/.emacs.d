@@ -33,9 +33,7 @@
 (load "compilation.el")
 (load "keybindings.el")
 
-;; directories for .emacs.desktop and .emacs.desktop.lock files
-(setq desktop-path '("~/.emacs.d/"))
-(setq desktop-dirname "~/.emacs.d/")
+(require 'setup-session)
 
 ;; Character encodings default to utf-8.
 (prefer-coding-system 'utf-8)

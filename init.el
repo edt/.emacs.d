@@ -180,8 +180,6 @@
 
 ;; No message at startup
 (setq inhibit-startup-message t)
-;; Save session before quitting
-(desktop-save-mode t)
 
 ;;;;;;;;;;;;;;;;;;;== Editing ==;;;;;;;;;;;;;;;;;;
 

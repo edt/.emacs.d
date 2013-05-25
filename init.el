@@ -23,7 +23,7 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
-(require 'init-packages)
+(require 'setup-packages)
 ;; Load the following configuration files
 (load "user_profile.el")
 (load "functions.el")

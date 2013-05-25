@@ -32,4 +32,4 @@
 ;; Initialisiere alles und so...
 (el-get 'sync my-packages)
 
-(provide 'init-packages)
+(provide 'setup-packages)

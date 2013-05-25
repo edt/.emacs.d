@@ -34,6 +34,8 @@
 (load "keybindings.el")
 
 (require 'setup-session)
+(require 'setup-modeline)
+
 
 ;; Character encodings default to utf-8.
 (prefer-coding-system 'utf-8)
@@ -130,23 +132,11 @@
 ;; Increase number of undo
 (setq undo-limit 100000)
 
-;;;;;;;;;;;;;;;;;;== Modeline ==;;;;;;;;;;;;;;;;;;
-
-;; Show date and time in 24h format in modeline
-(setq display-time-day-and-date t)
-(setq display-time-24hr-format t)
-(display-time-mode 1)
-
 ; Week starts monday
 (setq calendar-week-start-day 1)
 
 ; European style calendar
 (setq european-calendar-style 't)
-
-; display time
-(setq column-number-mode t)
-; display file-size
-(setq size-indication-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;; Behavior ;;;;;;;;;;;;;;;;;;;
 

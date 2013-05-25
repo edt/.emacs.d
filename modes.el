@@ -4,15 +4,8 @@
 ;; This file starts modes and
 ;; defines the configuration for those
 
-(require 'ido)
-(ido-mode t)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(setq ido-max-directory-size 1000000)
-(setq ido-default-buffer-method 'selected-window)
+(require 'setup-ido)
 
-(require 'ido-ubiquitous)
-(ido-ubiquitous-mode t)
 
 ;; save a bunch of variables to the desktop file
 ;; for lists specify the len of the maximal saved data also
@@ -65,29 +58,18 @@
     (local-set-key (kbd "M-,") 'gtags-find-rtag)  ;; reverse tag
     (local-set-key (kbd "M-*") 'gtags-pop-stack)));; go back 
 
-(setq smex-save-file "~/.emacs.d/smex.save") ;; keep my ~/ clean                                      
-(require 'smex)                                                  
-(smex-initialize) 
-
-(global-set-key [(meta x)] (lambda ()
-                             (interactive)
-                             (or (boundp 'smex-cache)
-                                 (smex-initialize))
-                             (global-set-key [(meta x)] 'smex)
-                             (smex)))
-
-(global-set-key [(shift meta x)] (lambda ()
-                                   (interactive)
-                                   (or (boundp 'smex-cache)
-                                       (smex-initialize))
-                                   (global-set-key [(shift meta x)] 'smex-major-mode-commands)
-                                   (smex-major-mode-commands)))
-
-;; This is your old M-x.
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 (global-set-key (kbd "M-/") 'hippie-expand)
 
-(setq hippie-expand-try-functions-list '(try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-list try-expand-line try-complete-lisp-symbol-partially try-complete-lisp-symbol))
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev 
+                                         try-expand-dabbrev-all-buffers 
+                                         try-expand-dabbrev-from-kill 
+                                         try-complete-file-name-partially
+                                         try-complete-file-name 
+                                         try-expand-all-abbrevs
+                                         try-expand-list 
+                                         try-expand-line
+                                         try-complete-lisp-symbol-partially
+                                         try-complete-lisp-symbol))
 
 

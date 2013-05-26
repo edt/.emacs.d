@@ -146,6 +146,7 @@ comment to the line."
 
 
 
+
 (defun smarter-move-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.
 
@@ -172,3 +173,121 @@ point reaches the beginning or end of the buffer, stop there."
 ;; remap C-a to `smarter-move-beginning-of-line'
 (global-set-key [remap move-beginning-of-line]
                 'smarter-move-beginning-of-line)
+
+(global-set-key (kbd "M-j")
+            (lambda ()
+                  (interactive)
+                  (join-line -1)))
+
+(defun point-in-comment ()
+  "Determine if the point is inside a comment"
+  (interactive)
+  (let ((face (plist-get (text-properties-at (point)) 'face)))
+    (when (not (listp face)) (setq face (list face)))
+    (or (memq 'font-lock-comment-face face)
+        (memq 'font-lock-comment-delimiter-face face))))
+
+(defun my-back-to-indentation ()
+  (if visual-line-mode
+      (cl-flet ((beginning-of-line (arg) (beginning-of-visual-line arg)))
+        (back-to-indentation))
+    (back-to-indentation)))
+
+(defun my-back-to-indentation-or-beginning (&optional arg)
+  "Jump back to indentation of the current line.  If already
+there, jump to the beginning of current line.  If visual mode is
+enabled, move according to the visual lines."
+  (interactive "p")
+  (if (or (/= arg 1)
+          (= (point) (save-excursion
+                       (my-back-to-indentation)
+                       (point))))
+      (progn
+        (if visual-line-mode
+            (beginning-of-visual-line arg)
+          (move-beginning-of-line arg))
+        (when (/= arg 1)
+          (my-back-to-indentation)))
+    (my-back-to-indentation)))
+
+(defun my-end-of-code-or-line (&optional arg)
+  "Move to the end of code.  If already there, move to the end of line,
+that is after the possible comment.  If at the end of line, move
+to the end of code.
+
+Example:
+  (serious |code here)1 ;; useless commend2
+
+In the example, | is the current point, 1 is the position of
+point after one invocation of this funciton, 2 is position after
+repeated invocation. On subsequent calls the point jumps between
+1 and 2.
+
+Comments are recognized in any mode that sets syntax-ppss
+properly."
+  (interactive "p")
+  (cl-flet ((end-of-line-lov () (if visual-line-mode
+                                 (end-of-visual-line arg)
+                               (move-end-of-line arg)))
+         (beg-of-line-lov () (if visual-line-mode
+                                 (beginning-of-visual-line arg)
+                               (move-beginning-of-line arg))))
+    (let ((eoc (save-excursion
+                 (end-of-line-lov)
+                 (while (and (point-in-comment)
+                             (not (bolp)))
+                   (backward-char))
+                 (skip-syntax-backward " ")
+                 ;; if we skipped all the way to the beginning, that
+                 ;; means there's only comment on this line, so this
+                 ;; should just jump to the end.
+                 (if (= (point) (save-excursion
+                                  (beg-of-line-lov)
+                                  (point)))
+                     (progn (end-of-line-lov)
+                            (point))
+                   (point)))))
+      (if (= (point) eoc)
+          (end-of-line-lov)
+        (goto-char eoc)))))
+
+(global-set-key (kbd "C-e") 'my-end-of-code-or-line)
+
+;(key-chord-define-global "ee" 'my-end-of-code-or-line)
+
+
+(setq ansi-term-color-vector
+      '(font-lock-variable-name-face
+        term-color-black
+        font-lock-string-face
+        font-lock-type-face
+        font-lock-keyword-face
+        font-lock-preprocessor-face
+        font-lock-variable-name-face
+        font-lock-type-face
+        term-color-white))
+
+
+
+(defun open-file-at-cursor ()
+  "Open the file path under cursor.
+If there is text selection, uses the text selection for path.
+If the path is starts with “http://”, open the URL in browser.
+Input path can be {relative, full path, URL}.
+This command is similar to `find-file-at-point' but without prompting for confirmation.
+"
+  (interactive)
+  (let ( (path (if (region-active-p)
+                   (buffer-substring-no-properties (region-beginning) (region-end))
+                 (thing-at-point 'filename) ) ))
+    (if (string-match-p "\\`https?://" path)
+        (browse-url path)
+      (progn ; not starting “http://”
+        (if (file-exists-p path)
+            (find-file path)
+          (if (file-exists-p (concat path ".el"))
+              (find-file (concat path ".el"))
+            (when (y-or-n-p (format "file doesn't exist: 「%s」. Create?" path) )
+              (find-file path ))))))))
+
+

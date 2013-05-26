@@ -4,20 +4,14 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
-
-;;------------------------------------------------------------------------------
-
-
 ;; http://www.chemie.fu-berlin.de/chemnet/use/info/elisp/elisp_16.html
 ;; automatically start the debugger if something bad happens
 (add-hook 'after-init-hook
           '(lambda () (setq debug-on-error t)))
 
-
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 (add-to-list 'load-path "/home/edt/.emacs.d")
 (add-to-list 'load-path "/home/edt/.emacs.d/lisp")
-
 
 ;; Save comstum stuff in own file
 (setq custom-file "~/.emacs.d/custom.el")
@@ -36,6 +30,12 @@
 (require 'setup-modeline)
 
 
+;; (require 'autopair)
+;; (autopair-global-mode 1)
+;; (setq autopair-autowrap t)
+
+(global-subword-mode t)
+
 ;; Character encodings default to utf-8.
 (prefer-coding-system 'utf-8)
 (set-language-environment 'utf-8)
@@ -45,8 +45,7 @@
 
 ;; Define an alias
 (defalias 'qrr 'query-replace-regexp)
-;; Color enabled
-(global-font-lock-mode 1)
+
 ;; Highlight parenthesis pairs
 (show-paren-mode 1)
 ;; Blinking parenthesis
@@ -94,6 +93,8 @@
 ;; delete trailing whitespaces before saving a file
 ;(add-hook 'before-save-hook '(delete-trailing-whitespace (untabify start end))
 
+;; Color enabled
+(global-font-lock-mode 1)
 ;; maximum possible fontification
 ;; not functioning
 (setq font-lock-maximum-decoration t)
@@ -120,14 +121,6 @@
 (blink-cursor-mode 0)
 ;;;;;;;;;;;;;;;;;;;;== Menu ==;;;;;;;;;;;;;;;;;;;;
 
-;; Remove games menu
-(define-key menu-bar-tools-menu [games] nil)
-
-;; Allow narrow-to-region command
-(put 'narrow-to-region  'disabled nil)
-;; Allow all disabled commands
-(setq disabled-command-hook nil)
-
 ;; Increase number of undo
 (setq undo-limit 100000)
 
@@ -139,7 +132,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;; Behavior ;;;;;;;;;;;;;;;;;;;
 
-;; ========== Support Wheel Mouse Scrolling ==========
+;========== Support Wheel Mouse Scrolling ==========
 (mouse-wheel-mode t)
 
 (setq scroll-conservatively 10000)

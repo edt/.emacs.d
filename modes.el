@@ -25,6 +25,9 @@
 
 ;(require 'buffer-move)
 
+;; multilpe cursor don't clutter config dir
+(setq mc/list-file "~/.emacs.d/tmp/multiple-cursors-lists.el")
+
 (require 'window-number)
 (window-number-mode t)
 (window-number-meta-mode)

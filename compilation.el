@@ -2,6 +2,10 @@
 ;; set the default compilation command
 (setq compile-command "make -j -k")
 
+;; stop at first error or keep scrolling
+;;(setq compilation-scroll-output t)
+(setq compilation-scroll-output 'first-error)
+
 ;; (setq-default compilation-directory "/home/edt/work/aravis")
 
 (global-set-key (kbd "<f5>") 'my-recompile)

@@ -35,6 +35,9 @@
 ;; (setq autopair-autowrap t)
 
 (global-subword-mode t)
+(require 'wgrep)
+(require 'whole-line-or-region)
+(whole-line-or-region-mode t)
 
 ;; Character encodings default to utf-8.
 (prefer-coding-system 'utf-8)

@@ -7,33 +7,39 @@
 
 
 
-(defun duplicate-line-or-region ()
-  (interactive)
-  (if mark-active
-      (duplicate-region)
-    (duplicate-line)))
-
-;; taken from 
-;; http://www.appdesign.com/blog/2007/04/24/clone-a-line-of-text-in-emacs/
-(defun duplicate-line ()
-  "Clones the current line of text."
-  (interactive)
+;; source https://github.com/milkypostman/dotemacs/blob/master/init.el
+(defun duplicate-line-or-region (arg)
+  "Duplicates the current line or region ARG times.
+If there's no region, the current line will be duplicated."
+  (interactive "p")
   (save-excursion
-    (copy-region-as-kill (line-beginning-position) (line-end-position))
-    (end-of-line)
-    (newline)
-    (yank)
-    (current-kill 1)))
+    (if (region-active-p)
+        (duplicate-region arg)
+      (duplicate-current-line arg))))
 
-(defun duplicate-region ()
-  "Clones mark region."
-  (interactive)
-  (save-excursion
-    (copy-region-as-kill (region-beginning) (region-end))
-    (region-end)
+
+(defun duplicate-region (num &optional start end)
+  "Duplicates the region bounded by START and END NUM times.
+If no START and END is provided, the current region-beginning and
+region-end is used."
+  (interactive "p")
+  (let* ((start (or start (region-beginning)))
+         (end (or end (region-end)))
+         (region (buffer-substring start end)))
+    (goto-char start)
+    (dotimes (i num)
+      (insert region))))
+
+
+(defun duplicate-current-line (num)
+  "Duplicate the current line NUM times."
+  (interactive "p")
+  (when (eq (point-at-eol) (point-max))
+    (goto-char (point-max))
     (newline)
-    (yank)
-    (current-kill 1)))
+    (forward-char -1))
+  (duplicate-region num (point-at-bol) (1+ (point-at-eol))))
+
 
 ;; source http://ergoemacs.org/emacs/modernization_mark-word.html
 (defun select-current-line ()
@@ -291,3 +297,20 @@ This command is similar to `find-file-at-point' but without prompting for confir
               (find-file path ))))))))
 
 
+(defun make-file-executable ()
+  "Make the current file loaded in the buffer executable"
+  (interactive)
+  (if (buffer-file-name)
+      (start-file-process "Make Executable" nil "/bin/bash" "-c"
+                          (concat "chmod u+x " (file-name-nondirectory buffer-file-name)))
+    (message "Buffer has no filename.")))
+
+(defun google ()
+  "Googles a query or region if any."
+  (interactive)
+  (browse-url
+   (concat
+    "http://www.google.com/search?ie=utf-8&oe=utf-8&q="
+    (if (region-active-p)
+        (buffer-substring (region-beginning) (region-end))
+      (read-string "Query: ")))))

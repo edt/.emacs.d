@@ -1,6 +1,7 @@
 
 ;; set the default compilation command
 (setq compile-command "make -j -k")
+(setq compile-clean "make clean")
 
 ;; stop at first error or keep scrolling
 ;;(setq compilation-scroll-output t)
@@ -9,7 +10,8 @@
 ;; (setq-default compilation-directory "/home/edt/work/aravis")
 
 (global-set-key (kbd "<f5>") 'my-recompile)
-(global-set-key (kbd "<S-f5>") 'compile-in-directory)
+(global-set-key (kbd "<C-f5>") 'compile-in-directory)
+(global-set-key (kbd "<S-f5>") 'compile-clean)
 
 (defun compile-in-directory ()
   "Reads a directory name (using ido), then runs
@@ -36,6 +38,20 @@ directory."
           (call-interactively 'recompile))
       (call-interactively 'compile))
     (enlarge-window 20)))
+
+
+(defun compile-clean ()
+  "Switches between compile command and clean command"
+  (interactive)
+  (setq compile-command-backup compile-command)
+  (setq compile-command compile-clean)
+  (setq compilation-read-command nil)
+  (call-interactively 'compile)
+  (enlarge-window 20)
+  (setq compilation-read-command t)
+  (setq compile-command compile-command-backup)
+)
+
 
   ;; (defun my-recompile ()
   ;;   "Run compile and resize the compile window closing the old one if necessary"

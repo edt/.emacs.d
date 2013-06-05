@@ -43,14 +43,22 @@ directory."
 (defun compile-clean ()
   "Switches between compile command and clean command"
   (interactive)
-  (setq compile-command-backup compile-command)
-  (setq compile-command compile-clean)
-  (setq compilation-read-command nil)
+(let (  (compile-command compile-clean)
+        (compilation-read-command nil))
   (call-interactively 'compile)
-  (enlarge-window 20)
-  (setq compilation-read-command t)
-  (setq compile-command compile-command-backup)
-)
+  (enlarge-window 20)))
+  
+
+;; (defun compile-clean ()
+;;   "Switches between compile command and clean command"
+;;   (interactive)
+;;   (setq compile-command-backup compile-command)
+;;   (setq compile-command compile-clean)
+;;   (setq compilation-read-command nil)
+;;   (call-interactively 'compile)
+;;   (enlarge-window 20)
+;;   (setq compilation-read-command t)
+;;   (setq compile-command compile-command-backup))
 
 
   ;; (defun my-recompile ()

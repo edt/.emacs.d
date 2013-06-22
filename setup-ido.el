@@ -7,6 +7,8 @@
 (setq ido-max-directory-size 1000000)
 (setq ido-default-buffer-method 'selected-window)
 
+(setq ido-save-directory-list-file "~/.emacs.d/tmp/ido.last")
+
 (require 'ido-ubiquitous)
 (ido-ubiquitous-mode t)
 

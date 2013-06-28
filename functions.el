@@ -314,3 +314,9 @@ This command is similar to `find-file-at-point' but without prompting for confir
     (if (region-active-p)
         (buffer-substring (region-beginning) (region-end))
       (read-string "Query: ")))))
+
+(defun show-file-name ()
+  "Show the full path file name in the minibuffer."
+  (interactive)
+  (message (buffer-file-name)))
+

@@ -24,6 +24,7 @@
         color-theme
         ido-ubiquitous
         smex
+        projectile
         highlight-symbol
         multiple-cursors
         ace-jump-mode

@@ -29,6 +29,9 @@
 (require 'setup-session)
 (require 'setup-modeline)
 
+(require 'projectile)
+(setq projectile-enable-caching t)
+(projectile-global-mode t)
 
 ;; (require 'autopair)
 ;; (autopair-global-mode 1)

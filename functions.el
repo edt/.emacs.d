@@ -6,7 +6,6 @@
 	    		 '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
 
 
-
 ;; source https://github.com/milkypostman/dotemacs/blob/master/init.el
 (defun duplicate-line-or-region (arg)
   "Duplicates the current line or region ARG times.
@@ -60,6 +59,7 @@ region-end is used."
 
 (global-set-key (kbd "M-w") 'copy-current-line-or-region)
 
+
 (defun cut-current-line-or-region (&optional arg)
   "if no region is active cuts the current line"
   (interactive)
@@ -69,10 +69,10 @@ region-end is used."
 
 (global-set-key (kbd "C-w") 'cut-current-line-or-region)
 
+
 ;; https://sites.google.com/site/steveyegge2/my-dot-emacs-file
 ;;
 ;; Never understood why Emacs doesn't have this function.
-;;
 (defun rename-file-and-buffer (new-name)
  "Renames both current buffer and file it's visiting to NEW-NAME." (interactive "sNew name: ")
  (let ((name (buffer-name))
@@ -86,8 +86,8 @@ region-end is used."
                  (set-visited-file-name new-name)
                  (set-buffer-modified-p nil)))))) ;;
 
+
 ;; Never understood why Emacs doesn't have this function, either.
-;;
 (defun move-buffer-file (dir)
  "Moves both current buffer and file it's visiting to DIR." (interactive "DNew directory: ")
  (let* ((name (buffer-name))
@@ -103,6 +103,7 @@ region-end is used."
                 (delete-file filename)
                 (set-visited-file-name newname)
                 (set-buffer-modified-p nil) 	t))))
+
 
 (defun toggle-window-split ()
   (interactive)
@@ -145,6 +146,7 @@ by using nxml's indentation rules."
     (indent-region begin end))
   (message "Ah, much better!"))
 
+
 (defun sudo-edit (&optional arg)
   (interactive "p")
   (if (or arg (not buffer-file-name))
@@ -167,8 +169,6 @@ comment to the line."
     (setq deactivate-mark nil)))
 
 (global-set-key (kbd "<M-;>")  'comment-dwim)
-
-
 
 
 (defun smarter-move-beginning-of-line (arg)
@@ -194,14 +194,17 @@ point reaches the beginning or end of the buffer, stop there."
     (when (= orig-point (point))
       (move-beginning-of-line 1))))
 
+
 ;; remap C-a to `smarter-move-beginning-of-line'
 (global-set-key [remap move-beginning-of-line]
                 'smarter-move-beginning-of-line)
+
 
 (global-set-key (kbd "M-j")
             (lambda ()
                   (interactive)
                   (join-line -1)))
+
 
 (defun point-in-comment ()
   "Determine if the point is inside a comment"
@@ -211,11 +214,13 @@ point reaches the beginning or end of the buffer, stop there."
     (or (memq 'font-lock-comment-face face)
         (memq 'font-lock-comment-delimiter-face face))))
 
+
 (defun my-back-to-indentation ()
   (if visual-line-mode
       (cl-flet ((beginning-of-line (arg) (beginning-of-visual-line arg)))
         (back-to-indentation))
     (back-to-indentation)))
+
 
 (defun my-back-to-indentation-or-beginning (&optional arg)
   "Jump back to indentation of the current line.  If already
@@ -233,6 +238,7 @@ enabled, move according to the visual lines."
         (when (/= arg 1)
           (my-back-to-indentation)))
     (my-back-to-indentation)))
+
 
 (defun my-end-of-code-or-line (&optional arg)
   "Move to the end of code.  If already there, move to the end of line,
@@ -292,7 +298,6 @@ properly."
         term-color-white))
 
 
-
 (defun open-file-at-cursor ()
   "Open the file path under cursor.
 If there is text selection, uses the text selection for path.
@@ -323,6 +328,7 @@ This command is similar to `find-file-at-point' but without prompting for confir
                           (concat "chmod u+x " (file-name-nondirectory buffer-file-name)))
     (message "Buffer has no filename.")))
 
+
 (defun google ()
   "Googles a query or region if any."
   (interactive)
@@ -332,6 +338,7 @@ This command is similar to `find-file-at-point' but without prompting for confir
     (if (region-active-p)
         (buffer-substring (region-beginning) (region-end))
       (read-string "Query: ")))))
+
 
 (defun show-file-name ()
   "Show the full path file name in the minibuffer."

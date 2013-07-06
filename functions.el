@@ -51,6 +51,24 @@ region-end is used."
 (global-set-key (kbd "C-=") 'select-current-line)
 
 
+(defun copy-current-line-or-region (&optional arg)
+  ""
+  (interactive)
+  (if (region-active-p)
+      (call-interactively 'kill-ring-save)
+    (kill-ring-save (line-beginning-position) (line-beginning-position 2))))
+
+(global-set-key (kbd "M-w") 'copy-current-line-or-region)
+
+(defun cut-current-line-or-region (&optional arg)
+  "if no region is active cuts the current line"
+  (interactive)
+  (if (region-active-p)
+      (call-interactively 'kill-region)
+    (call-interactively 'kill-whole-line)))
+
+(global-set-key (kbd "C-w") 'cut-current-line-or-region)
+
 ;; https://sites.google.com/site/steveyegge2/my-dot-emacs-file
 ;;
 ;; Never understood why Emacs doesn't have this function.

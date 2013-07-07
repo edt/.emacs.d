@@ -153,6 +153,20 @@ by using nxml's indentation rules."
       (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
+;; ; current version
+;; (defadvice comment-dwim (around comment-line-maybe activate)
+;;   "If invoked from the beginning of a line or the beginning of
+;; text on a line, comment the current line instead of appending a
+;; comment to the line."
+;;   (if (and (not (use-region-p))
+;; 	   (not (eq (line-end-position)
+;; 		    (save-excursion (back-to-indentation) (point))))
+;; 	   (or (eq (point) (line-beginning-position))
+;; 	       (eq (point) (save-excursion (back-to-indentation) (point)))))
+;;       (comment-or-uncomment-region (line-beginning-position)
+;; 				   (line-end-position))
+;;     ad-do-it
+;;     (setq deactivate-mark nil)))
 
 (defadvice comment-dwim (around comment-line-maybe activate)
   "If invoked from the beginning of a line or the beginning of
@@ -165,8 +179,19 @@ comment to the line."
 	       (eq (point) (save-excursion (back-to-indentation) (point)))))
       (comment-or-uncomment-region (line-beginning-position)
 				   (line-end-position))
-    ad-do-it
-    (setq deactivate-mark nil)))
+ad-do-it
+))
+
+;; (defun comment-dwim-line (&optional arg)
+;;         "Replacement for the comment-dwim command.
+;;         If no region is selected and current line is not blank and we are not at the end of the line,
+;;         then comment current line.
+;;         Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line."
+;;           (interactive "*P")
+;;           (comment-normalize-vars)
+;;           (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
+;;               (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+;;             (comment-dwim arg)))
 
 (global-set-key (kbd "<M-;>")  'comment-dwim)
 

@@ -62,6 +62,13 @@
 ;;   (gdb-set-window-buffer (gdb-breakpoints-buffer-name))
 ;;   (other-window 1))
 
+(defun create-temporary-buffer (buf)
+  "open a buffer,
+if it doesn't exist, open a new one"
+  (interactive "sBuffer name: ")
+  (switch-to-buffer
+   (get-buffer-create (concat "*" buf "*"))))
+
 
 (define-derived-mode gud-gdb-colors-mode gud-mode
   (setq font-lock-defaults
@@ -72,3 +79,5 @@
   
   (setq mode-name "gud-gdb-colors-mode")
 )
+
+(provide 'setup-debugging)

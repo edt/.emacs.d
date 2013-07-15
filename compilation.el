@@ -49,6 +49,14 @@ directory."
   (enlarge-window 20)))
   
 
+;; assure the compilation buffer is only opened once when multiple frames are open
+(add-to-list
+ 'display-buffer-alist
+ '("\\*compilation\\*" . (display-buffer-reuse-window
+                          . ((reusable-frames . t)))))
+
+
+
 ;; (defun compile-clean ()
 ;;   "Switches between compile command and clean command"
 ;;   (interactive)

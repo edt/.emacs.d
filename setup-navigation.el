@@ -21,5 +21,5 @@
                   (ignore-errors (backward-char 5))))
 
 
-
+(provide 'setup-navigation)
 

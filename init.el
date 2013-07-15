@@ -28,6 +28,8 @@
 
 (require 'setup-session)
 (require 'setup-modeline)
+(require 'setup-navigation)
+(require 'setup-debugging)
 
 (require 'projectile)
 (setq projectile-enable-caching t)

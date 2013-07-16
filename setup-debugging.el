@@ -1,11 +1,7 @@
 
+;; gdb default settings
 (setq gdb-many-windows t)
 (setq gud-tooltip-mode t)
-
-(defun my-gdb-other-frame ()
-  (interactive)
-  (select-frame (make-frame))
-  (call-interactively 'gdb))
 
 ;; Make up/down behave as in terminal
 ;; source http://cbbp.thep.lu.se/~karlf/emacs.html
@@ -62,12 +58,46 @@
 ;;   (gdb-set-window-buffer (gdb-breakpoints-buffer-name))
 ;;   (other-window 1))
 
-(defun create-temporary-buffer (buf)
-  "open a buffer,
-if it doesn't exist, open a new one"
-  (interactive "sBuffer name: ")
-  (switch-to-buffer
-   (get-buffer-create (concat "*" buf "*"))))
+
+(defvar debug-tmp-file-directory 
+  "~/.emacs.d/tmp/"
+  "directory that will contain our temporary files")
+
+
+(defun write-string-to-file (string file)
+   (interactive "sEnter the string: \nFFile to save to: ")
+   (with-temp-file file
+     (insert string)))
+
+(defun start-gdb-in-other-frame ()
+  "starts gdb in a newly created frame"
+  (interactive)
+  (select-frame (make-frame))
+  (call-interactively 'gdb))
+
+(defvar debug-file
+  "~/.emacs.d/tmp/gdb_tmp_conf"
+  "prefix for our temporary files")
+
+(defun create-gdb-tmp-file ()
+  "creates a temporary file and fills it with given text"
+  (if (file-exists-p debug-file)
+      (delete-file debug-file))
+  (setq pos (concat (buffer-file-name) ":" (number-to-string(line-number-at-pos))))
+  (setq whole-content (concat "break " pos "\nrun"))
+  (write-string-to-file  whole-content debug-file)
+)
+
+(defun gdb-run-to-point ()
+  "sets breakpoint at cursor and runs gdb to it"
+  (interactive)
+  (create-gdb-tmp-file)
+  (setq a (concat gud-gdb-command-name " -x " debug-file))
+  (setq gud-gdb-command-name a)
+  (start-gdb-in-other-frame)
+)
+
+
 
 
 (define-derived-mode gud-gdb-colors-mode gud-mode

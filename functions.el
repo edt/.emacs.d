@@ -362,7 +362,7 @@ This command is similar to `find-file-at-point' but without prompting for confir
     "http://www.google.com/search?ie=utf-8&oe=utf-8&q="
     (if (region-active-p)
         (buffer-substring (region-beginning) (region-end))
-      (read-string "Query: ")))))
+      (read-string "Query: " nil nil (thing-at-point 'symbol))))))
 
 
 (defun show-file-name ()

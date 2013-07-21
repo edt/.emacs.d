@@ -58,4 +58,6 @@
                                          try-complete-lisp-symbol-partially
                                          try-complete-lisp-symbol))
 
+(require 'browse-kill-ring)
+(global-set-key (kdb "C-c k") 'browse-kill-ring)
 

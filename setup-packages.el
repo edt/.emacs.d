@@ -25,6 +25,7 @@
         ido-ubiquitous
         smex
         projectile
+        browse-kill-ring
         highlight-symbol
         multiple-cursors
         ace-jump-mode

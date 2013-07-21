@@ -34,6 +34,9 @@
 (require 'projectile)
 (setq projectile-enable-caching t)
 (projectile-global-mode t)
+(setq projectile-cache-file "~/.emacs.d/tmp/projectile.cache")
+(setq projectile-known-projects-file
+      "~/.emacs.d/tmp/projectile-bookmarks.eld")))
 
 ;; (require 'autopair)
 ;; (autopair-global-mode 1)

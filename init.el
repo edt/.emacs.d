@@ -36,7 +36,7 @@
 (projectile-global-mode t)
 (setq projectile-cache-file "~/.emacs.d/tmp/projectile.cache")
 (setq projectile-known-projects-file
-      "~/.emacs.d/tmp/projectile-bookmarks.eld")))
+      "~/.emacs.d/tmp/projectile-bookmarks.eld")
 
 ;; (require 'autopair)
 ;; (autopair-global-mode 1)

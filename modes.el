@@ -59,5 +59,12 @@
                                          try-complete-lisp-symbol))
 
 (require 'browse-kill-ring)
-(global-set-key (kdb "C-c k") 'browse-kill-ring)
+(global-set-key (kbd "C-c k") 'browse-kill-ring)
+
+(require 'rect-mark)
+(global-set-key (kbd "C-x r C-SPC") 'rm-set-mark)
+(global-set-key (kbd "C-x r C-x")   'rm-exchange-point-and-mark)
+(global-set-key (kbd "C-x r C-w")   'rm-kill-region)
+(global-set-key (kbd "C-x r M-w")   'rm-kill-ring-save)
+
 

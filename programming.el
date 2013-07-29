@@ -6,6 +6,9 @@
   (lambda()
     (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
 
+(require 'indent-guide)
+(indent-guide-global-mode)
+
 (defun my-c-mode-common-hook ()
   ;; my customizations for all of c-mode, c++-mode, objc-mode, java-mode
   (c-set-offset 'substatement-open 0)
@@ -47,14 +50,4 @@
 
 ;; Python section
 
-(when (load "flymake" t)
-  (defun flymake-pylint-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-      (list "epylint" (list local-file))))
-
-  (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pylint-init)))
+(require 'setup-python)

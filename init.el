@@ -21,6 +21,7 @@
 ;; Load the following configuration files
 (load "user_profile.el")
 (load "functions.el")
+(load "file-functions.el")
 (load "modes.el")
 (load "programming.el")
 (load "compilation.el")

@@ -25,6 +25,7 @@
         ido-ubiquitous
         smex
         projectile
+        auto-complete
         browse-kill-ring
         highlight-symbol
         multiple-cursors

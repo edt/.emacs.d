@@ -7,8 +7,8 @@
             (flyspell-prog-mode t)))
 
 (add-hook 'c-mode-common-hook
-  (lambda()
-    (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
+          (lambda()
+            (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
 
 (require 'indent-guide)
 (indent-guide-global-mode)

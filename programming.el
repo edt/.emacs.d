@@ -2,6 +2,10 @@
 ;;                        PROGRAMMING.EL
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(add-hook 'prog-mode
+          (lambda()
+            (flyspell-prog-mode t)))
+
 (add-hook 'c-mode-common-hook
   (lambda()
     (local-set-key  (kbd "C-c o") 'ff-find-other-file)))

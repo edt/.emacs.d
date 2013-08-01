@@ -38,7 +38,7 @@
 
 
 ; list the packages you want
-(setq package-list '(highlight-indentation elpy))
+(setq package-list '(highlight-indentation elpy markdown-mode))
 
 ; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")

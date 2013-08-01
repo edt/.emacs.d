@@ -73,3 +73,12 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+
+;; file associations
+
+;; setup files ending in “.js” to open in js2-mode
+(add-to-list 'auto-mode-alist '("\\README\\'" . markdown-mode))
+
+(add-to-list 'auto-mode-alist '("bashrc\\'" . shell-script-mode))
+(add-to-list 'auto-mode-alist '("bash_aliases\\'" . shell-script-mode))
+

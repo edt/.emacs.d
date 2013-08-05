@@ -58,6 +58,9 @@
 ;; Define an alias
 (defalias 'qrr 'query-replace-regexp)
 
+;; Lines should be 80 characters wide, not 72
+(setq fill-column 80)
+
 ;; Highlight parenthesis pairs
 (show-paren-mode 1)
 ;; Blinking parenthesis

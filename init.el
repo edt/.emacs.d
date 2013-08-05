@@ -61,6 +61,11 @@
 ;; Lines should be 80 characters wide, not 72
 (setq fill-column 80)
 
+;; saner ediff default
+(setq ediff-diff-options "-w")
+(setq ediff-split-window-function 'split-window-horizontally)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
 ;; Highlight parenthesis pairs
 (show-paren-mode 1)
 ;; Blinking parenthesis

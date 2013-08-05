@@ -9,7 +9,6 @@
 (add-hook 'after-init-hook
           '(lambda () (setq debug-on-error t)))
 
-(add-to-list 'load-path "/usr/share/emacs/site-lisp")
 (add-to-list 'load-path "/home/edt/.emacs.d")
 (add-to-list 'load-path "/home/edt/.emacs.d/lisp")
 
@@ -34,10 +33,10 @@
 
 (require 'projectile)
 (setq projectile-enable-caching t)
-(projectile-global-mode t)
 (setq projectile-cache-file "~/.emacs.d/tmp/projectile.cache")
 (setq projectile-known-projects-file
       "~/.emacs.d/tmp/projectile-bookmarks.eld")
+(projectile-global-mode t)
 
 ;; (require 'autopair)
 ;; (autopair-global-mode 1)
@@ -45,8 +44,6 @@
 
 (global-subword-mode t)
 (require 'wgrep)
-;; (require 'whole-line-or-region)
-;; (whole-line-or-region-mode t)
 
 ;; Character encodings default to utf-8.
 (prefer-coding-system 'utf-8)
@@ -101,13 +98,9 @@
 ;; Stack  minibuffers
 (setq enable-recursive-minibuffers t)
 
-(winner-mode t)                                ;
- ;(setq confirm-kill-emacs 'yes-or-no-p)          ; Confirm quit
-
 (setq grep-command "grep -i -nH -e ")          ; Set grep command options
 
 (setq ps-paper-type 'a4)                       ; Specify printing format
-(setq-default case-fold-search t)              ; Search is case sensitive
 
 ;; http://hustoknow.blogspot.de/2011/05/removing-trailing-whitespace-in-emacs.html
 ;; delete trailing whitespaces before saving a file
@@ -177,16 +170,16 @@
 ;; Set Shell for M-| command
 (setq shell-file-name "/bin/bash")
 
-;; Set Shell used by TeX
-(setq tex-shell-file-name "/bin/bash")
-
 ;; No message at startup
 (setq inhibit-startup-message t)
 
 ;;;;;;;;;;;;;;;;;;;== Editing ==;;;;;;;;;;;;;;;;;;
 
-(setq next-line-add-newlines nil)                ; no new line at the end of file during scrolling
-(delete-selection-mode t)                        ; replace highlighted text with what I type rather than just inserting at point
+;; no new line at the end of file during scrolling
+(setq next-line-add-newlines nil)
+
+;; replace highlighted text with what I type rather than just inserting at point
+(delete-selection-mode t)
 
 ;; Set standard indent to 4
 (setq standard-indent 4)
@@ -195,8 +188,10 @@
 (setq tab-width 4)
 
 (setq-default standard-indent 4)
+
 ;; Use spaces instead of tabs
 (setq-default indent-tabs-mode nil)
+
 ;; Sentences end with one space
 (setq sentence-end-double-space nil)
 
@@ -221,3 +216,6 @@
 
 ;;; == Search & Destroy == ;;;
 (setq search-highlight t)
+
+(setq-default case-fold-search t)              ; Search is case sensitive
+

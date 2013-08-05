@@ -2,6 +2,7 @@
 ;; set the default compilation command
 (setq compile-command "make -j -k")
 (setq compile-clean "make clean")
+(setq compilation-window-height 20)
 
 ;; stop at first error or keep scrolling
 ;;(setq compilation-scroll-output t)

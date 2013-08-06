@@ -17,6 +17,11 @@
 (load custom-file 'noerror)
 
 (require 'setup-packages)
+
+(require 'color-theme)
+(load "my-color-theme.el")
+(my-color-theme )
+
 ;; Load the following configuration files
 (load "user_profile.el")
 (load "functions.el")
@@ -38,10 +43,6 @@
       "~/.emacs.d/tmp/projectile-bookmarks.eld")
 (projectile-global-mode t)
 
-;; (require 'autopair)
-;; (autopair-global-mode 1)
-;; (setq autopair-autowrap t)
-
 (global-subword-mode t)
 (require 'wgrep)
 
@@ -54,7 +55,8 @@
 
 ;; Define an alias
 (defalias 'qrr 'query-replace-regexp)
-
+;; y/n instead of yes/no
+(defalias 'yes-or-no-p 'y-or-n-p)
 ;; Lines should be 80 characters wide, not 72
 (setq fill-column 80)
 
@@ -81,12 +83,8 @@
 (setq visible-bell t)
 ;; Minimal height of windows
 (setq window-min-height 10)
-;; Text-mode is default mode
-(setq default-major-mode 'text-mode)
 ;; auto-formatting in text-mode
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
-;; y/n instead of yes/no
-(defalias 'yes-or-no-p 'y-or-n-p)
 ;; Completion in mini-buffer
 (icomplete-mode t)
 ;; Buffers in separate frames
@@ -97,14 +95,8 @@
 (global-set-key "\C-x\C-b" 'buffer-menu)
 ;; Stack  minibuffers
 (setq enable-recursive-minibuffers t)
-
-(setq grep-command "grep -i -nH -e ")          ; Set grep command options
-
-(setq ps-paper-type 'a4)                       ; Specify printing format
-
-;; http://hustoknow.blogspot.de/2011/05/removing-trailing-whitespace-in-emacs.html
-;; delete trailing whitespaces before saving a file
-;(add-hook 'before-save-hook '(delete-trailing-whitespace (untabify start end))
+;; Set grep command options
+(setq grep-command "grep -i -nH -e ")
 
 ;; Color enabled
 (global-font-lock-mode 1)
@@ -112,27 +104,12 @@
 ;; not functioning
 (setq font-lock-maximum-decoration t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;                    GENERAL
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;; uniquify ;;;;;
-;; give buffers more intelligent names.
-;; standard emacs/xemacs package.
 (require 'uniquify)
 ; create unique buffer names with shared directoy components.
 (setq uniquify-buffer-name-style 'forward)
-;(setq uniquify-buffer-name-style 'reverse)
-
-;;;;;;;;;;;;;;;;;;; Appearance ;;;;;;;;;;;;;;;;;;;
-
-(require 'color-theme)
-(load "my-color-theme.el")
-(my-color-theme )
 
 ;; No blinking cursor
 (blink-cursor-mode 0)
-;;;;;;;;;;;;;;;;;;;;== Menu ==;;;;;;;;;;;;;;;;;;;;
 
 ;; Increase number of undo
 (setq undo-limit 100000)
@@ -142,8 +119,6 @@
 
 ; European style calendar
 (setq european-calendar-style 't)
-
-;;;;;;;;;;;;;;;;;;;;; Behavior ;;;;;;;;;;;;;;;;;;;
 
 ;========== Support Wheel Mouse Scrolling ==========
 (mouse-wheel-mode t)
@@ -163,7 +138,6 @@
 ;; keyboard scroll one line at a time
 (setq scroll-step 1)
 
-
 ;; enable clipboard interaction between emacs and system
 (setq x-select-enable-clipboard t)
 
@@ -172,8 +146,6 @@
 
 ;; No message at startup
 (setq inhibit-startup-message t)
-
-;;;;;;;;;;;;;;;;;;;== Editing ==;;;;;;;;;;;;;;;;;;
 
 ;; no new line at the end of file during scrolling
 (setq next-line-add-newlines nil)
@@ -216,6 +188,6 @@
 
 ;;; == Search & Destroy == ;;;
 (setq search-highlight t)
-
-(setq-default case-fold-search t)              ; Search is case sensitive
+;; Search is case sensitive
+(setq-default case-fold-search t)
 

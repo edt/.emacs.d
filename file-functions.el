@@ -43,18 +43,19 @@
 (defun move-buffer-file (dir)
  "Moves both current buffer and file it's visiting to DIR." (interactive "DNew directory: ")
  (let* ((name (buffer-name))
-	 (filename (buffer-file-name))
-	 (dir
+        (filename (buffer-file-name))
+        (dir
 	 (if (string-match dir "\\(?:/\\|\\\\)$")
-	 (substring dir 0 -1) dir))
-	 (newname (concat dir "/" name)))
+             (substring dir 0 -1) dir))
+        (newname (concat dir "/" name)))
 
- (if (not filename)
-	(message "Buffer '%s' is not visiting a file!" name)
- (progn 	(copy-file filename newname 1)
-                (delete-file filename)
-                (set-visited-file-name newname)
-                (set-buffer-modified-p nil) 	t))))
+   (if (not filename)
+       (message "Buffer '%s' is not visiting a file!" name)
+     (progn
+       (copy-file filename newname 1)
+       (delete-file filename)
+       (set-visited-file-name newname)
+       (set-buffer-modified-p nil) t))))
 
 
 (defun open-file-at-cursor ()
@@ -62,8 +63,7 @@
 If there is text selection, uses the text selection for path.
 If the path is starts with “http://”, open the URL in browser.
 Input path can be {relative, full path, URL}.
-This command is similar to `find-file-at-point' but without prompting for confirmation.
-"
+This command is similar to `find-file-at-point' but without prompting for confirmation."
   (interactive)
   (let ( (path (if (region-active-p)
                    (buffer-substring-no-properties (region-beginning) (region-end))

@@ -6,24 +6,10 @@
 
 (require 'setup-ido)
 
-
 (require 'yasnippet)
 (yas/global-mode 1)
 (yas/load-directory "~/.emacs.d/snippets")
 (setq yas/indent-line nil) ;disable yasnippet auto-indent
-
-(require 'yafolding)
-(define-key global-map (kbd "C-'") 'yafolding)
-;;(define-key global-map (kbd "C-c C-f") 'yafolding-toggle-all)
-(define-key global-map (kbd "C-c C-f") 'yafolding-toggle-all-by-current-level)
-;;(add-hook 'indent-buffer-before-hook
-;;    (lambda ()
-;;      (yafolding-temp-toggle nil)))
-;;(add-hook 'indent-buffer-after-hook
-;;    (lambda ()
-;;      (yafolding-temp-toggle t)))
-
-;(require 'buffer-move)
 
 ;; multilpe cursor don't clutter config dir
 (setq mc/list-file "~/.emacs.d/tmp/multiple-cursors-lists.el")
@@ -72,7 +58,6 @@
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
 
 ;; file associations
 

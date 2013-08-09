@@ -6,18 +6,18 @@
           (lambda()
             (flyspell-prog-mode t)))
 
-(add-hook 'c-mode-common-hook
-          (lambda()
-            (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
-
-(require 'indent-guide)
-(indent-guide-global-mode)
 
 (defun my-c-mode-common-hook ()
   ;; my customizations for all of c-mode, c++-mode, objc-mode, java-mode
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'innamespace 0)
+  (c-set-offset 'case-label '+)
   ;; other customizations can go here
+
+  (local-set-key  (kbd "C-c o") 'ff-find-other-file)
+  (local-set-key  (kbd "RET") 'newline-and-indent)
+
+  (c-toggle-electric-state 1)
 
   (setq c++-tab-always-indent t)
   (setq c-basic-offset 4) ;; Default is 2

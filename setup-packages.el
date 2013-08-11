@@ -40,7 +40,8 @@
 (setq package-list '(highlight-indentation
                      elpy
                      markdown-mode
-                     rainbow-mode))
+                     rainbow-mode
+                     ack-and-a-half))
 
 ; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")

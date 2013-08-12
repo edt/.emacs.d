@@ -6,6 +6,8 @@
           (lambda()
             (flyspell-prog-mode t)))
 
+(add-hook 'find-file-hooks 'goto-address-prog-mode)
+
 
 (defun my-c-mode-common-hook ()
   ;; my customizations for all of c-mode, c++-mode, objc-mode, java-mode
@@ -16,6 +18,7 @@
 
   (local-set-key  (kbd "C-c o") 'ff-find-other-file)
   (local-set-key  (kbd "RET") 'newline-and-indent)
+  ;; (local-set-key  (kbd "RET") 'reindent-then-newline-and-indent)
 
   (c-toggle-electric-state 1)
 

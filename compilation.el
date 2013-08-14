@@ -56,7 +56,16 @@ directory."
  '("\\*compilation\\*" . (display-buffer-reuse-window
                           . ((reusable-frames . t)))))
 
-
+(defun my-compilation-hook ()
+  (when (not (get-buffer-window "*compilation*"))
+    (save-selected-window
+      (save-excursion
+        (let* ((w (split-window-vertically))
+               (h (window-height w)))
+          (select-window w)
+          (switch-to-buffer "*compilation*")
+          (shrink-window (- h 20)))))))
+(add-hook 'compilation-mode-hook 'my-compilation-hook)
 
 ;; (defun compile-clean ()
 ;;   "Switches between compile command and clean command"

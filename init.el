@@ -3,6 +3,7 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+(load-theme 'devel-tango t)
 
 ;; http://www.chemie.fu-berlin.de/chemnet/use/info/elisp/elisp_16.html
 ;; automatically start the debugger if something bad happens
@@ -17,10 +18,6 @@
 (load custom-file 'noerror)
 
 (require 'setup-packages)
-
-(require 'color-theme)
-(load "my-color-theme.el")
-(my-color-theme )
 
 ;; Load the following configuration files
 (load "user_profile.el")

@@ -1,4 +1,4 @@
-(set-frame-font "Monospace-10" t t)
+(set-frame-font "Monospace-11" t t)
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)

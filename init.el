@@ -10,6 +10,7 @@
 (add-hook 'after-init-hook
           '(lambda () (setq debug-on-error t)))
 
+;; load-path additions
 (add-to-list 'load-path "/home/edt/.emacs.d")
 (add-to-list 'load-path "/home/edt/.emacs.d/lisp")
 
@@ -54,8 +55,6 @@
 (defalias 'qrr 'query-replace-regexp)
 ;; y/n instead of yes/no
 (defalias 'yes-or-no-p 'y-or-n-p)
-;; Lines should be 80 characters wide, not 72
-(setq fill-column 80)
 
 ;; saner ediff default
 (setq ediff-diff-options "-w")
@@ -66,8 +65,6 @@
 (show-paren-mode 1)
 ;; Blinking parenthesis
 (setq blink-matching-paren-distance nil)
-;; Show empty lines
-(setq-default indicate-empty-lines t)
 ;; Cursor don't track end-of-line
 (setq track-eol nil)
 ;; Paste at cursor position
@@ -76,8 +73,6 @@
 (mouse-avoidance-mode 'jump)
 ;; Don't truncate long lines
 (setq truncate-partial-width-windows nil)
-;; No beep when reporting errors
-(setq visible-bell t)
 ;; Minimal height of windows
 (setq window-min-height 10)
 ;; auto-formatting in text-mode
@@ -105,8 +100,21 @@
 ; create unique buffer names with shared directoy components.
 (setq uniquify-buffer-name-style 'forward)
 
-;; No blinking cursor
-(blink-cursor-mode 0)
+(setq-default
+ standard-indent 4
+ tab-width 4
+ indent-tabs-mode nil
+ case-fold-search t
+ indicate-empty-lines t
+ fill-column 80
+ next-line-add-newlines nil
+ ;; always have an empty line at end of file
+ require-final-newline t
+ ;; No beep when reporting errors
+ visible-bell t)
+
+(blink-cursor-mode -1)
+
 
 ;; Increase number of undo
 (setq undo-limit 100000)
@@ -145,21 +153,10 @@
 (setq inhibit-startup-message t)
 
 ;; no new line at the end of file during scrolling
-(setq next-line-add-newlines nil)
+;; (setq next-line-add-newlines nil)
 
 ;; replace highlighted text with what I type rather than just inserting at point
 (delete-selection-mode t)
-
-;; Set standard indent to 4
-(setq standard-indent 4)
-
-;; Length of tab is 4 SPC
-(setq tab-width 4)
-
-(setq-default standard-indent 4)
-
-;; Use spaces instead of tabs
-(setq-default indent-tabs-mode nil)
 
 ;; Sentences end with one space
 (setq sentence-end-double-space nil)
@@ -180,11 +177,6 @@
 (setq backup-directory-alist
       `((".*" . ,"~/.emacs.d/tmp")))
 
-;; always have an empty line at end of file
-(setq require-final-newline t)
-
 ;;; == Search & Destroy == ;;;
 (setq search-highlight t)
-;; Search is case sensitive
-(setq-default case-fold-search t)
 

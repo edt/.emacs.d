@@ -27,14 +27,16 @@
 
   (c-toggle-electric-state 1)
   (setq c++-tab-always-indent t)
-  (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60)))
+  ;; (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60))
+)
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
 ;;indent-style
 (setq-default c-default-style "bsd"
               c-basis-offset 4
-              c-indent-level 4)
+              c-indent-level 4
+              tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60))
 
 ;; Perl section
 

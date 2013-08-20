@@ -100,6 +100,9 @@
 ; create unique buffer names with shared directoy components.
 (setq uniquify-buffer-name-style 'forward)
 
+(require 'diff-hl)
+(global-diff-hl-mode t)
+
 (setq-default
  standard-indent 4
  tab-width 4

@@ -41,7 +41,8 @@
                      elpy
                      markdown-mode
                      rainbow-mode
-                     ack-and-a-half))
+                     ack-and-a-half
+                     diff-hl))
 
 ; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")

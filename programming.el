@@ -8,11 +8,8 @@
 
 (add-hook 'find-file-hooks 'goto-address-prog-mode)
 
-(require 'fold-dwim)
-(hs-minor-mode t)
-;; (global-set-key (kbd "C-u C-c h") 'fold-dwim-hide-all)
-(global-set-key (kbd "C-c h") 'fold-dwim-toggle)
-;; (global-set-key [(C kp-6)] 'fold-dwim-show-all)
+(require 'setup-code-folding)
+
 
 (defun my-c-mode-common-hook ()
   ;; my customizations for all of c-mode, c++-mode, objc-mode, java-mode

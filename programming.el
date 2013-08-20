@@ -10,6 +10,7 @@
 
 (require 'setup-code-folding)
 
+(require 'setup-completion)
 
 (defun my-c-mode-common-hook ()
   ;; my customizations for all of c-mode, c++-mode, objc-mode, java-mode

@@ -8,9 +8,12 @@
   (elpy-enable)
   (elpy-clean-modeline))
 
+(setq-default elpy-default-minor-modes (remove 'highlight-indentation-mode elpy-default-minor-modes))
+
 (defun my-elpy-hook ()
   "modifications for elpy"
-  (highlight-indentation nil))
+
+  )
 
 (add-hook 'elpy-mode-hook 'my-elpy-hook)
 

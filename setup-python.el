@@ -2,7 +2,7 @@
 
 ;; used external packages
 
-;; flake8 elpy rope
+;; flake8 elpy rope pychecker
 
 (when (require 'elpy nil t)
   (elpy-enable)

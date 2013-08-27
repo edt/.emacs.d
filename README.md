@@ -26,6 +26,7 @@ ack
 #### python
 
 - flake8
+- pychecker
 
 setup
 -----

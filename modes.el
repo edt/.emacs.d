@@ -14,6 +14,11 @@
 ;; multilpe cursor don't clutter config dir
 (setq mc/list-file "~/.emacs.d/tmp/multiple-cursors-lists.el")
 
+(require 'keyfreq)
+(setq-default keyfreq-file "~/.emacs.d/tmp/keyfreq")
+(keyfreq-mode 1)
+(keyfreq-autosave-mode 1)
+
 (require 'window-number)
 (window-number-mode t)
 (window-number-meta-mode)

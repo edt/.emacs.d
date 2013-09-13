@@ -19,6 +19,9 @@
 (keyfreq-mode 1)
 (keyfreq-autosave-mode 1)
 
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
 (require 'window-number)
 (window-number-mode t)
 (window-number-meta-mode)

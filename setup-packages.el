@@ -28,6 +28,7 @@
         auto-complete
         browse-kill-ring
         highlight-symbol
+        expand-region
         multiple-cursors
         ace-jump-mode
         yasnippet))

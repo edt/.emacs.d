@@ -15,6 +15,8 @@
 ;; (ac-set-trigger-key "<return>")
 (global-set-key (kbd "C-<return>") 'auto-complete)
 
+(global-auto-complete-mode t)
+
 ;; (global-set-key (kbd "<return>") 'newline-and-indent)
 
 (provide 'setup-completion)

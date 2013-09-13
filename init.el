@@ -44,6 +44,11 @@
 (global-subword-mode t)
 (require 'wgrep)
 
+(global-auto-revert-mode t)
+
+(setq global-auto-revert-non-file-buffers t)
+(setq auto-revert-verbose nil)
+
 ;; Character encodings default to utf-8.
 (prefer-coding-system 'utf-8)
 (set-language-environment 'utf-8)

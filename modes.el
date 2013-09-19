@@ -26,6 +26,15 @@
 (window-number-mode t)
 (window-number-meta-mode)
 
+(require 'wgrep)
+
+(require 'uniquify)
+; create unique buffer names with shared directoy components.
+(setq uniquify-buffer-name-style 'forward)
+
+(require 'diff-hl)
+(global-diff-hl-mode t)
+
 (require 'highlight-symbol)
 (global-set-key (kbd "C-<f3>") 'highlight-symbol-at-point)
 (global-set-key (kbd "<f3>") 'highlight-symbol-next)

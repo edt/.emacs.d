@@ -42,7 +42,6 @@
 (projectile-global-mode t)
 
 (global-subword-mode t)
-(require 'wgrep)
 
 (global-auto-revert-mode t)
 
@@ -100,13 +99,6 @@
 ;; maximum possible fontification
 ;; not functioning
 (setq font-lock-maximum-decoration t)
-
-(require 'uniquify)
-; create unique buffer names with shared directoy components.
-(setq uniquify-buffer-name-style 'forward)
-
-(require 'diff-hl)
-(global-diff-hl-mode t)
 
 (setq-default
  standard-indent 4

@@ -197,3 +197,5 @@
 ;;; == Search & Destroy == ;;;
 (setq search-highlight t)
 
+(require 'setup-server)
+

@@ -133,6 +133,8 @@
 ; European style calendar
 (setq european-calendar-style 't)
 
+(fringe-mode 4)
+
 ;========== Support Wheel Mouse Scrolling ==========
 (mouse-wheel-mode t)
 

@@ -162,11 +162,18 @@
 ;; No message at startup
 (setq inhibit-startup-message t)
 
+(setq winner-dont-bind-my-keys t)
+(winner-mode t)
+
 ;; no new line at the end of file during scrolling
 ;; (setq next-line-add-newlines nil)
 
 ;; replace highlighted text with what I type rather than just inserting at point
 (delete-selection-mode t)
+
+;; reindent region after pasting
+(defadvice yank (after indent-region activate)
+  (indent-region (region-beginning) (region-end) nil))
 
 ;; Sentences end with one space
 (setq sentence-end-double-space nil)

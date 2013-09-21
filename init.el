@@ -21,13 +21,13 @@
 (require 'setup-packages)
 
 ;; Load the following configuration files
-(load "user_profile.el")
-(load "functions.el")
-(load "file-functions.el")
-(load "modes.el")
-(load "programming.el")
-(load "compilation.el")
-(load "keybindings.el")
+(require 'user_profile)
+(require 'functions)
+(require 'file-functions)
+(require 'modes)
+(require 'programming)
+(require 'compilation)
+(require 'keybindings)
 
 (require 'setup-session)
 (require 'setup-modeline)

@@ -47,3 +47,4 @@
 
 (require ' setup-elisp)
 
+(provide 'programming)

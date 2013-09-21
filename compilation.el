@@ -107,3 +107,4 @@ directory."
   ;;     (end-of-line-nomark)
   ;;     (beginning-of-line-mark)))
 
+(provide 'compilation)

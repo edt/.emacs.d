@@ -13,8 +13,10 @@
       (eval-buffer)
       (message "Buffer evaluated!")))))
 
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-x E") 'eval-region-or-buffer)))
+(defun elisp-options ()
+  "personal elisp mode hook options"
+  (local-set-key (kbd "C-x E") 'eval-region-or-buffer))
+
+(add-hook 'emacs-lisp-mode-hook 'elisp-options)
 
 (provide 'setup-elisp)

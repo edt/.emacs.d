@@ -170,21 +170,28 @@
 ;; Sentences end with one space
 (setq sentence-end-double-space nil)
 
+(defvar temp-dir "~/.emacs.d/tmp/"
+  "Directory for all temporary emacs files. This includes backups, cache files, etc. .")
+
 ;; == Backup == ;;
 ;; http://emacswiki.org/emacs/BackupDirectory
 ;; check if folder exists, and create if it doesn't
-(unless (file-exists-p "~/.emacs.d/tmp/")
-  (make-directory "~/.emacs.d/tmp/" 'parent))
+(unless (file-exists-p temp-dir)
+  (make-directory temp-dir 'parent))
 
 ;; make backups by copying
 ;; this prevents emacs from changing the creation time of the original file
 (setq backup-by-copying t)
 
 ;; set directory for auto saved files
-(setq auto-save-directory "~/.emacs.d/tmp/")
+(setq auto-save-directory temp-dir)
 
+;; store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
-      `((".*" . ,"~/.emacs.d/tmp")))
+      `((".*" . ,temp-dir)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temp-dir t)))
+
 
 ;;; == Search & Destroy == ;;;
 (setq search-highlight t)

@@ -45,6 +45,6 @@
 
 ;; Elisp section
 
-(require ' setup-elisp)
+(require 'setup-elisp)
 
 (provide 'programming)

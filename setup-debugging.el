@@ -3,60 +3,23 @@
 (setq gdb-many-windows t)
 (setq gud-tooltip-mode t)
 
-;; Make up/down behave as in terminal
-;; source http://cbbp.thep.lu.se/~karlf/emacs.html
-;; 
-(add-hook 'gud-mode-hook
-          '(lambda ()
-             (local-set-key [home] ; move to beginning of line, after prompt
-                            'comint-bol)
-             (local-set-key [up] ; cycle backward through command history
-                            '(lambda () (interactive)
-                               (if (comint-after-pmark-p)
-                                   (comint-previous-input 1)
-                                 (previous-line 1))))
-             (local-set-key [down] ; cycle forward through command history
-                            '(lambda () (interactive)
-                               (if (comint-after-pmark-p)
-                                   (comint-next-input 1)
-                                 (forward-line 1))))
-             )
-          (setq gdb-many-windows t))
+(defun gud-options ()
+  "personal gud mode hook options"
+  (local-set-key [home] 'comint-bol) ; move to beginning of line, after prompt
+  (local-set-key [up] 
+                 '(lambda () (interactive)
+                    (if (comint-after-pmark-p)
+                        (comint-previous-input 1)
+                      (previous-line 1)))); cycle backward through command history
+  (local-set-key [down] ; cycle forward through command history
+                 '(lambda () (interactive)
+                    (if (comint-after-pmark-p)
+                        (comint-next-input 1)
+                      (forward-line 1))))
+  
+  (setq gdb-many-windows t))
 
-;; (defun gdb-setup-windows ()
-;;   "Layout the window pattern for `gdb-many-windows'."
-;;   (gdb-display-locals-buffer)
-;;   (gdb-display-stack-buffer)
-;;   (delete-other-windows)
-;;   (gdb-display-breakpoints-buffer)
-;;   (delete-other-windows)
-;;   (switch-to-buffer
-;;        (if gud-last-last-frame
-;;        (gud-find-file (car gud-last-last-frame))
-;;      (if gdb-main-file
-;;          (gud-find-file gdb-main-file)
-;;        ;; Put buffer list in window if we
-;;        ;; can't find a source file.
-;;        (list-buffers-noselect))))
-;;   (setq gdb-source-window (selected-window))
-;;   (split-window-horizontally)
-;;   (other-window 1)
-;;   (split-window nil ( / ( * (window-height) 3) 4))
-;;   (split-window nil ( / (window-height) 3))
-;;   (gdb-set-window-buffer (gdb-locals-buffer-name))
-;;   (other-window 1)
-;;   (pop-to-buffer gud-comint-buffer)
-;;   (when gdb-use-separate-io-buffer
-;;     (split-window-horizontally)
-;;     (other-window 1)
-;;     (gdb-set-window-buffer
-;;      (gdb-get-buffer-create 'gdb-inferior-io)))
-;;   (other-window 1)
-;;   (gdb-set-window-buffer (gdb-stack-buffer-name))
-;;   (split-window-horizontally)
-;;   (other-window 1)
-;;   (gdb-set-window-buffer (gdb-breakpoints-buffer-name))
-;;   (other-window 1))
+(add-hook 'gud-mode-hook 'gud-options)
 
 
 (defvar debug-tmp-file-directory 
@@ -85,29 +48,29 @@
       (delete-file debug-file))
   (setq pos (concat (buffer-file-name) ":" (number-to-string(line-number-at-pos))))
   (setq whole-content (concat "break " pos "\nrun"))
-  (write-string-to-file  whole-content debug-file)
-)
+  (write-string-to-file  whole-content debug-file))
 
 (defun gdb-run-to-point ()
   "sets breakpoint at cursor and runs gdb to it"
   (interactive)
   (create-gdb-tmp-file)
-  (setq a (concat gud-gdb-command-name " -x " debug-file))
+  (if (boundp 'gud-gdb-command-name)
+      (setq a (concat gud-gdb-command-name " -x " debug-file " -e "))
+    (setq a (concat "gdb -i=mi -x " debug-file " -e ")))
   (setq gud-gdb-command-name a)
-  (start-gdb-in-other-frame)
-)
+  (start-gdb-in-other-frame))
 
 
+(defun gdb-options ()
+  "personal gdb mode hook options"
+  (gud-tooltip-mode 1)
+  (gdb-many-windows t)
+  ;;(tabbar-mode nil)
+  ;;(tool-bar-mode t)
+  (tool-bar-mode nil)
+  (toggle-tool-bar-mode-from-frame t))
 
+(add-hook 'gdb-mode-hook 'gdb-options)
 
-(define-derived-mode gud-gdb-colors-mode gud-mode
-  (setq font-lock-defaults
-		'((;; function names
-		   ("\s *\\([a-zA-Z_]\\(\\sw\\|_\\|:\\)*\\) \(" 1 font-lock-function-name-face)
-		   ;; line numbers
-		   (":\\([0-9]*\\)" 1 font-lock-type-face)) t))
-  
-  (setq mode-name "gud-gdb-colors-mode")
-)
 
 (provide 'setup-debugging)

@@ -74,14 +74,13 @@
 (global-set-key (kbd "C-x r M-w")   'rm-kill-ring-save)
 
 (autoload 'markdown-mode "markdown-mode"
-   "Major mode for editing Markdown files" t)
+  "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; file associations
 
-;; setup files ending in “.js” to open in js2-mode
 (add-to-list 'auto-mode-alist '("\\README\\'" . markdown-mode))
 
 (add-to-list 'auto-mode-alist '("bashrc\\'" . shell-script-mode))

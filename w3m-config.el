@@ -8,6 +8,9 @@
 ;; Enable cookies
 (setq w3m-use-cookies t)
 
+;; Enable images within w3m
+(setq w3m-default-display-inline-images t)
+
 ;; Use UTF-8
 (setq w3m-coding-system 'utf-8
       w3m-file-coding-system 'utf-8

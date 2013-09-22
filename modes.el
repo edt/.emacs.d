@@ -44,11 +44,33 @@
 (global-set-key (kbd "S-<f3>") 'highlight-symbol-prev)
 (global-set-key (kbd "M-<f3>") 'highlight-symbol-remove-all)
 
+;; CC-MODE
+(defun gtags-generate-gtags ()
+  "Generate a gtags file in the querried directory"
+  (let* ((proj-root (read-directory-name "Root of the project: "))
+	 (cmd (format "cd %s ; gtags" (expand-file-name proj-root))))
+    (when (not (string= "" proj-root))
+      (message (format "Generating gtags files: %s" cmd))
+      (shell-command cmd))))
+
+(defun gtags-update-gtags ()
+  "Update the gtags files"
+  (let ((gen-cmd "global -u"))
+    (message (format "Updating gatgs files: %s" gen-cmd))
+    (shell-command gen-cmd)))
+
+(defun gtags-generate-or-update ()
+  "If you can update the gtags files. If not generate them."
+  (interactive)
+  (if (null (gtags-get-rootpath))
+      (gtags-generate-gtags)
+    (gtags-update-gtags)))
+
 (add-hook 'gtags-mode-hook 
-  (lambda()
-    (local-set-key (kbd "M-.") 'gtags-find-tag)   ;; find a tag, also M-.
-    (local-set-key (kbd "M-,") 'gtags-find-rtag)  ;; reverse tag
-    (local-set-key (kbd "M-*") 'gtags-pop-stack)));; go back 
+          (lambda()
+            (local-set-key (kbd "M-.") 'gtags-find-tag)   ;; find a tag, also M-.
+            (local-set-key (kbd "M-,") 'gtags-find-rtag)  ;; reverse tag
+            (local-set-key (kbd "M-*") 'gtags-pop-stack)));; go back
 
 
 (global-set-key (kbd "M-/") 'hippie-expand)

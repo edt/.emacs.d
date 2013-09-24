@@ -32,6 +32,7 @@
         multiple-cursors
         ace-jump-mode
         revive-plus
+        buffer-move
         yasnippet))
 
 ;; Initialisiere alles und so...

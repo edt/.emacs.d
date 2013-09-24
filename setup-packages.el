@@ -31,6 +31,7 @@
         expand-region
         multiple-cursors
         ace-jump-mode
+        revive-plus
         yasnippet))
 
 ;; Initialisiere alles und so...

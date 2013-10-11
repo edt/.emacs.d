@@ -38,6 +38,9 @@
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
+(require 'smartparens-config)
+(smartparens-global-mode t)
+
 (require 'highlight-symbol)
 (global-set-key (kbd "C-<f3>") 'highlight-symbol-at-point)
 (global-set-key (kbd "<f3>") 'highlight-symbol-next)

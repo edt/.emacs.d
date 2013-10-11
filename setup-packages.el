@@ -46,6 +46,7 @@
                      rainbow-mode
                      ack-and-a-half
                      diff-hl
+                     smartparens
                      keyfreq))
 
 ; list the repositories containing them

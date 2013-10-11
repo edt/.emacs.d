@@ -61,6 +61,9 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; saner ediff default
+(require 'ediff)
+(add-hook 'ediff-before-setup-hook 'new-frame)
+(add-hook 'ediff-quit-hook 'delete-frame)
 (setq ediff-diff-options "-w")
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)

@@ -49,6 +49,7 @@
       (list
        '(:eval (propertize "%m" 'face 'font-lock-string-face
                            'help-echo buffer-file-coding-system))
+       '("" mode-line-process)
        ))
 
 (setq my-modeline-minor-modes

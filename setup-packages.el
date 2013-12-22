@@ -27,6 +27,7 @@
         projectile
         auto-complete
         browse-kill-ring
+        magit
         highlight-symbol
         expand-region
         multiple-cursors

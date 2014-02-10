@@ -5,7 +5,6 @@
 (menu-bar-mode -1)
 (load-theme 'devel-tango t)
 
-;; http://www.chemie.fu-berlin.de/chemnet/use/info/elisp/elisp_16.html
 ;; automatically start the debugger if something bad happens
 (add-hook 'after-init-hook
           '(lambda () (setq debug-on-error t)))
@@ -18,6 +17,7 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
+(require 'defaults)
 (require 'setup-packages)
 
 ;; Load the following configuration files
@@ -33,32 +33,15 @@
 (require 'setup-modeline)
 (require 'setup-navigation)
 (require 'setup-debugging)
+(require 'setup-magit)
 
-(require 'projectile)
-(setq projectile-enable-caching t)
 (setq projectile-cache-file "~/.emacs.d/tmp/projectile.cache")
 (setq projectile-known-projects-file
       "~/.emacs.d/tmp/projectile-bookmarks.eld")
+(setq projectile-enable-caching t)
+(require 'projectile)
 (projectile-global-mode t)
 
-(global-subword-mode t)
-
-(global-auto-revert-mode t)
-
-(setq global-auto-revert-non-file-buffers t)
-(setq auto-revert-verbose nil)
-
-;; Character encodings default to utf-8.
-(prefer-coding-system 'utf-8)
-(set-language-environment 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-selection-coding-system 'utf-8)
-
-;; Define an alias
-(defalias 'qrr 'query-replace-regexp)
-;; y/n instead of yes/no
-(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; saner ediff default
 (require 'ediff)
@@ -88,12 +71,13 @@
 (icomplete-mode t)
 ;; Buffers in separate frames
 (setq pop-up-frame t)
+
 ;; Use buffer name as frame title
-(setq frame-title-format "%b - emacs")
+(setq frame-title-format "Emacs - %b")
+
 ;; CxCb puts point on buffer list
 (global-set-key "\C-x\C-b" 'buffer-menu)
-;; Stack  minibuffers
-(setq enable-recursive-minibuffers t)
+
 ;; Set grep command options
 (setq grep-command "grep -i -nH -e ")
 
@@ -103,30 +87,10 @@
 ;; not functioning
 (setq font-lock-maximum-decoration t)
 
-(setq-default
- standard-indent 4
- tab-width 4
- indent-tabs-mode nil
- case-fold-search t
- indicate-empty-lines t
- fill-column 80
- next-line-add-newlines nil
- ;; always have an empty line at end of file
- require-final-newline t
- ;; No beep when reporting errors
- visible-bell t)
-
 (blink-cursor-mode -1)
-
 
 ;; Increase number of undo
 (setq undo-limit 100000)
-
-; Week starts monday
-(setq calendar-week-start-day 1)
-
-; European style calendar
-(setq european-calendar-style 't)
 
 (fringe-mode 4)
 
@@ -159,9 +123,6 @@
 
 (setq winner-dont-bind-my-keys t)
 (winner-mode t)
-
-;; no new line at the end of file during scrolling
-;; (setq next-line-add-newlines nil)
 
 ;; replace highlighted text with what I type rather than just inserting at point
 (delete-selection-mode t)
@@ -201,3 +162,4 @@
 
 (require 'setup-server)
 
+(setq redisplay-dont-pause t)

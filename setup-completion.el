@@ -1,7 +1,7 @@
 
 (require 'auto-complete)
 (require 'auto-complete-config)
-(ac-config-default)
+;;(ac-config-default)
 (setq ac-use-menu-map t)
 ;; Default settings
 (define-key ac-menu-map "\C-n" 'ac-next)
@@ -18,5 +18,7 @@
 (global-auto-complete-mode t)
 
 ;; (global-set-key (kbd "<return>") 'newline-and-indent)
+
+(require 'irony-conf)
 
 (provide 'setup-completion)

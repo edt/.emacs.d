@@ -89,9 +89,9 @@
                                          try-complete-lisp-symbol-partially
                                          try-complete-lisp-symbol))
 
-(require 'revive+) ; may be optional
-(setq revive-plus:all-frames t)
-(revive-plus:minimal-setup)
+;; (require 'revive+)
+;; (setq revive-plus:all-frames t)
+;; (revive-plus:minimal-setup)
 
 (require 'browse-kill-ring)
 (global-set-key (kbd "C-c k") 'browse-kill-ring)

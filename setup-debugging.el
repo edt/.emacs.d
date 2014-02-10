@@ -67,8 +67,9 @@
   (gdb-many-windows t)
   ;;(tabbar-mode nil)
   ;;(tool-bar-mode t)
-  (tool-bar-mode nil)
-  (toggle-tool-bar-mode-from-frame t))
+  ;; (tool-bar-mode nil)
+  ;; (toggle-tool-bar-mode-from-frame t)
+  )
 
 (add-hook 'gdb-mode-hook 'gdb-options)
 

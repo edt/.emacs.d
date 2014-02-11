@@ -19,6 +19,6 @@
 
 ;; (global-set-key (kbd "<return>") 'newline-and-indent)
 
-(require 'irony-conf)
+;; (require 'irony-conf)
 
 (provide 'setup-completion)

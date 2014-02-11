@@ -27,7 +27,6 @@
         ))
 
 
->>>>>>> Synch commit to enforce indentical configuration on all workstations.
 (package-initialize)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/"))

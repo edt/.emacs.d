@@ -10,15 +10,18 @@
           '(lambda () (setq debug-on-error t)))
 
 ;; load-path additions
-(add-to-list 'load-path "/home/edt/.emacs.d")
+(add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path "/home/edt/.emacs.d/lisp")
 
 ;; Save comstum stuff in own file
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror)
 
 (require 'defaults)
 (require 'setup-packages)
+
+;; Assure needed directories are present
+(make-directory (concat user-emacs-directory "tmp") t)
 
 ;; Load the following configuration files
 (require 'user_profile)

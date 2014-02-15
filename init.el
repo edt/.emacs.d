@@ -11,7 +11,7 @@
 
 ;; load-path additions
 (add-to-list 'load-path user-emacs-directory)
-(add-to-list 'load-path "/home/edt/.emacs.d/lisp")
+(add-to-list 'load-path (concat user-emacs-directory "lisp"))
 
 ;; Save comstum stuff in own file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -20,8 +20,10 @@
 (require 'defaults)
 (require 'setup-packages)
 
+(defvar user-cache-directory (concat user-emacs-directory "tmp") "Directory for user specific caching.")
+
 ;; Assure needed directories are present
-(make-directory (concat user-emacs-directory "tmp") t)
+(make-directory user-cache-directory t)
 
 ;; Load the following configuration files
 (require 'user_profile)
@@ -38,9 +40,8 @@
 (require 'setup-debugging)
 (require 'setup-magit)
 
-(setq projectile-cache-file "~/.emacs.d/tmp/projectile.cache")
-(setq projectile-known-projects-file
-      "~/.emacs.d/tmp/projectile-bookmarks.eld")
+(setq projectile-cache-file (expand-file-name "projectile.cache" user-cache-directory))
+(setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
 (setq projectile-enable-caching t)
 (require 'projectile)
 (projectile-global-mode t)
@@ -137,27 +138,18 @@
 ;; Sentences end with one space
 (setq sentence-end-double-space nil)
 
-(defvar temp-dir "~/.emacs.d/tmp/"
-  "Directory for all temporary emacs files. This includes backups, cache files, etc. .")
-
-;; == Backup == ;;
-;; http://emacswiki.org/emacs/BackupDirectory
-;; check if folder exists, and create if it doesn't
-(unless (file-exists-p temp-dir)
-  (make-directory temp-dir 'parent))
-
 ;; make backups by copying
 ;; this prevents emacs from changing the creation time of the original file
 (setq backup-by-copying t)
 
 ;; set directory for auto saved files
-(setq auto-save-directory temp-dir)
+(setq auto-save-directory user-cache-directory)
 
 ;; store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
-      `((".*" . ,temp-dir)))
+      `((".*" . , user-cache-directory)))
 (setq auto-save-file-name-transforms
-      `((".*" ,temp-dir t)))
+      `((".*" , user-cache-directory t)))
 
 
 ;;; == Search & Destroy == ;;;

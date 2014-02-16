@@ -40,13 +40,6 @@
 (require 'setup-debugging)
 (require 'setup-magit)
 
-(setq projectile-cache-file (expand-file-name "projectile.cache" user-cache-directory))
-(setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
-(setq projectile-enable-caching t)
-(require 'projectile)
-(projectile-global-mode t)
-
-
 ;; saner ediff default
 (require 'ediff)
 (add-hook 'ediff-before-setup-hook 'new-frame)

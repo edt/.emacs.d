@@ -93,6 +93,12 @@
 ;; (setq revive-plus:all-frames t)
 ;; (revive-plus:minimal-setup)
 
+(setq projectile-cache-file (expand-file-name "projectile.cache" user-cache-directory))
+(setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
+(setq projectile-enable-caching t)
+(require 'projectile)
+(projectile-global-mode t)
+
 (require 'browse-kill-ring)
 (global-set-key (kbd "C-c k") 'browse-kill-ring)
 

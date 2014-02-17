@@ -15,6 +15,7 @@
         smartparens
         markdown-mode
         diff-hl
+        ggtags
         rainbow-mode
         expand-region
         multi-term

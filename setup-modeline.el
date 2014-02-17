@@ -36,6 +36,7 @@
 (setq sml/mode-width 20)
 
 (setq sml/theme 'respectful)
+(setq sml/active-background-color "gray20")
 (require 'smart-mode-line)
 (sml/setup)
 

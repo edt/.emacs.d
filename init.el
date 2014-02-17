@@ -39,6 +39,7 @@
 (require 'setup-navigation)
 (require 'setup-debugging)
 (require 'setup-magit)
+(require 'setup-terminal)
 
 ;; saner ediff default
 (require 'ediff)

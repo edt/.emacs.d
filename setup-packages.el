@@ -17,6 +17,7 @@
         diff-hl
         rainbow-mode
         expand-region
+        multi-term
         multiple-cursors
         ace-jump-mode
         revive-plus

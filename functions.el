@@ -269,19 +269,6 @@ properly."
 
 ;(key-chord-define-global "ee" 'my-end-of-code-or-line)
 
-
-(setq ansi-term-color-vector
-      '(font-lock-variable-name-face
-        term-color-black
-        font-lock-string-face
-        font-lock-type-face
-        font-lock-keyword-face
-        font-lock-preprocessor-face
-        font-lock-variable-name-face
-        font-lock-type-face
-        term-color-white))
-
-
 (defun google ()
   "Googles a query or region if any."
   (interactive)

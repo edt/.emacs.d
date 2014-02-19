@@ -15,19 +15,19 @@
  '(highlight ((((class color)
                 (min-colors 88)
                 (background light))
-               (:background "darkseagreen2"))
+               (:background "DarkSeaGreen2"))
               (((class color)
                 (min-colors 88)
                 (background dark))
-               (:background "darkolivegreen"))
+               (:background "DarkOliveGreen"))
               (((class color)
                 (min-colors 16)
                 (background light))
-               (:background "darkseagreen2"))
+               (:background "DarkSeaGreen2"))
               (((class color)
                 (min-colors 16)
                 (background dark))
-               (:background "darkolivegreen"))
+               (:background "DarkOliveGreen"))
               (((class color)
                 (min-colors 8))
                (:foreground "black" :background "green"))
@@ -138,7 +138,7 @@
                   :foreground "white"
                   :background "black"))))
  '(tooltip ((((class color))
-             (:inherit (variable-pitch) :foreground "black" :background "lightyellow"))
+             (:inherit (variable-pitch) :foreground "black" :background "LightYellow"))
             (t (:inherit (variable-pitch)))))
  '(mode-line ((t (:background "#555753" :foreground "#eeeeec"))))
  '(mode-line-buffer-id ((t (:foreground "SteelBlue3" :weight bold))))
@@ -215,7 +215,7 @@
  '(query-replace ((t (:inherit (isearch)))))
  '(default ((t (:inherit nil
                 :stipple nil
-                :background "#333333"
+                :background "gray20"
                 :foreground "#FFFFFF"
                 :inverse-video nil
                 :box nil

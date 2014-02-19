@@ -179,6 +179,18 @@
                   (:foreground "grey"))
                  (t (:inverse-video t))))
  '(lazy-highlight ((t (:foreground "#2e3436" :background "#e9b96e"))))
+
+ '(term-color-black ((t (:foreground "black" :background "black"))))
+ '(term-color-blue ((t (:foreground "#6d85ba" :background "#6d85ba" ))))
+ '(term-color-cyan ((t (:foreground "cyan3" :background "cyan3"))))
+ '(term-color-green ((t (:foreground "green3" :background "green3"))))
+ '(term-color-magenta ((t (:foreground "magenta3" :background "magenta3"))))
+ '(term-color-red ((t (:foreground "red3" :background "red3"))))
+ '(term-color-white ((t (:foreground "white" :background "white"))))
+ '(term-color-yellow ((t (:foreground "yellow3" :background "yellow3"))))
+ '(term-default-fg-color ((t (:inherit term-color-white))))
+ '(term-default-bg-color ((t (:inherit term-color-black))))
+
  '(match ((((class color)
             (min-colors 88)
             (background light))

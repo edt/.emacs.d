@@ -332,4 +332,35 @@ properly."
              (set-window-start w2 s1)
              (setq i (1+ i)))))))
 
+
+(defun just-one-space-in-region (beg end)
+     "replace all whitespace in the region with single spaces"
+     (interactive "r")
+     (save-excursion
+            (save-restriction
+                     (narrow-to-region beg end)
+                     (goto-char (point-min))
+                     (while (re-search-forward "\\s-+" nil t)
+                                (replace-match " ")))))
+
+(defun untabify-buffer ()
+     "Convert all tabs in buffer to spaces."
+     (interactive)
+     (untabify (point-min) (point-max)))
+
+(defun indent-buffer ()
+     "Indents an entire buffer using the default intenting scheme."
+     (interactive)
+     (save-excursion
+            (delete-trailing-whitespace)
+            (indent-region (point-min) (point-max) nil)
+            (untabify (point-min) (point-max))))
+
+(defun clean-buffer ()
+  "clean buffer concerning whitespace and indentation"
+  (interactive)
+  (untabify-buffer)
+  (just-one-space-in-region)
+  (indent-buffer))
+
 (provide 'functions)

@@ -73,8 +73,6 @@
 ;; Use buffer name as frame title
 (setq frame-title-format "Emacs - %b")
 
-;; CxCb puts point on buffer list
-(global-set-key "\C-x\C-b" 'buffer-menu)
 
 ;; Set grep command options
 (setq grep-command "grep -i -nH -e ")

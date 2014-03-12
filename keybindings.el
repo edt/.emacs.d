@@ -5,6 +5,8 @@
 ;; define meta-shift-t as a reverse transpose to switch words backwards
 (global-set-key (kbd "M-T") (lambda () (interactive) (transpose-words -1)))
 
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
 ;; copy line or region
 (global-unset-key (kbd "C-z"))
 (global-set-key (kbd "C-z") 'duplicate-line-or-region)

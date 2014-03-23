@@ -3,7 +3,7 @@
   "Tells Window Manager to toggle fullscreen mode"
   (interactive)
   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-	    		 '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
+                         '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
 
 
 ;; source https://github.com/milkypostman/dotemacs/blob/master/init.el
@@ -74,26 +74,26 @@ region-end is used."
   (interactive)
   (if (= (count-windows) 2)
       (let* ((this-win-buffer (window-buffer))
-	     (next-win-buffer (window-buffer (next-window)))
-	     (this-win-edges (window-edges (selected-window)))
- 	     (next-win-edges (window-edges (next-window)))
-	     (this-win-2nd (not (and (<= (car this-win-edges)
-					 (car next-win-edges))
-				     (<= (cadr this-win-edges)
-					 (cadr next-win-edges)))))
-	     (splitter
-	      (if (= (car this-win-edges)
-		     (car (window-edges (next-window))))
-		  'split-window-horizontally
-		'split-window-vertically)))
-	(delete-other-windows)
-	(let ((first-win (selected-window)))
-	  (funcall splitter)
-	  (if this-win-2nd (other-window 1))
-	  (set-window-buffer (selected-window) this-win-buffer)
-	  (set-window-buffer (next-window) next-win-buffer)
-	  (select-window first-win)
-	  (if this-win-2nd (other-window 1))))))
+             (next-win-buffer (window-buffer (next-window)))
+             (this-win-edges (window-edges (selected-window)))
+             (next-win-edges (window-edges (next-window)))
+             (this-win-2nd (not (and (<= (car this-win-edges)
+                                         (car next-win-edges))
+                                     (<= (cadr this-win-edges)
+                                         (cadr next-win-edges)))))
+             (splitter
+              (if (= (car this-win-edges)
+                     (car (window-edges (next-window))))
+                  'split-window-horizontally
+                'split-window-vertically)))
+        (delete-other-windows)
+        (let ((first-win (selected-window)))
+          (funcall splitter)
+          (if this-win-2nd (other-window 1))
+          (set-window-buffer (selected-window) this-win-buffer)
+          (set-window-buffer (next-window) next-win-buffer)
+          (select-window first-win)
+          (if this-win-2nd (other-window 1))))))
 
 
 (defun bf-pretty-print-xml-region (begin end)
@@ -106,7 +106,7 @@ by using nxml's indentation rules."
   (save-excursion
     (nxml-mode)
     (goto-char begin)
-    (while (search-forward-regexp "\>[ \\t]*\<" nil t) 
+    (while (search-forward-regexp "\>[ \\t]*\<" nil t)
       (backward-char) (insert "\n") (setq end (1+ end)))
     (indent-region begin end))
   (message "Ah, much better!"))
@@ -118,12 +118,12 @@ by using nxml's indentation rules."
 ;; text on a line, comment the current line instead of appending a
 ;; comment to the line."
 ;;   (if (and (not (use-region-p))
-;; 	   (not (eq (line-end-position)
-;; 		    (save-excursion (back-to-indentation) (point))))
-;; 	   (or (eq (point) (line-beginning-position))
-;; 	       (eq (point) (save-excursion (back-to-indentation) (point)))))
+;;     (not (eq (line-end-position)
+;;          (save-excursion (back-to-indentation) (point))))
+;;     (or (eq (point) (line-beginning-position))
+;;         (eq (point) (save-excursion (back-to-indentation) (point)))))
 ;;       (comment-or-uncomment-region (line-beginning-position)
-;; 				   (line-end-position))
+;;                 (line-end-position))
 ;;     ad-do-it
 ;;     (setq deactivate-mark nil)))
 
@@ -132,14 +132,14 @@ by using nxml's indentation rules."
 text on a line, comment the current line instead of appending a
 comment to the line."
   (if (and (not (use-region-p))
-	   (not (eq (line-end-position)
-		    (save-excursion (back-to-indentation) (point))))
-	   (or (eq (point) (line-beginning-position))
-	       (eq (point) (save-excursion (back-to-indentation) (point)))))
+           (not (eq (line-end-position)
+                    (save-excursion (back-to-indentation) (point))))
+           (or (eq (point) (line-beginning-position))
+               (eq (point) (save-excursion (back-to-indentation) (point)))))
       (comment-or-uncomment-region (line-beginning-position)
-				   (line-end-position))
-ad-do-it
-))
+                                   (line-end-position))
+    ad-do-it
+    ))
 
 ;; (defun comment-dwim-line (&optional arg)
 ;;         "Replacement for the comment-dwim command.
@@ -185,7 +185,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 
 (global-set-key (kbd "M-j")
-            (lambda ()
+                (lambda ()
                   (interactive)
                   (join-line -1)))
 
@@ -241,11 +241,11 @@ Comments are recognized in any mode that sets syntax-ppss
 properly."
   (interactive "p")
   (cl-flet ((end-of-line-lov () (if visual-line-mode
-                                 (end-of-visual-line arg)
-                               (move-end-of-line arg)))
-         (beg-of-line-lov () (if visual-line-mode
-                                 (beginning-of-visual-line arg)
-                               (move-beginning-of-line arg))))
+                                    (end-of-visual-line arg)
+                                  (move-end-of-line arg)))
+            (beg-of-line-lov () (if visual-line-mode
+                                    (beginning-of-visual-line arg)
+                                  (move-beginning-of-line arg))))
     (let ((eoc (save-excursion
                  (end-of-line-lov)
                  (while (and (point-in-comment)
@@ -267,7 +267,7 @@ properly."
 
 (global-set-key (kbd "C-e") 'my-end-of-code-or-line)
 
-;(key-chord-define-global "ee" 'my-end-of-code-or-line)
+                                        ;(key-chord-define-global "ee" 'my-end-of-code-or-line)
 
 (defun google ()
   "Googles a query or region if any."
@@ -297,15 +297,15 @@ properly."
   (isearch-yank-word-or-char)
   ;; Revert to 'isearch-yank-word-or-char for subsequent calls
   (substitute-key-definition 'my-isearch-yank-word-or-char-from-beginning
-			     'isearch-yank-word-or-char
-			     isearch-mode-map))
+                             'isearch-yank-word-or-char
+                             isearch-mode-map))
 
 (add-hook 'isearch-mode-hook
- (lambda ()
-   "Activate my customized Isearch word yank command."
-   (substitute-key-definition 'isearch-yank-word-or-char
-			      'my-isearch-yank-word-or-char-from-beginning
-			      isearch-mode-map)))
+          (lambda ()
+            "Activate my customized Isearch word yank command."
+            (substitute-key-definition 'isearch-yank-word-or-char
+                                       'my-isearch-yank-word-or-char-from-beginning
+                                       isearch-mode-map)))
 
 (defun rotate-windows ()
   "Rotate your windows"
@@ -315,7 +315,7 @@ properly."
         (t
          (setq i 1)
          (setq numWindows (count-windows))
-         (while  (< i numWindows)
+         (while (< i numWindows)
            (let* (
                   (w1 (elt (window-list) i))
                   (w2 (elt (window-list) (+ (% i numWindows) 1)))
@@ -326,7 +326,7 @@ properly."
                   (s1 (window-start w1))
                   (s2 (window-start w2))
                   )
-             (set-window-buffer w1  b2)
+             (set-window-buffer w1 b2)
              (set-window-buffer w2 b1)
              (set-window-start w1 s2)
              (set-window-start w2 s1)
@@ -334,33 +334,33 @@ properly."
 
 
 (defun just-one-space-in-region (beg end)
-     "replace all whitespace in the region with single spaces"
-     (interactive "r")
-     (save-excursion
-            (save-restriction
-                     (narrow-to-region beg end)
-                     (goto-char (point-min))
-                     (while (re-search-forward "\\s-+" nil t)
-                                (replace-match " ")))))
+  "replace all whitespace in the region with single spaces"
+  (interactive "r")
+  (save-excursion
+    (save-restriction
+      (narrow-to-region beg end)
+      (goto-char (point-min))
+      (while (re-search-forward "\\s-+" nil t)
+        (replace-match " ")))))
 
 (defun untabify-buffer ()
-     "Convert all tabs in buffer to spaces."
-     (interactive)
-     (untabify (point-min) (point-max)))
+  "Convert all tabs in buffer to spaces."
+  (interactive)
+  (untabify (point-min) (point-max)))
 
 (defun indent-buffer ()
-     "Indents an entire buffer using the default intenting scheme."
-     (interactive)
-     (save-excursion
-            (delete-trailing-whitespace)
-            (indent-region (point-min) (point-max) nil)
-            (untabify (point-min) (point-max))))
+  "Indents an entire buffer using the default intenting scheme."
+  (interactive)
+  (save-excursion
+    (delete-trailing-whitespace)
+    (indent-region (point-min) (point-max) nil)
+    (untabify (point-min) (point-max))))
 
 (defun clean-buffer ()
   "clean buffer concerning whitespace and indentation"
   (interactive)
   (untabify-buffer)
-  (just-one-space-in-region)
+  (just-one-space-in-region (point-min) (point-max))
   (indent-buffer))
 
 (provide 'functions)

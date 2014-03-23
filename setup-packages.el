@@ -18,6 +18,7 @@
         ggtags
         rainbow-mode
         expand-region
+        flycheck
         multi-term
         multiple-cursors
         ace-jump-mode

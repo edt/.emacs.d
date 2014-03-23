@@ -171,4 +171,9 @@ isn't there and triggers an error"
                 ))
      (error (error-message-string err)))))
 
+(require' flycheck)
+(global-flycheck-mode)
+;; disable the annoying doc checker
+(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+
 (provide 'modes)

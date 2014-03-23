@@ -1,9 +1,12 @@
 ;; functions related to actual files and not just buffers
 
+
 (defun show-file-name ()
-  "Show the full path file name in the minibuffer."
+  "Show the full path file name in the minibuffer and add it to the clipboard."
   (interactive)
-  (message (buffer-file-name)))
+  (message (buffer-file-name))
+  (kill-new (file-truename buffer-file-name)))
+
 
 
 (defun make-file-executable ()

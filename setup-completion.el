@@ -15,6 +15,12 @@
 ;; (ac-set-trigger-key "<return>")
 (global-set-key (kbd "C-<return>") 'auto-complete)
 
+(setq ac-sources '(ac-source-filename
+                   ac-source-yasnippet
+                   ac-source-abbrev
+                   ac-source-dictionary
+                   ac-source-words-in-same-mode-buffers))
+
 (global-auto-complete-mode t)
 
 ;; (global-set-key (kbd "<return>") 'newline-and-indent)

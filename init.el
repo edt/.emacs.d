@@ -1,5 +1,8 @@
 (set-frame-font "Monospace-11" t t)
 
+(blink-cursor-mode -1)
+(setq inhibit-startup-message t)
+
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -49,46 +52,15 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
-;; Highlight parenthesis pairs
-(show-paren-mode 1)
 ;; Blinking parenthesis
 (setq blink-matching-paren-distance nil)
-;; Cursor don't track end-of-line
-(setq track-eol nil)
-;; Paste at cursor position
-(setq mouse-yank-at-point t)
-;; Mouse avoids cursor
-(mouse-avoidance-mode 'jump)
-;; Don't truncate long lines
-(setq truncate-partial-width-windows nil)
-;; Minimal height of windows
-(setq window-min-height 10)
-;; auto-formatting in text-mode
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
+
 ;; Completion in mini-buffer
 (icomplete-mode t)
 ;; Buffers in separate frames
 (setq pop-up-frame t)
 
-;; Use buffer name as frame title
-(setq frame-title-format "Emacs - %b")
 
-
-;; Set grep command options
-(setq grep-command "grep -i -nH -e ")
-
-;; Color enabled
-(global-font-lock-mode 1)
-;; maximum possible fontification
-;; not functioning
-(setq font-lock-maximum-decoration t)
-
-(blink-cursor-mode -1)
-
-;; Increase number of undo
-(setq undo-limit 100000)
-
-(fringe-mode 4)
 
 ;========== Support Wheel Mouse Scrolling ==========
 (mouse-wheel-mode t)
@@ -108,27 +80,15 @@
 ;; keyboard scroll one line at a time
 (setq scroll-step 1)
 
-;; enable clipboard interaction between emacs and system
-(setq x-select-enable-clipboard t)
-
 ;; Set Shell for M-| command
 (setq shell-file-name "/bin/bash")
-
-;; No message at startup
-(setq inhibit-startup-message t)
 
 (setq winner-dont-bind-my-keys t)
 (winner-mode t)
 
-;; replace highlighted text with what I type rather than just inserting at point
-(delete-selection-mode t)
-
 ;; reindent region after pasting
 (defadvice yank (after indent-region activate)
   (indent-region (region-beginning) (region-end) nil))
-
-;; Sentences end with one space
-(setq sentence-end-double-space nil)
 
 ;; make backups by copying
 ;; this prevents emacs from changing the creation time of the original file
@@ -143,10 +103,4 @@
 (setq auto-save-file-name-transforms
       `((".*" , user-cache-directory t)))
 
-
-;;; == Search & Destroy == ;;;
-(setq search-highlight t)
-
 (require 'setup-server)
-
-(setq redisplay-dont-pause t)

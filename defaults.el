@@ -24,6 +24,12 @@
 (global-subword-mode t)
 
 
+;; Set grep command options
+(setq grep-command "grep -i -nH -e ")
+
+;; Increase number of undo
+;; (setq undo-limit 100000)
+
 (setq-default
  standard-indent 4
  tab-width 4
@@ -32,10 +38,41 @@
  indicate-empty-lines t
  fill-column 80
  next-line-add-newlines nil
+ ;; truncate kill ring after 5000 entries
+ kill-ring-max 5000
+ ;;truncate mark ring after 5000 entries
+ mark-ring-max 5000
  ;; always have an empty line at end of file
  require-final-newline t
  ;; No beep when reporting errors
- visible-bell t)
+ visible-bell t
+ search-highlight t
+ x-select-enable-clipboard t
+ xterm-mouse-mode t)
 
+;; Cursor don't track end-of-line
+(setq track-eol nil)
+;; Paste at cursor position
+(setq mouse-yank-at-point t)
+;; Mouse avoids cursor
+(mouse-avoidance-mode 'jump)
+;; Don't truncate long lines
+(setq truncate-partial-width-windows nil)
+;; Minimal height of windows
+(setq window-min-height 10)
+
+;; Sentences end with one space
+(setq sentence-end-double-space nil)
+
+;; Highlight parenthesis pairs
+(show-paren-mode 1)
+
+;; replace highlighted text with what I type rather than just inserting at point
+(delete-selection-mode t)
+
+;; keep display responsive
+(setq redisplay-dont-pause t)
+
+(fringe-mode 4)
 
 (provide 'defaults)

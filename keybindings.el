@@ -9,7 +9,9 @@
 
 ;; copy line or region
 (global-unset-key (kbd "C-z"))
-(global-set-key (kbd "C-z") 'duplicate-line-or-region)
+(define-prefix-command 'user-shortcut-map)
+(global-set-key (kbd "C-z") 'user-shortcut-map)
+(global-set-key (kbd "C-z d") 'duplicate-line-or-region)
 
 ;; Keybinding to allow fullscreen operations
 (global-set-key [f11] 'fullscreen)

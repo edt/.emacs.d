@@ -12,7 +12,7 @@
   (global-set-key "\C-x\C-c" 'delete-frame))
 
 ;; Shortcut to kill emacs and server/deamon
-(global-set-key (kbd "C-c C-q") (lambda ()
+(global-set-key (kbd "C-z C-q") (lambda ()
                                   (interactive)
                                   (when (y-or-n-p "Quit Emacs?")
                                     (save-buffers-kill-emacs))))

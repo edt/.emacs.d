@@ -60,18 +60,4 @@
   (setq gud-gdb-command-name a)
   (start-gdb-in-other-frame))
 
-
-(defun gdb-options ()
-  "personal gdb mode hook options"
-  (gud-tooltip-mode 1)
-  (gdb-many-windows t)
-  ;;(tabbar-mode nil)
-  ;;(tool-bar-mode t)
-  ;; (tool-bar-mode nil)
-  ;; (toggle-tool-bar-mode-from-frame t)
-  )
-
-(add-hook 'gdb-mode-hook 'gdb-options)
-
-
 (provide 'setup-debugging)

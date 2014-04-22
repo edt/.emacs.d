@@ -95,9 +95,9 @@
                                          try-complete-lisp-symbol-partially
                                          try-complete-lisp-symbol))
 
-;; (require 'revive+)
-;; (setq revive-plus:all-frames t)
-;; (revive-plus:minimal-setup)
+(require 'revive+)
+(setq revive-plus:all-frames t)
+(revive-plus:minimal-setup)
 
 (setq projectile-cache-file (expand-file-name "projectile.cache" user-cache-directory))
 (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))

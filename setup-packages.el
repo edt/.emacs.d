@@ -22,7 +22,6 @@
         multi-term
         multiple-cursors
         ace-jump-mode
-        revive-plus
         buffer-move
         ack-and-a-half
         keyfreq
@@ -73,6 +72,7 @@
 (setq el-get-sources
       '(el-get				; el-get is self-hosting
         irony-mode
+        revive-plus
 ))
 
 ;; install new packages and init already installed packages

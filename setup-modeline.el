@@ -23,8 +23,7 @@
 (setq calendar-week-start-day 1)
 
 ;; European style calendar
-(setq european-calendar-style 't)
-
+(calendar-set-date-style 'european)
 
 (setq column-number-mode t)
 

@@ -4,6 +4,8 @@
 (setq display-time-24hr-format nil)
 (display-time-mode -1)
 
+(require 'calendar)
+
 ;; Week starts monday
 (setq calendar-week-start-day 1)
 

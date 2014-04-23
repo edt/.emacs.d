@@ -12,7 +12,7 @@
 (defalias 'qrr 'query-replace-regexp)
 ;; y/n instead of yes/no
 (defalias 'yes-or-no-p 'y-or-n-p)
-
+(setq use-dialog-box nil)
 
 (global-auto-revert-mode t)
 (setq global-auto-revert-non-file-buffers t)

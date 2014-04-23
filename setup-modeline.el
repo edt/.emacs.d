@@ -1,19 +1,4 @@
 
-;; diminish minor modes to save space
-;; to view all minor modes C-h m
-(when (require 'diminish nil 'noerror)
-  (eval-after-load "company"
-    '(diminish 'company-mode "Cmp"))
-  (eval-after-load "abbrev"
-    '(diminish 'abbrev-mode "Ab"))
-  (eval-after-load "yasnippet"
-    '(diminish 'yas-minor-mode))
-  (eval-after-load "Projectile"
-    '(diminish 'projectile-mode))
-  (eval-after-load "smartparens"
-    '(diminish 'smartparens-mode))
-  )
-
 ;; Show date and time in 24h format in modeline
 (setq display-time-day-and-date nil)
 (setq display-time-24hr-format nil)
@@ -37,6 +22,13 @@
 (setq sml/theme 'respectful)
 (setq sml/active-background-color "gray20")
 (require 'smart-mode-line)
+
+(add-to-list 'sml/hidden-modes " Rbow")
+(add-to-list 'sml/hidden-modes "Projectile")
+(add-to-list 'sml/hidden-modes " ,")
+(add-to-list 'sml/hidden-modes " SP")
+(add-to-list 'sml/hidden-modes " hs")
+
 (sml/setup)
 
 (provide 'setup-modeline)

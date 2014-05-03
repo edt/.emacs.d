@@ -29,7 +29,6 @@
 (make-directory user-cache-directory t)
 
 ;; Load the following configuration files
-(require 'user_profile)
 (require 'functions)
 (require 'file-functions)
 (require 'modes)

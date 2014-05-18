@@ -76,6 +76,6 @@
 ))
 
 ;; install new packages and init already installed packages
-(el-get 'sync)
+(el-get 'sync el-get-sources)
 
 (provide 'setup-packages)

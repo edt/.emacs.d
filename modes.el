@@ -99,6 +99,9 @@
 (setq revive-plus:all-frames t)
 (revive-plus:minimal-setup)
 
+(require 'indent-guide)
+(indent-guide-global-mode t)
+
 (setq projectile-cache-file (expand-file-name "projectile.cache" user-cache-directory))
 (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
 (setq projectile-enable-caching t)

@@ -27,6 +27,7 @@
         keyfreq
 		browse-kill-ring
         indent-guide
+        org
         ))
 
 

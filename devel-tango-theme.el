@@ -4,6 +4,8 @@
 (custom-theme-set-faces
  'devel-tango
  '(cursor ((t (:background "#fce94f"))))
+ '(cperl-array-face ((t (:foreground "yellow" :weight bold))) t)
+ '(cperl-hash-face ((t (:foreground "Red" :slant italic :weight bold))) t)
  '(fixed-pitch ((t (:family "Monospace"))))
  '(variable-pitch ((t (:family "Sans Serif"))))
  '(escape-glyph ((((background dark))

@@ -1,12 +1,9 @@
-;; functions related to actual files and not just buffers
-
 
 (defun show-file-name ()
   "Show the full path file name in the minibuffer and add it to the clipboard."
   (interactive)
   (message (buffer-file-name))
   (kill-new (file-truename buffer-file-name)))
-
 
 
 (defun make-file-executable ()
@@ -25,22 +22,6 @@
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
 
-;; ;; https://sites.google.com/site/steveyegge2/my-dot-emacs-file
-;; ;;
-;; ;; Never understood why Emacs doesn't have this function.
-;; (defun rename-file-and-buffer (new-name)
-;;  "Renames both current buffer and file it's visiting to NEW-NAME." (interactive "sNew name: ")
-;;  (let ((name (buffer-name))
-;; 	(filename (buffer-file-name)))
-;;  (if (not filename)
-;; 	(message "Buffer '%s' is not visiting a file!" name)
-;;  (if (get-buffer new-name)
-;; 	 (message "A buffer named '%s' already exists!" new-name)
-;; 	(progn 	 (rename-file name new-name 1)
-;;                  (rename-buffer new-name)
-;;                  (set-visited-file-name new-name)
-;;                  (set-buffer-modified-p nil)))))) ;;
-
 (defun rename-file-and-buffer ()
   "Rename the current buffer and file it is visiting."
   (interactive)
@@ -54,26 +35,26 @@
           (rename-file filename new-name t)
           (set-visited-file-name new-name t t)))))))
 
-(global-set-key (kbd "C-c r")  'rename-file-and-buffer)
+(global-set-key (kbd "C-c r") 'rename-file-and-buffer)
 
 
 ;; Never understood why Emacs doesn't have this function, either.
 (defun move-buffer-file (dir)
- "Moves both current buffer and file it's visiting to DIR." (interactive "DNew directory: ")
- (let* ((name (buffer-name))
-        (filename (buffer-file-name))
-        (dir
-	 (if (string-match dir "\\(?:/\\|\\\\)$")
-             (substring dir 0 -1) dir))
-        (newname (concat dir "/" name)))
+  "Moves both current buffer and file it's visiting to DIR." (interactive "DNew directory: ")
+  (let* ((name (buffer-name))
+         (filename (buffer-file-name))
+         (dir
+          (if (string-match dir "\\(?:/\\|\\\\)$")
+              (substring dir 0 -1) dir))
+         (newname (concat dir "/" name)))
 
-   (if (not filename)
-       (message "Buffer '%s' is not visiting a file!" name)
-     (progn
-       (copy-file filename newname 1)
-       (delete-file filename)
-       (set-visited-file-name newname)
-       (set-buffer-modified-p nil) t))))
+    (if (not filename)
+        (message "Buffer '%s' is not visiting a file!" name)
+      (progn
+        (copy-file filename newname 1)
+        (delete-file filename)
+        (set-visited-file-name newname)
+        (set-buffer-modified-p nil) t))))
 
 
 (defun open-file-at-cursor ()
@@ -95,6 +76,7 @@ This command is similar to `find-file-at-point' but without prompting for confir
               (find-file (concat path ".el"))
             (when (y-or-n-p (format "file doesn't exist: 「%s」. Create?" path) )
               (find-file path ))))))))
+
 
 (defun delete-file-and-buffer ()
   "Kill the current buffer and deletes the file it is visiting."

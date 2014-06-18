@@ -137,6 +137,16 @@
 (add-to-list 'auto-mode-alist '("bash_aliases\\'" . shell-script-mode))
 
 
+;; saner ediff default
+(eval-after-load "ediff"
+  '(progn
+     (add-hook 'ediff-before-setup-hook 'new-frame)
+     (add-hook 'ediff-quit-hook 'delete-frame)
+     (setq ediff-diff-options "-w")
+     (setq ediff-split-window-function 'split-window-horizontally)
+     (setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+
 (defvar ediff-do-hexl-diff nil
   "variable used to store trigger for doing diff in hexl-mode")
 (defadvice ediff-files-internal (around ediff-files-internal-for-binary-files activate)
@@ -179,6 +189,7 @@ isn't there and triggers an error"
                 ;; (y-or-n-p "The binary files differ, look at the differences in hexl-mode? ")
                 ))
      (error (error-message-string err)))))
+))
 
 (require' flycheck)
 (global-flycheck-mode)

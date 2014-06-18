@@ -52,15 +52,6 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
-;; Blinking parenthesis
-(setq blink-matching-paren-distance nil)
-
-;; Completion in mini-buffer
-(icomplete-mode t)
-;; Buffers in separate frames
-(setq pop-up-frame t)
-
-
 
 ;========== Support Wheel Mouse Scrolling ==========
 (mouse-wheel-mode t)

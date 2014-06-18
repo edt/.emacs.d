@@ -23,6 +23,14 @@
 
 (global-subword-mode t)
 
+;; Blinking parenthesis
+(setq blink-matching-paren-distance nil)
+
+;; Completion in mini-buffer
+(icomplete-mode t)
+;; Buffers in separate frames
+(setq pop-up-frame t)
+
 
 ;; Set grep command options
 (setq grep-command "grep -i -nH -e ")

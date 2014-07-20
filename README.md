@@ -22,6 +22,12 @@ ack
 
 - [irony-mode](https://github.com/Sarcasm/irony-mode?source=c)
 - [bear](https://github.com/rizsotto/Bear?source=c)
+- libclang/clang
+- [gtags](https://www.gnu.org/software/global/)
+
+- doxymacs
+- oxygen
+
 
 #### python
 

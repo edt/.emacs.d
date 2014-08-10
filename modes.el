@@ -84,8 +84,6 @@
 
 
 
-(require 'browse-kill-ring)
-(global-set-key (kbd "C-c k") 'browse-kill-ring)
 
 
 
@@ -183,6 +181,11 @@
     (setq projectile-enable-caching t)
     (projectile-global-mode t)))
 
+
+(use-package browse-kill-ring
+  :defer t
+  :bind
+  ("C-c k" . browse-kill-ring))
 
 
 (use-package buffer-move

@@ -57,8 +57,6 @@
 
 
 
-(require 'ace-jump-mode)
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 
 
@@ -76,6 +74,11 @@
             (diff-hl-update)))))))
 
 
+(use-package ace-jump-mode
+  :defer t
+  :commands ace-jump-mode
+  :bind
+  ("C-c SPC" . ace-jump-mode))
 
 
 (use-package smartparens-config

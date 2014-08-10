@@ -113,12 +113,6 @@
 (require 'indent-guide)
 (indent-guide-global-mode t)
 
-(setq projectile-cache-file (expand-file-name "projectile.cache" user-cache-directory))
-(setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
-(setq projectile-enable-caching t)
-(require 'projectile)
-(projectile-global-mode t)
-
 (require 'browse-kill-ring)
 (global-set-key (kbd "C-c k") 'browse-kill-ring)
 
@@ -153,6 +147,16 @@
   (("C-'" . er/expand-region)
    ("C-;" . er/contract-region)))
 
+
+
+(use-package projectile
+  :diminish projectile-mode
+  :init
+  (progn
+    (setq projectile-cache-file (expand-file-name "projectile.cache" user-cache-directory))
+    (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
+    (setq projectile-enable-caching t)
+    (projectile-global-mode t)))
 
 ;; saner ediff default
 (eval-after-load "ediff"

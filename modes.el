@@ -371,4 +371,32 @@
 (semantic-mode)
 (add-to-list 'ac-sources 'ac-source-semantic)
 
+
+(use-package irony
+  :init
+  (progn
+
+    (defun irony-restart-process ()
+      "Restart the irony process."
+      (interactive)
+      (irony-cancel-process)
+      (setq irony-completion-marker (make-marker))
+      (setq irony-completion-last-marker (make-marker))
+      (setq irony-completion-request-running-count 0)
+      (setq irony-completion-user-triggered nil)
+      (setq irony-last-completion nil)
+      (setq irony-flags-cache nil)
+      (setq irony-compile-flags-work-dir nil)
+      (setq irony-compile-flags nil)
+      (irony-start-process-maybe))
+
+    (defun edt-irony-hook ()
+      "irony related hooks"
+      (irony-mode 1)
+      (irony-enable 'ac))
+
+    (add-hook 'c++-mode-hook 'edt-irony-hook)
+    (add-hook 'c-mode-hook 'edt-irony-hook)))
+
+
 (provide 'modes)

@@ -8,7 +8,6 @@
 
 (add-hook 'find-file-hooks 'goto-address-prog-mode)
 
-(require 'setup-code-folding)
 
 (require 'setup-completion)
 

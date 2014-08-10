@@ -262,6 +262,22 @@
     (add-hook 'c-mode-hook (lambda () (setq flycheck-clang-language-standard "c99")))))
 
 
+(use-package fold-dwim
+  :defer t
+  :diminish hs-minor-mode
+  :bind
+  ("C-c h" . fold-dwim-toggle)
+  :init
+  (progn
+    (add-hook 'c-mode-common-hook 'hs-minor-mode)
+    (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+    (add-hook 'java-mode-hook 'hs-minor-mode)
+    (add-hook 'lisp-mode-hook 'hs-minor-mode)
+    (add-hook 'perl-mode-hook 'hs-minor-mode)
+    (add-hook 'sh-mode-hook 'hs-minor-mode)
+    (add-hook 'python-mode-hook 'hs-minor-mode)))
+
+
 (use-package magit
   :defer t
   :config

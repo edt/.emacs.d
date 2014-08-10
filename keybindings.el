@@ -2,6 +2,12 @@
 ;;                  KEYBINDINGS.EL
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(global-set-key (kbd "C-x p") 'pop-to-mark-command)
+(setq set-mark-command-repeat-pop t)
+
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+
 ;; define meta-shift-t as a reverse transpose to switch words backwards
 (global-set-key (kbd "M-T") (lambda () (interactive) (transpose-words -1)))
 

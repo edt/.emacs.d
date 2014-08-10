@@ -93,11 +93,6 @@
 (global-set-key (kbd "<C-S-left>") 'buf-move-left)
 (global-set-key (kbd "<C-S-right>") 'buf-move-right)
 
-(require 'rect-mark)
-(global-set-key (kbd "C-x r C-SPC") 'rm-set-mark)
-(global-set-key (kbd "C-x r C-x") 'rm-exchange-point-and-mark)
-(global-set-key (kbd "C-x r C-w") 'rm-kill-region)
-(global-set-key (kbd "C-x r M-w") 'rm-kill-ring-save)
 
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
@@ -192,6 +187,15 @@
     (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
     (setq projectile-enable-caching t)
     (projectile-global-mode t)))
+
+
+(use-package rect-mark
+  :defer t
+  :bind
+  (("C-x r C-SPC" . rm-set-mark)
+   ("C-x r C-x" . rm-exchange-point-and-mark)
+   ("C-x r C-w" . rm-kill-region)
+   ("C-x r M-w" . rm-kill-ring-save)))
 
 ;; saner ediff default
 (eval-after-load "ediff"

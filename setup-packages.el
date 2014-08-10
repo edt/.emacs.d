@@ -28,6 +28,7 @@
 		browse-kill-ring
         indent-guide
         org
+        use-package
         ))
 
 

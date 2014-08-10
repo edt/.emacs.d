@@ -55,14 +55,7 @@
 ; create unique buffer names with shared directoy components.
 (setq uniquify-buffer-name-style 'forward)
 
-(require 'diff-hl)
-(global-diff-hl-mode t)
 
-(defadvice git-commit-commit (after git-commit-commit-after activate)
-  (dolist (buffer (buffer-list))
-    (with-current-buffer buffer
-      (when diff-hl-mode
-        (diff-hl-update)))))
 
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
@@ -78,7 +71,16 @@
 
 
 
+(use-package diff-hl
+  :init
+  (progn
+    (global-diff-hl-mode t)
 
+    (defadvice git-commit-commit (after git-commit-commit-after activate)
+      (dolist (buffer (buffer-list))
+        (with-current-buffer buffer
+          (when diff-hl-mode
+            (diff-hl-update)))))))
 
 
 

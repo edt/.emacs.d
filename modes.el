@@ -47,9 +47,6 @@
 
 (require 'wgrep)
 
-(require 'uniquify)
-; create unique buffer names with shared directoy components.
-(setq uniquify-buffer-name-style 'forward)
 
 
 
@@ -62,6 +59,9 @@
     (window-number-mode t)))
 
 
+(use-package uniquify
+  :init
+  (setq uniquify-buffer-name-style 'forward))
 
 (use-package diff-hl
   :init

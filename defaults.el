@@ -81,6 +81,6 @@
 ;; keep display responsive
 (setq redisplay-dont-pause t)
 
-(fringe-mode 4)
+(fringe-mode 8)
 
 (provide 'defaults)

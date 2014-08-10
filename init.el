@@ -42,7 +42,6 @@
 (require 'setup-modeline)
 (require 'setup-navigation)
 (require 'setup-debugging)
-(require 'setup-terminal)
 (require 'setup-org)
 
 ;========== Support Wheel Mouse Scrolling ==========

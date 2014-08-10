@@ -29,6 +29,18 @@
   (setq smex-save-file "~/.emacs.d/tmp/smex.save"))
 
 
+(use-package multi-term
+  :defer t
+  :init
+  (progn
+    (setq multi-term-program "/bin/bash")))
+;; (eval-after-load "yasnippet"
+;; '(progn
+;; (yas/global-mode 1)
+;; (yas/load-directory "~/.emacs.d/snippets")
+;; ;; disable yasnippet auto-indent
+;; (setq yas/indent-line nil)
+;; ))
 ;; multilpe cursor don't clutter config dir
 (setq mc/list-file "~/.emacs.d/tmp/multiple-cursors-lists.el")
 

@@ -224,10 +224,17 @@
           (error (error-message-string err)))))
      ))
 
-(require' flycheck)
-(global-flycheck-mode)
-;; disable the annoying doc checker
-(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+
+(use-package flycheck
+  :defer t
+  :init
+  (progn
+    (global-flycheck-mode)
+    ;; disable the annoying doc checker
+    (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+    (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
+    (add-hook 'c-mode-hook (lambda () (setq flycheck-clang-language-standard "c99")))))
+
 
 (use-package magit
   :defer t

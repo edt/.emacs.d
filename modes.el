@@ -110,9 +110,6 @@
 (setq revive-plus:all-frames t)
 (revive-plus:minimal-setup)
 
-(require 'indent-guide)
-(indent-guide-global-mode t)
-
 (require 'browse-kill-ring)
 (global-set-key (kbd "C-c k") 'browse-kill-ring)
 
@@ -147,6 +144,13 @@
   (("C-'" . er/expand-region)
    ("C-;" . er/contract-region)))
 
+
+
+(use-package indent-guide
+  :diminish indent-guide-mode
+  :init
+  (progn
+    (indent-guide-global-mode t)))
 
 
 (use-package projectile

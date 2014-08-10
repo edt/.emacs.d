@@ -9,8 +9,6 @@
 (add-hook 'find-file-hooks 'goto-address-prog-mode)
 
 
-(require 'setup-completion)
-
 (electric-indent-mode t)
 
 (defun my-c-mode-common-hook ()

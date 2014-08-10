@@ -319,5 +319,41 @@
   :init
   (fic-ext-mode))
 
+(use-package auto-complete
+  :diminish auto-complete-mode
+  :defer t
+  :init
+  (progn
+    (use-package auto-complete-config)
+    (ac-config-default)
+    (setq ac-use-menu-map t)
+
+    (setq ac-dwim t)
+    (setq ac-use-menu-map t)
+
+    ;; (setq ac-delay 0.3)
+    (setq ac-use-quick-help t)
+    (setq ac-quick-help-delay 0.5)
+
+    ;; Default settings
+    (define-key ac-menu-map "\C-n" 'ac-next)
+    (define-key ac-menu-map "\C-p" 'ac-previous)
+
+    (define-key ac-completing-map "\C-m" nil)
+    (define-key ac-menu-map "\C-m" 'ac-complete)
+
+    (setq ac-sources '(ac-source-filename
+                       ac-source-yasnippet
+                       ac-source-abbrev
+                       ac-source-dictionary
+                       ac-source-words-in-same-mode-buffers))
+
+    (global-auto-complete-mode t)
+    )
+  :bind
+  ("C-<return>" . ac-complete))
+
+(semantic-mode)
+(add-to-list 'ac-sources 'ac-source-semantic)
 
 (provide 'modes)

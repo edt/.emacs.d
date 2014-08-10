@@ -332,7 +332,9 @@
 (use-package fic-ext-mode
   :defer t
   :init
-  (fic-ext-mode))
+  (progn
+    (fic-ext-mode)
+    '(fic-highlighted-words (quote ("FIXME:" "TODO:" "BUG:" "REDFLAG:")))))
 
 (use-package auto-complete
   :diminish auto-complete-mode

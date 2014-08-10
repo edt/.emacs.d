@@ -93,6 +93,8 @@
  '(font-lock-type-face ((t (:weight bold :foreground "#8ae234"))))
  '(font-lock-variable-name-face ((t (:foreground "#eeeeec"))))
  '(font-lock-warning-face ((t (:weight bold :foreground "#f57900"))))
+ '(font-lock-fic-author-face ((t (:background "gray20" :foreground "orangered" :underline t))))
+ '(font-lock-fic-face ((t (:background "gray20" :foreground "red" :weight bold))))
  '(button ((t (:inherit (link)))))
  '(link ((((class color)
            (min-colors 88)

@@ -87,11 +87,6 @@
 (require 'browse-kill-ring)
 (global-set-key (kbd "C-c k") 'browse-kill-ring)
 
-(require 'buffer-move)
-(global-set-key (kbd "<C-S-up>") 'buf-move-up)
-(global-set-key (kbd "<C-S-down>") 'buf-move-down)
-(global-set-key (kbd "<C-S-left>") 'buf-move-left)
-(global-set-key (kbd "<C-S-right>") 'buf-move-right)
 
 
 (autoload 'markdown-mode "markdown-mode"
@@ -187,6 +182,16 @@
     (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
     (setq projectile-enable-caching t)
     (projectile-global-mode t)))
+
+
+
+(use-package buffer-move
+  :defer t
+  :bind
+  (("<C-S-up>" . buf-move-up)
+   ("<C-S-down>" . buf-move-down)
+   ("<C-S-left>" . buf-move-left)
+   ("<C-S-right>" . buf-move-right)))
 
 
 (use-package rect-mark

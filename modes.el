@@ -1,10 +1,33 @@
 
-(require 'setup-ido)
+(use-package ido
+  :init
+  (progn
+    (setq ido-enable-flex-matching t)
+    (setq ido-everywhere t)
+    (setq ido-max-directory-size 1000000)
+    (setq ido-default-buffer-method 'selected-window)
+    (setq ido-save-directory-list-file "~/.emacs.d/tmp/ido.last")
+    (ido-mode t)))
+
+
+(use-package ido-ubiquitous
+  :init
+  (progn
+    (ido-ubiquitous-mode t)))
+
 
 (require 'yasnippet)
 (yas/global-mode 1)
 (yas/load-directory "~/.emacs.d/snippets")
 (setq yas/indent-line nil) ;disable yasnippet auto-indent
+(use-package smex
+  :bind
+  (("C-c C-c M-x" . execute-extended-command)
+   ("M-x" . smex)
+   ("M-X" . smex-major-mode-commands))
+  :init
+  (setq smex-save-file "~/.emacs.d/tmp/smex.save"))
+
 
 ;; multilpe cursor don't clutter config dir
 (setq mc/list-file "~/.emacs.d/tmp/multiple-cursors-lists.el")

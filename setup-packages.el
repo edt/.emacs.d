@@ -24,7 +24,6 @@
         ace-jump-mode
         buffer-move
         ack-and-a-half
-        keyfreq
 		browse-kill-ring
         indent-guide
         org

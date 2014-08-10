@@ -32,11 +32,6 @@
 ;; multilpe cursor don't clutter config dir
 (setq mc/list-file "~/.emacs.d/tmp/multiple-cursors-lists.el")
 
-(require 'keyfreq)
-(setq-default keyfreq-file "~/.emacs.d/tmp/keyfreq")
-(keyfreq-mode 1)
-(keyfreq-autosave-mode 1)
-
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 

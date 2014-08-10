@@ -32,8 +32,6 @@
 ;; multilpe cursor don't clutter config dir
 (setq mc/list-file "~/.emacs.d/tmp/multiple-cursors-lists.el")
 
-(require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
 
 (require 'window-number)
 (window-number-mode t)
@@ -148,6 +146,12 @@
 
 (add-to-list 'auto-mode-alist '("bashrc\\'" . shell-script-mode))
 (add-to-list 'auto-mode-alist '("bash_aliases\\'" . shell-script-mode))
+
+(use-package expand-region
+  :defer t
+  :bind
+  (("C-'" . er/expand-region)
+   ("C-;" . er/contract-region)))
 
 
 ;; saner ediff default

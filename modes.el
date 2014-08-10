@@ -189,5 +189,10 @@
 (global-flycheck-mode)
 ;; disable the annoying doc checker
 (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+(use-package fic-ext-mode
+  :defer t
+  :init
+  (fic-ext-mode))
+
 
 (provide 'modes)

@@ -28,6 +28,8 @@
 ;; Assure needed directories are present
 (make-directory user-cache-directory t)
 
+(require 'use-package)
+
 ;; Load the following configuration files
 (require 'functions)
 (require 'file-functions)

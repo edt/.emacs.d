@@ -29,6 +29,7 @@
         indent-guide
         org
         use-package
+        fic-ext-mode
         ))
 
 

@@ -42,7 +42,6 @@
 (require 'setup-modeline)
 (require 'setup-navigation)
 (require 'setup-debugging)
-(require 'setup-magit)
 (require 'setup-terminal)
 (require 'setup-org)
 

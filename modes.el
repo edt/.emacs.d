@@ -93,18 +93,6 @@
             (local-set-key (kbd "M-*") 'gtags-pop-stack)));; go back
 
 
-(global-set-key (kbd "M-/") 'hippie-expand)
-
-(setq hippie-expand-try-functions-list '(try-expand-dabbrev
-                                         try-expand-dabbrev-all-buffers
-                                         try-expand-dabbrev-from-kill
-                                         try-complete-file-name-partially
-                                         try-complete-file-name
-                                         try-expand-all-abbrevs
-                                         try-expand-list
-                                         try-expand-line
-                                         try-complete-lisp-symbol-partially
-                                         try-complete-lisp-symbol))
 
 (require 'browse-kill-ring)
 (global-set-key (kbd "C-c k") 'browse-kill-ring)
@@ -140,6 +128,24 @@
   (("C-'" . er/expand-region)
    ("C-;" . er/contract-region)))
 
+
+
+(use-package hippie-exp
+  :defer t
+  :bind
+  ("M-/" . hippie-expand)
+  :init
+  (progn
+    (setq hippie-expand-try-functions-list '(try-expand-dabbrev
+                                             try-expand-dabbrev-all-buffers
+                                             try-expand-dabbrev-from-kill
+                                             try-complete-file-name-partially
+                                             try-complete-file-name
+                                             try-expand-all-abbrevs
+                                             try-expand-list
+                                             try-expand-line
+                                             try-complete-lisp-symbol-partially
+                                             try-complete-lisp-symbol))))
 
 
 (use-package revive+

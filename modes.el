@@ -45,10 +45,6 @@
 (setq mc/list-file "~/.emacs.d/tmp/multiple-cursors-lists.el")
 
 
-(require 'window-number)
-(window-number-mode t)
-(window-number-meta-mode)
-
 (require 'wgrep)
 
 (require 'uniquify)
@@ -59,6 +55,11 @@
 
 
 
+(use-package window-number
+  :init
+  (progn
+    (window-number-meta-mode)
+    (window-number-mode t)))
 
 
 

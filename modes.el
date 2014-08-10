@@ -60,8 +60,6 @@
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
-(require 'smartparens-config)
-(smartparens-global-mode t)
 
 
 
@@ -80,6 +78,11 @@
 
 
 
+(use-package smartparens-config
+  :defer t
+  :diminish smartparens-mode
+  :init
+  (smartparens-global-mode t))
 
 
 (autoload 'markdown-mode "markdown-mode"

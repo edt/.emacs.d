@@ -17,25 +17,14 @@
 ;; display file-size
 (setq size-indication-mode t)
 
-(require 'smart-mode-line)
-
-(setq sml/name-width 30)
-(setq sml/mode-width 20)
-(setq sml/shorten-directory t)
-(setq sml/shorten-modes t)
-(setq sml/mode-width 'full)
-
-(add-to-list 'sml/hidden-modes " Rbow")
-(add-to-list 'sml/hidden-modes " Projectile")
-(add-to-list 'sml/hidden-modes " ,")
-(add-to-list 'sml/hidden-modes " SP")
-(add-to-list 'sml/hidden-modes " hs")
-(add-to-list 'sml/hidden-modes " MRev")
-(add-to-list 'sml/hidden-modes " yas")
-(add-to-list 'sml/hidden-modes " ing")
-(add-to-list 'sml/hidden-modes " Guide")
-(add-to-list 'sml/hidden-modes " AC")
-
-(sml/setup)
+(use-package smart-mode-line
+  :init
+  (progn
+    (setq sml/name-width 30)
+    (setq sml/mode-width 20)
+    (setq sml/shorten-directory t)
+    (setq sml/shorten-modes t)
+    (setq sml/mode-width 'full)
+    (sml/setup)))
 
 (provide 'setup-modeline)

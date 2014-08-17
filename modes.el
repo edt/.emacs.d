@@ -102,12 +102,17 @@
 (add-to-list 'auto-mode-alist '("bashrc\\'" . shell-script-mode))
 (add-to-list 'auto-mode-alist '("bash_aliases\\'" . shell-script-mode))
 
+
 (use-package expand-region
-(use-package highlight-symbol
   :defer t
   :bind
   (("C-'" . er/expand-region)
    ("C-;" . er/contract-region)))
+
+
+(use-package highlight-symbol
+  :defer t
+  :bind
   (( "C-<f3>" . highlight-symbol-at-point)
    ( "<f3>" . highlight-symbol-next)
    ( "S-<f3>" . highlight-symbol-prev)

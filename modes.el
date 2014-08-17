@@ -434,4 +434,10 @@
    ("C-z m ," . emms-previous)))
 
 
+(use-package doxymacs
+  :init
+  (progn
+    (doxymacs-mode t)
+    (doxymacs-font-lock t)))
+
 (provide 'modes)

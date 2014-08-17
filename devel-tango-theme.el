@@ -4,6 +4,9 @@
 (custom-theme-set-faces
  'devel-tango
  '(cursor ((t (:background "#fce94f"))))
+ '(company-scrollbar-bg ((t (:inherit company-tooltip :background "black"))))
+ '(company-scrollbar-fg ((t (:background "dim gray"))))
+ '(company-tooltip ((t (:background "gray40" :foreground "black"))))
  '(cperl-array-face ((t (:foreground "yellow" :weight bold))) t)
  '(cperl-hash-face ((t (:foreground "Red" :slant italic :weight bold))) t)
  '(fixed-pitch ((t (:family "Monospace"))))

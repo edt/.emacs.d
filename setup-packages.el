@@ -29,6 +29,7 @@
         org
         use-package
         fic-ext-mode
+        emms
         ))
 
 

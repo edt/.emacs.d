@@ -413,4 +413,25 @@
    ("C-z t c" . timeclock-change)
    ("C-z t r" . timeclock-reread-log)))
 
+
+(use-package emms
+  :init
+  (progn
+    (require 'emms-setup)
+    (emms-standard)
+    (emms-default-players)
+    (add-hook 'emms-player-started-hook 'emms-show)
+    (setq emms-show-format "NP: %s")
+
+    ;; When asked for emms-play-directory,
+    ;; always start from this one
+    ;; (setq emms-source-file-default-directory "/media/data/misc")
+    )
+  :bind
+  (("C-z m m" . emms)
+   ("C-z m SPC" . emms-pause)
+   ("C-z m ." . emms-next)
+   ("C-z m ," . emms-previous)))
+
+
 (provide 'modes)

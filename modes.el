@@ -406,4 +406,11 @@
     (add-hook 'c-mode-hook 'edt-irony-hook)))
 
 
+(use-package timeclock
+  :bind
+  (("C-z t i" . timeclock-in)
+   ("C-z t o" . timeclock-out)
+   ("C-z t c" . timeclock-change)
+   ("C-z t r" . timeclock-reread-log)))
+
 (provide 'modes)

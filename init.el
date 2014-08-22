@@ -33,10 +33,11 @@
 ;; Load the following configuration files
 (require 'functions)
 (require 'file-functions)
+
+(require 'keybindings)
 (require 'modes)
 (require 'programming)
 (require 'compilation)
-(require 'keybindings)
 
 (require 'setup-session)
 (require 'setup-modeline)

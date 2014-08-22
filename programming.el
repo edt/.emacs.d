@@ -32,6 +32,8 @@
               c-indent-level 4
               tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60))
 
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
 ;; Perl section
 
 (defalias 'perl-mode 'cperl-mode)

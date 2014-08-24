@@ -45,10 +45,6 @@
 (setq mc/list-file "~/.emacs.d/tmp/multiple-cursors-lists.el")
 
 
-(require 'wgrep)
-
-
-
 
 
 

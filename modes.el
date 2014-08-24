@@ -7,13 +7,15 @@
     (setq ido-max-directory-size 1000000)
     (setq ido-default-buffer-method 'selected-window)
     (setq ido-save-directory-list-file "~/.emacs.d/tmp/ido.last")
-    (ido-mode t)))
+    (ido-mode t)
 
 
-(use-package ido-ubiquitous
-  :init
-  (progn
-    (ido-ubiquitous-mode t)))
+    (use-package ido-ubiquitous
+      :init
+      (progn
+        (ido-ubiquitous-mode t)))
+
+    ))
 
 
 (require 'yasnippet)

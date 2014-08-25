@@ -36,18 +36,13 @@
   :init
   (progn
     (setq multi-term-program "/bin/bash")))
-;; (eval-after-load "yasnippet"
-;; '(progn
-;; (yas/global-mode 1)
-;; (yas/load-directory "~/.emacs.d/snippets")
-;; ;; disable yasnippet auto-indent
-;; (setq yas/indent-line nil)
-;; ))
-;; multilpe cursor don't clutter config dir
-(setq mc/list-file "~/.emacs.d/tmp/multiple-cursors-lists.el")
 
 
-
+(use-package multiple-cursors
+  :init
+  (progn
+    ;; multilpe cursor don't clutter config dir
+    (setq mc/list-file "~/.emacs.d/tmp/multiple-cursors-lists.el")))
 
 
 (use-package window-number

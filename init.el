@@ -13,7 +13,6 @@
           '(lambda () (setq debug-on-error t)))
 
 ;; load-path additions
-(add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
 
 ;; Save comstum stuff in own file

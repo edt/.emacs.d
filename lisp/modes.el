@@ -22,6 +22,7 @@
 (yas/global-mode 1)
 (yas/load-directory "~/.emacs.d/snippets")
 (setq yas/indent-line nil) ;disable yasnippet auto-indent
+
 (use-package smex
   :bind
   (("C-c C-c M-x" . execute-extended-command)
@@ -76,7 +77,7 @@
 
 
 (use-package smartparens-config
-  :defer t
+  ;; :defer t
   :diminish smartparens-mode
   :init
   (smartparens-global-mode t))
@@ -116,33 +117,49 @@
   :defer t
   :init
   (progn
-    ;; CC-MODE
-    (defun gtags-generate-gtags ()
-      "Generate a gtags file in the querried directory"
-      (let* ((proj-root (read-directory-name "Root of the project: "))
-             (cmd (format "cd %s ; gtags" (expand-file-name proj-root))))
-        (when (not (string= "" proj-root))
-          (message (format "Generating gtags files: %s" cmd))
-          (shell-command cmd))))
+    ;; ;; CC-MODE
+    ;; (defun gtags-generate-gtags ()
+    ;;   "Generate a gtags file in the querried directory"
+    ;;   (let* ((proj-root (read-directory-name "Root of the project: "))
+    ;;          (cmd (format "cd %s ; gtags" (expand-file-name proj-root))))
+    ;;     (when (not (string= "" proj-root))
+    ;;       (message (format "Generating gtags files: %s" cmd))
+    ;;       (shell-command cmd))))
 
-    (defun gtags-update-gtags ()
-      "Update the gtags files"
-      (let ((gen-cmd "global -u"))
-        (message (format "Updating gatgs files: %s" gen-cmd))
-        (shell-command gen-cmd)))
+    ;; (defun gtags-update-gtags ()
+    ;;   "Update the gtags files"
+    ;;   (let ((gen-cmd "global -u"))
+    ;;     (message (format "Updating gatgs files: %s" gen-cmd))
+    ;;     (shell-command gen-cmd)))
 
-    (defun gtags-generate-or-update ()
-      "If you can update the gtags files. If not generate them."
-      (interactive)
-      (if (null (gtags-get-rootpath))
-          (gtags-generate-gtags)
-        (gtags-update-gtags)))
+    ;; (defun gtags-generate-or-update ()
+    ;;   "If you can update the gtags files. If not generate them."
+    ;;   (interactive)
+    ;;   (if (null (gtags-get-rootpath))
+    ;;       (gtags-generate-gtags)
+    ;;     (gtags-update-gtags)))
 
-    (add-hook 'gtags-mode-hook
-              (lambda()
-                (local-set-key (kbd "M-.") 'gtags-find-tag) ;; find a tag, also M-.
-                (local-set-key (kbd "M-,") 'gtags-find-rtag) ;; reverse tag
-                (local-set-key (kbd "M-*") 'gtags-pop-stack)));; go back
+    ;; (add-hook 'gtags-mode-hook
+    ;;           (lambda()
+    ;;             (local-set-key (kbd "M-.") 'gtags-find-tag) ;; find a tag, also M-.
+    ;;             (local-set-key (kbd "M-,") 'gtags-find-rtag) ;; reverse tag
+    ;;             (local-set-key (kbd "M-*") 'gtags-pop-stack)));; go back
+
+    ;; (add-hook 'c-mode-common-hook
+    ;;           (lambda ()
+    ;;             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+    ;;               (ggtags-mode 1))))
+
+    ;; (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
+    ;; (define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
+    ;; (define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
+    ;; (define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
+    ;; (define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
+    ;; (define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
+
+    ;; (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
+
+    
     ))
 
 (use-package hippie-exp
@@ -276,7 +293,7 @@
 
 
 (use-package fold-dwim
-  :defer t
+  ;; :defer t
   :diminish hs-minor-mode
   :bind
   ("C-c h" . fold-dwim-toggle)
@@ -328,11 +345,12 @@
     ))
 
 (use-package fic-ext-mode
-  :defer t
+  ;; :defer t
   :init
   (progn
     (fic-ext-mode)
     '(fic-highlighted-words (quote ("FIXME:" "TODO:" "BUG:" "REDFLAG:")))))
+
 
 (use-package auto-complete
   :diminish auto-complete-mode
@@ -368,8 +386,41 @@
   :bind
   ("C-<return>" . ac-complete))
 
-(semantic-mode)
-(add-to-list 'ac-sources 'ac-source-semantic)
+
+(use-package semantic-mode
+  :init
+  (progn
+    (global-semanticdb-minor-mode 1)
+    (global-semantic-idle-scheduler-mode 1)
+    (semantic-mode 1)
+    
+    (add-to-list 'ac-sources 'ac-source-semantic)
+    ))
+
+
+;; (use-package auto-complete-clang
+;;   :init
+;;   (progn
+;;     (defun my-ac-cc-mode-setup ()
+;;       (setq ac-sources (append '(ac-source-clang ac-source-yasnippet) ac-sources)))
+;;     (add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)))
+
+;; (use-package auto-clang-complete-async
+;;   :init
+;;   (progn
+;;     (defun ac-cc-mode-setup ()
+;;       (setq ac-clang-complete-executable "~/.emacs.d/clang-complete")
+;;       (setq ac-sources '(ac-source-clang-async))
+;;       (ac-clang-launch-completion-process)
+;;       )
+
+;;     (defun my-ac-config ()
+;;       (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+;;       (add-hook 'auto-complete-mode-hook 'ac-common-setup)
+;;       (global-auto-complete-mode t))
+
+;;     (my-ac-config)
+;;     ))
 
 
 (use-package irony
@@ -390,21 +441,36 @@
       (setq irony-compile-flags nil)
       (irony-start-process-maybe))
 
-    (defun edt-irony-hook ()
-      "irony related hooks"
-      (irony-mode 1)
-      (irony-enable 'ac))
+    ;; (defun edt-irony-hook ()
+    ;;   "irony related hooks"
+    ;;   (irony-mode 1)
+    ;;   (irony-enable 'ac))
 
-    (add-hook 'c++-mode-hook 'edt-irony-hook)
-    (add-hook 'c-mode-hook 'edt-irony-hook)))
+    ;; (add-hook 'c++-mode-hook 'edt-irony-hook)
+    ;; (add-hook 'c-mode-hook 'edt-irony-hook)
+
+    (add-hook 'c++-mode-hook 'irony-mode)
+    (add-hook 'c-mode-hook 'irony-mode)
+    (add-hook 'objc-mode-hook 'irony-mode)
+
+    ;; replace the `completion-at-point' and `complete-symbol' bindings in
+    ;; irony-mode's buffers by irony-mode's function
+    (defun my-irony-mode-hook ()
+      (define-key irony-mode-map [remap completion-at-point]
+        'irony-completion-at-point-async)
+      (define-key irony-mode-map [remap complete-symbol]
+        'irony-completion-at-point-async))
+    (add-hook 'irony-mode-hook 'my-irony-mode-hook)
+    ))
 
 
-(use-package timeclock
-  :bind
-  (("C-z t i" . timeclock-in)
-   ("C-z t o" . timeclock-out)
-   ("C-z t c" . timeclock-change)
-   ("C-z t r" . timeclock-reread-log)))
+
+;; (use-package timeclock
+;;   :bind
+;;   (("C-z t i" . timeclock-in)
+;;    ("C-z t o" . timeclock-out)
+;;    ("C-z t c" . timeclock-change)
+;;    ("C-z t r" . timeclock-reread-log)))
 
 
 (use-package emms
@@ -432,5 +498,61 @@
   (progn
     (doxymacs-mode t)
     (doxymacs-font-lock t)))
+
+
+
+;; (use-package company
+;;   :disabled t
+;;   :init
+;;   (progn
+;;     (setq company-backends '(company-elisp
+;;                              company-ropemacs
+;;                              company-gtags
+;;                              company-dabbrev-code
+;;                              company-keywords
+;;                              company-files
+;;                              company-dabbrev
+;;                              company-clang))
+
+;;     (setq company-idle-delay 0.3)
+;;     (setq company-tooltip-limit 20)
+;;     (setq company-minimum-prefix-length 2)
+;;     (setq company-echo-delay 0)
+;;     (setq company-auto-complete nil)
+
+
+;;     (use-package company-irony
+;;       :init
+;;       (progn
+
+;;         (eval-after-load 'company
+;;           '(add-to-list 'company-backends 'company-irony))
+
+;;         ;; (optional) adds CC special commands to `company-begin-commands' in order to
+;;         ;; trigger completion at interesting places, such as after scope operator
+;;         ;; std::|
+;;         (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+;;         ))
+
+;;     (use-package company-c-headers
+;;       :init
+;;       (progn
+;;         '(add-to-list 'company-backends 'company-c-headers)
+;;         ))
+
+;;     (global-company-mode))
+;;   :bind
+;;   ("C-<return>" . company-complete))
+
+
+(use-package cmake-mode
+  :init
+  ())
+
+;; (use-package rtags)
+
+;; (use-package cmake-ide
+;;   :init
+;;   (cmake-ide-setup))
 
 (provide 'modes)

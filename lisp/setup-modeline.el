@@ -20,6 +20,7 @@
 (use-package smart-mode-line
   :init
   (progn
+    (setq sml/no-confirm-load-theme t)
     (setq sml/name-width 30)
     (setq sml/mode-width 20)
     (setq sml/shorten-directory t)

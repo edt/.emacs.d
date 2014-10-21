@@ -30,6 +30,8 @@
         use-package
         fic-ext-mode
         emms
+        rtags
+        cmake-ide
         ))
 
 

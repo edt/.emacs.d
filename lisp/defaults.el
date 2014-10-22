@@ -83,4 +83,7 @@
 
 (fringe-mode 8)
 
+;;no extra whitespace after lines
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 (provide 'defaults)

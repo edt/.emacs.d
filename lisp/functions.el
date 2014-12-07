@@ -1,10 +1,4 @@
 
-(defun fullscreen ()
-  "Tells Window Manager to toggle fullscreen mode"
-  (interactive)
-  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                         '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
-
 
 ;; source https://github.com/milkypostman/dotemacs/blob/master/init.el
 (defun duplicate-line-or-region (arg)

@@ -19,9 +19,6 @@
 (global-set-key (kbd "C-z") 'user-shortcut-map)
 (global-set-key (kbd "C-z d") 'duplicate-line-or-region)
 
-;; Keybinding to allow fullscreen operations
-(global-set-key [f11] 'fullscreen)
-
 ;;make delete button actually delete
 (global-set-key [delete] 'delete-char)
 

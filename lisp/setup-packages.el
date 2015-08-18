@@ -9,7 +9,6 @@
         yasnippet
         auto-complete
         browse-kill-ring
-        magit
         elpy
         highlight-symbol
         smartparens
@@ -24,7 +23,6 @@
         ace-jump-mode
         buffer-move
         ack-and-a-half
-        browse-kill-ring
         indent-guide
         org
         use-package

@@ -84,6 +84,7 @@
       '(el-get              ; el-get is self-hosting
         irony-mode
         revive-plus
+        doxymacs
 ))
 
 ;; install new packages and init already installed packages

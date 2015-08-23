@@ -352,39 +352,39 @@
     '(fic-highlighted-words (quote ("FIXME:" "TODO:" "BUG:" "REDFLAG:")))))
 
 
-(use-package auto-complete
-  :diminish auto-complete-mode
-  :defer t
-  :init
-  (progn
-    (use-package auto-complete-config)
-    (ac-config-default)
-    (setq ac-use-menu-map t)
+;; (use-package auto-complete
+;;   :diminish auto-complete-mode
+;;   :defer t
+;;   :init
+;;   (progn
+;;     (use-package auto-complete-config)
+;;     (ac-config-default)
+;;     (setq ac-use-menu-map t)
 
-    (setq ac-dwim t)
-    (setq ac-use-menu-map t)
+;;     (setq ac-dwim t)
+;;     (setq ac-use-menu-map t)
 
-    ;; (setq ac-delay 0.3)
-    (setq ac-use-quick-help t)
-    (setq ac-quick-help-delay 0.5)
+;;     ;; (setq ac-delay 0.3)
+;;     (setq ac-use-quick-help t)
+;;     (setq ac-quick-help-delay 0.5)
 
-    ;; Default settings
-    (define-key ac-menu-map "\C-n" 'ac-next)
-    (define-key ac-menu-map "\C-p" 'ac-previous)
+;;     ;; Default settings
+;;     (define-key ac-menu-map "\C-n" 'ac-next)
+;;     (define-key ac-menu-map "\C-p" 'ac-previous)
 
-    (define-key ac-completing-map "\C-m" nil)
-    (define-key ac-menu-map "\C-m" 'ac-complete)
+;;     (define-key ac-completing-map "\C-m" nil)
+;;     (define-key ac-menu-map "\C-m" 'ac-complete)
 
-    (setq ac-sources '(ac-source-filename
-                       ac-source-yasnippet
-                       ac-source-abbrev
-                       ac-source-dictionary
-                       ac-source-words-in-same-mode-buffers))
+;;     (setq ac-sources '(ac-source-filename
+;;                        ac-source-yasnippet
+;;                        ac-source-abbrev
+;;                        ac-source-dictionary
+;;                        ac-source-words-in-same-mode-buffers))
 
-    (global-auto-complete-mode t)
-    )
-  :bind
-  ("C-<return>" . ac-complete))
+;;     (global-auto-complete-mode t)
+;;     )
+;;   :bind
+;;   ("C-<return>" . ac-complete))
 
 
 (use-package semantic-mode
@@ -501,38 +501,37 @@
 
 
 
-;; (use-package company
-;;   :disabled t
-;;   :init
-;;   (progn
-;;     (setq company-backends '(company-elisp
-;;                              company-ropemacs
-;;                              company-gtags
-;;                              company-dabbrev-code
-;;                              company-keywords
-;;                              company-files
-;;                              company-dabbrev
-;;                              company-clang))
+(use-package company
+  :init
+  (progn
+    (setq company-backends '(company-elisp
+                             company-ropemacs
+                             company-gtags
+                             company-dabbrev-code
+                             company-keywords
+                             company-files
+                             company-dabbrev
+                             company-clang))
 
-;;     (setq company-idle-delay 0.3)
-;;     (setq company-tooltip-limit 20)
-;;     (setq company-minimum-prefix-length 2)
-;;     (setq company-echo-delay 0)
-;;     (setq company-auto-complete nil)
+    (setq company-idle-delay 0.3)
+    (setq company-tooltip-limit 20)
+    (setq company-minimum-prefix-length 2)
+    (setq company-echo-delay 0)
+    (setq company-auto-complete nil)
 
 
-;;     (use-package company-irony
-;;       :init
-;;       (progn
+    (use-package company-irony
+      :init
+      (progn
 
-;;         (eval-after-load 'company
-;;           '(add-to-list 'company-backends 'company-irony))
+        (eval-after-load 'company
+          '(add-to-list 'company-backends 'company-irony))
 
-;;         ;; (optional) adds CC special commands to `company-begin-commands' in order to
-;;         ;; trigger completion at interesting places, such as after scope operator
-;;         ;; std::|
-;;         (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-;;         ))
+        ;; (optional) adds CC special commands to `company-begin-commands' in order to
+        ;; trigger completion at interesting places, such as after scope operator
+        ;; std::|
+        (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+        ))
 
 ;;     (use-package company-c-headers
 ;;       :init
@@ -540,9 +539,9 @@
 ;;         '(add-to-list 'company-backends 'company-c-headers)
 ;;         ))
 
-;;     (global-company-mode))
-;;   :bind
-;;   ("C-<return>" . company-complete))
+    (global-company-mode))
+  :bind
+  ("C-<return>" . company-complete))
 
 
 (use-package cmake-mode

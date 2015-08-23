@@ -33,6 +33,7 @@
         go-mode
         go-eldoc
         company-irony
+        company
         ))
 
 

@@ -312,18 +312,12 @@
   :defer t
   :config
   (progn
-    (defadvice magit-status (around magit-fullscreen activate)
-      (window-configuration-to-register :magit-fullscreen)
-      ad-do-it
-      (delete-other-windows))
 
-    (defun magit-quit-session ()
-      "Restores the previous window configuration and kills the magit buffer"
-      (interactive)
-      (kill-buffer)
-      (jump-to-register :magit-fullscreen))
-
-    (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
+    (setq magit-restore-window-configuration t) ; that's the default actually
+    (setq magit-status-buffer-switch-function
+          (lambda (buffer) ; there might already be an Emacs function which does this
+            (pop-to-buffer buffer)
+            (delete-other-windows)))
 
     (defun magit-toggle-whitespace ()
       (interactive)
@@ -342,6 +336,8 @@
       (magit-refresh))
 
     (define-key magit-status-mode-map (kbd "W") 'magit-toggle-whitespace)
+
+    (setq diff-switches "-u")
     ))
 
 (use-package fic-ext-mode

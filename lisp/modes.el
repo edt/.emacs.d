@@ -544,10 +544,10 @@
   :init
   ())
 
-;; (use-package rtags)
 
-;; (use-package cmake-ide
-;;   :init
-;;   (cmake-ide-setup))
+(add-to-list 'auto-mode-alist '(".*mutt.*" . mail-mode))
+(add-hook 'mail-mode-hook 'turn-on-auto-fill)
+
+
 
 (provide 'modes)

@@ -7,7 +7,6 @@
         ido-ubiquitous
         magit
         yasnippet
-        auto-complete
         browse-kill-ring
         elpy
         highlight-symbol
@@ -24,7 +23,7 @@
         buffer-move
         ack-and-a-half
         indent-guide
-        org
+        ;; org
         use-package
         fic-ext-mode
         emms
@@ -34,6 +33,9 @@
         go-eldoc
         company-irony
         company
+        company-c-headers
+        dired+
+        window-number
         ))
 
 
@@ -86,6 +88,7 @@
         irony-mode
         revive-plus
         doxymacs
+        rtags
 ))
 
 ;; install new packages and init already installed packages

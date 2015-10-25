@@ -18,10 +18,14 @@
     ))
 
 
-(require 'yasnippet)
-(yas/global-mode 1)
-(yas/load-directory "~/.emacs.d/snippets")
-(setq yas/indent-line nil) ;disable yasnippet auto-indent
+(use-package yasnippet
+  :diminish yas-minor-mode
+  :init
+  (progn
+    (setq yas-load-directory "~/.emacs.d/snippets")
+    (setq yas-indent-line nil) ;disable yasnippet auto-indent
+    (yas-global-mode 1)))
+
 
 (use-package smex
   :bind

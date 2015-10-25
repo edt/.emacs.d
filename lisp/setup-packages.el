@@ -36,6 +36,7 @@
         company-c-headers
         dired+
         window-number
+        cmake-mode
         ))
 
 

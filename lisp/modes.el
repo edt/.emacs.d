@@ -44,6 +44,7 @@
 
 
 (use-package multiple-cursors
+  :defer t
   :init
   (progn
     ;; multilpe cursor don't clutter config dir
@@ -81,7 +82,7 @@
 
 
 (use-package smartparens-config
-  ;; :defer t
+  :defer t
   :diminish smartparens-mode
   :init
   (smartparens-global-mode t))
@@ -297,7 +298,7 @@
 
 
 (use-package fold-dwim
-  ;; :defer t
+  :defer t
   :diminish hs-minor-mode
   :bind
   ("C-c h" . fold-dwim-toggle)
@@ -474,6 +475,7 @@
 
 
 (use-package emms
+  :defer t
   :init
   (progn
     (require 'emms-setup)

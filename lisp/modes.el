@@ -123,50 +123,24 @@
   :defer t
   :init
   (progn
-    ;; ;; CC-MODE
-    ;; (defun gtags-generate-gtags ()
-    ;;   "Generate a gtags file in the querried directory"
-    ;;   (let* ((proj-root (read-directory-name "Root of the project: "))
-    ;;          (cmd (format "cd %s ; gtags" (expand-file-name proj-root))))
-    ;;     (when (not (string= "" proj-root))
-    ;;       (message (format "Generating gtags files: %s" cmd))
-    ;;       (shell-command cmd))))
+     (add-hook 'c-mode-common-hook
+              (lambda ()
+                (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+                  (ggtags-mode 1))))
 
-    ;; (defun gtags-update-gtags ()
-    ;;   "Update the gtags files"
-    ;;   (let ((gen-cmd "global -u"))
-    ;;     (message (format "Updating gatgs files: %s" gen-cmd))
-    ;;     (shell-command gen-cmd)))
+    (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
 
-    ;; (defun gtags-generate-or-update ()
-    ;;   "If you can update the gtags files. If not generate them."
-    ;;   (interactive)
-    ;;   (if (null (gtags-get-rootpath))
-    ;;       (gtags-generate-gtags)
-    ;;     (gtags-update-gtags)))
+    )
+  :bind
+  ( ( "C-c g s" . ggtags-find-other-symbol)
+    ( "C-c g h" . ggtags-view-tag-history)
+    ( "C-c g r" . ggtags-find-reference)
+    ( "C-c g f" . ggtags-find-file)
+    ( "C-c g c" . ggtags-create-tags)
+    ( "C-c g u" . ggtags-update-tags)
 
-    ;; (add-hook 'gtags-mode-hook
-    ;;           (lambda()
-    ;;             (local-set-key (kbd "M-.") 'gtags-find-tag) ;; find a tag, also M-.
-    ;;             (local-set-key (kbd "M-,") 'gtags-find-rtag) ;; reverse tag
-    ;;             (local-set-key (kbd "M-*") 'gtags-pop-stack)));; go back
-
-    ;; (add-hook 'c-mode-common-hook
-    ;;           (lambda ()
-    ;;             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
-    ;;               (ggtags-mode 1))))
-
-    ;; (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
-    ;; (define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
-    ;; (define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
-    ;; (define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
-    ;; (define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
-    ;; (define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
-
-    ;; (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
-
-    
-    ))
+   )
+  )
 
 (use-package hippie-exp
   :defer t

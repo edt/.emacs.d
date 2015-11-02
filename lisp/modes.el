@@ -553,6 +553,12 @@
 (add-to-list 'auto-mode-alist '(".*mutt.*" . mail-mode))
 (add-hook 'mail-mode-hook 'turn-on-auto-fill)
 
+(use-package which-key
+  :defer t
+  :diminish which-key-mode
+  :init
+  (progn
+    (which-key-mode t)))
 
 
 (provide 'modes)

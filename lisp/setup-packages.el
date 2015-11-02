@@ -37,6 +37,7 @@
         dired+
         window-number
         cmake-mode
+        whick-key
         ))
 
 

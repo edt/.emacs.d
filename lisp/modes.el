@@ -348,6 +348,7 @@
 
 (use-package fic-ext-mode
   ;; :defer t
+  :diminish fic-ext-mode
   :init
   (progn
     (fic-ext-mode)

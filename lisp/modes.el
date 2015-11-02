@@ -547,7 +547,7 @@
 
 
 (use-package cmake-mode
-  :mode "\\.cmake\\'"
+  :mode "\\.cmake\\'")
 
 
 (add-to-list 'auto-mode-alist '(".*mutt.*" . mail-mode))

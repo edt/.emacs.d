@@ -497,11 +497,11 @@
    ("C-z m ," . emms-previous)))
 
 
-(use-package doxymacs
-  :init
-  (progn
-    (doxymacs-mode t)
-    (doxymacs-font-lock t)))
+;; (use-package doxymacs
+;;   :init
+;;   (progn
+;;     (doxymacs-mode t)
+;;     (doxymacs-font-lock t)))
 
 (require 'rtags)
 (setq rtags-completions-enabled t)

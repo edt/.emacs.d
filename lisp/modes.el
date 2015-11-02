@@ -111,6 +111,7 @@
 
 (use-package highlight-symbol
   :defer t
+  :diminish hs-minor-mode
   :bind
   (( "C-<f3>" . highlight-symbol-at-point)
    ( "<f3>" . highlight-symbol-next)

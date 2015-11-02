@@ -501,6 +501,15 @@
     (doxymacs-mode t)
     (doxymacs-font-lock t)))
 
+(require 'rtags)
+(setq rtags-completions-enabled t)
+(rtags-enable-standard-keybindings c-mode-base-map)
+
+
+(use-package cmake-ide
+  :defer t
+  :init
+  (cmake-ide-setup))
 
 
 (use-package company

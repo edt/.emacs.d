@@ -544,11 +544,14 @@
         (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
         ))
 
-;;     (use-package company-c-headers
-;;       :init
-;;       (progn
-;;         '(add-to-list 'company-backends 'company-c-headers)
-;;         ))
+    (use-package company-c-headers
+      :init
+      (progn
+        '(add-to-list 'company-backends 'company-c-headers)))
+
+    (use-package company-rtags
+      :init
+      (add-to-list 'company-backends 'company-rtags))
 
     (global-company-mode))
   :bind

@@ -388,15 +388,15 @@
 ;;   ("C-<return>" . ac-complete))
 
 
-(use-package semantic-mode
-  :init
-  (progn
-    (global-semanticdb-minor-mode 1)
-    (global-semantic-idle-scheduler-mode 1)
-    (semantic-mode 1)
-    
-    (add-to-list 'ac-sources 'ac-source-semantic)
-    ))
+;; (use-package semantic-mode
+;;   :init
+;;   (progn
+;;     (global-semanticdb-minor-mode 1)
+;;     (global-semantic-idle-scheduler-mode 1)
+;;     (semantic-mode 1)
+
+;;     (add-to-list 'ac-sources 'ac-source-semantic)
+;;     ))
 
 
 ;; (use-package auto-complete-clang

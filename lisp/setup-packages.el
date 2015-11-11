@@ -8,7 +8,7 @@
         magit
         yasnippet
         browse-kill-ring
-        elpy
+        ;; elpy
         highlight-symbol
         smartparens
         markdown-mode
@@ -38,6 +38,8 @@
         window-number
         cmake-mode
         whick-key
+        anaconda-mode
+        company-anaconda
         ))
 
 

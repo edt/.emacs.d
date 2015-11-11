@@ -487,6 +487,11 @@
   :init
   (cmake-ide-setup))
 
+(use-package anaconda-mode
+  :commands anaconda-mode
+  :diminish anaconda-mode
+  :config (add-hook 'python-mode-hook 'anaconda-mode))
+
 
 (use-package company
   :init
@@ -528,6 +533,9 @@
     (use-package company-rtags
       :init
       (add-to-list 'company-backends 'company-rtags))
+
+    (use-package company-anaconda
+      :config (add-to-list 'company-backends 'company-anaconda))
 
     (global-company-mode))
   :bind

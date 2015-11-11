@@ -1,3 +1,6 @@
+
+(setq gc-cons-threshold 100000000)
+
 (set-frame-font "Monospace-11" t t)
 
 (blink-cursor-mode -1)

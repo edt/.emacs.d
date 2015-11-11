@@ -139,8 +139,8 @@
     ( "C-c g c" . ggtags-create-tags)
     ( "C-c g u" . ggtags-update-tags)
 
-   )
-  )
+   ))
+
 
 (use-package hippie-exp
   :defer t
@@ -329,77 +329,6 @@
     '(fic-highlighted-words (quote ("FIXME:" "TODO:" "BUG:" "REDFLAG:")))))
 
 
-;; (use-package auto-complete
-;;   :diminish auto-complete-mode
-;;   :defer t
-;;   :init
-;;   (progn
-;;     (use-package auto-complete-config)
-;;     (ac-config-default)
-;;     (setq ac-use-menu-map t)
-
-;;     (setq ac-dwim t)
-;;     (setq ac-use-menu-map t)
-
-;;     ;; (setq ac-delay 0.3)
-;;     (setq ac-use-quick-help t)
-;;     (setq ac-quick-help-delay 0.5)
-
-;;     ;; Default settings
-;;     (define-key ac-menu-map "\C-n" 'ac-next)
-;;     (define-key ac-menu-map "\C-p" 'ac-previous)
-
-;;     (define-key ac-completing-map "\C-m" nil)
-;;     (define-key ac-menu-map "\C-m" 'ac-complete)
-
-;;     (setq ac-sources '(ac-source-filename
-;;                        ac-source-yasnippet
-;;                        ac-source-abbrev
-;;                        ac-source-dictionary
-;;                        ac-source-words-in-same-mode-buffers))
-
-;;     (global-auto-complete-mode t)
-;;     )
-;;   :bind
-;;   ("C-<return>" . ac-complete))
-
-
-;; (use-package semantic-mode
-;;   :init
-;;   (progn
-;;     (global-semanticdb-minor-mode 1)
-;;     (global-semantic-idle-scheduler-mode 1)
-;;     (semantic-mode 1)
-
-;;     (add-to-list 'ac-sources 'ac-source-semantic)
-;;     ))
-
-
-;; (use-package auto-complete-clang
-;;   :init
-;;   (progn
-;;     (defun my-ac-cc-mode-setup ()
-;;       (setq ac-sources (append '(ac-source-clang ac-source-yasnippet) ac-sources)))
-;;     (add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)))
-
-;; (use-package auto-clang-complete-async
-;;   :init
-;;   (progn
-;;     (defun ac-cc-mode-setup ()
-;;       (setq ac-clang-complete-executable "~/.emacs.d/clang-complete")
-;;       (setq ac-sources '(ac-source-clang-async))
-;;       (ac-clang-launch-completion-process)
-;;       )
-
-;;     (defun my-ac-config ()
-;;       (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-;;       (add-hook 'auto-complete-mode-hook 'ac-common-setup)
-;;       (global-auto-complete-mode t))
-
-;;     (my-ac-config)
-;;     ))
-
-
 (use-package irony
   :init
   (progn
@@ -470,12 +399,6 @@
    ("C-z m ." . emms-next)
    ("C-z m ," . emms-previous)))
 
-
-;; (use-package doxymacs
-;;   :init
-;;   (progn
-;;     (doxymacs-mode t)
-;;     (doxymacs-font-lock t)))
 
 (require 'rtags)
 (setq rtags-completions-enabled t)

@@ -197,7 +197,7 @@
  '(term-color-yellow ((t (:foreground "yellow3" :background "yellow3"))))
  '(term-default-fg-color ((t (:inherit term-color-white))))
  '(term-default-bg-color ((t (:inherit term-color-black))))
-
+ '(compilation-error ((t (:inherit error :foreground "IndianRed1"))))
  '(match ((((class color)
             (min-colors 88)
             (background light))

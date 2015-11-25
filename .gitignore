@@ -6,3 +6,7 @@ elpa/
 tmp/
 newsticker/
 url/
+session*
+emms
+irony/
+eshell/

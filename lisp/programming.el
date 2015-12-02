@@ -38,10 +38,6 @@
 
 (defalias 'perl-mode 'cperl-mode)
 
-;; Python section
-
-(require 'setup-python)
-
 ;; Elisp section
 
 (require 'setup-elisp)

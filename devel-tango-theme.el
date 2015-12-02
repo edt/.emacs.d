@@ -186,7 +186,7 @@
                   (:foreground "grey"))
                  (t (:inverse-video t))))
  '(lazy-highlight ((t (:foreground "#2e3436" :background "#e9b96e"))))
-
+ '(org-level-2 ((t (:inherit outline-2 :foreground "cyan1"))))
  '(term-color-black ((t (:foreground "black" :background "black"))))
  '(term-color-blue ((t (:foreground "#6d85ba" :background "#6d85ba" ))))
  '(term-color-cyan ((t (:foreground "cyan3" :background "cyan3"))))

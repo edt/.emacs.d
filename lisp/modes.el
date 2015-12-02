@@ -414,10 +414,10 @@
   :init
   (cmake-ide-setup))
 
-(use-package anaconda-mode
-  :commands anaconda-mode
-  :diminish anaconda-mode
-  :config (add-hook 'python-mode-hook 'anaconda-mode))
+
+(use-package elpy
+  :init
+  (elpy-enable))
 
 
 (use-package company

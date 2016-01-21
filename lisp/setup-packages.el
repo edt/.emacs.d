@@ -38,6 +38,7 @@
         window-number
         cmake-mode
         whick-key
+        restart-emacs
         ))
 
 

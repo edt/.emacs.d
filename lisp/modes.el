@@ -276,6 +276,12 @@
     (add-hook 'c-mode-hook (lambda () (setq flycheck-clang-language-standard "c99")))))
 
 
+(use-package subword
+  :diminish subword-mode
+  :config
+  (global-subword-mode t))
+
+
 (use-package fold-dwim
   :defer t
   :diminish hs-minor-mode

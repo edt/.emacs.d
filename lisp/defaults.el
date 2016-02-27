@@ -21,8 +21,6 @@
 ;; Stack  minibuffers
 (setq enable-recursive-minibuffers t)
 
-(global-subword-mode t)
-
 ;; Blinking parenthesis
 (setq blink-matching-paren-distance nil)
 

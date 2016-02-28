@@ -4,6 +4,7 @@
   (interactive)
   (message (buffer-file-name))
   (kill-new (file-truename buffer-file-name)))
+(global-set-key (kbd "C-z n") 'show-file-name)
 
 
 (defun make-file-executable ()

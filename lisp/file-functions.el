@@ -57,6 +57,8 @@
         (set-visited-file-name newname)
         (set-buffer-modified-p nil) t))))
 
+(global-set-key (kbd "C-z b") 'move-buffer-file)
+
 
 (defun open-file-at-cursor ()
   "Open the file path under cursor.

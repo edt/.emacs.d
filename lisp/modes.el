@@ -113,6 +113,11 @@
    ("C-;" . er/contract-region)))
 
 
+(use-package rainbow-mode
+  :config
+  (rainbow-mode t))
+
+
 (use-package highlight-symbol
   :defer t
   :diminish hs-minor-mode

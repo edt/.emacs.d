@@ -32,6 +32,10 @@
 
 (require 'use-package)
 
+(global-unset-key (kbd "C-z"))
+(define-prefix-command 'user-shortcut-map)
+(global-set-key (kbd "C-z") 'user-shortcut-map)
+
 ;; Load the following configuration files
 (require 'functions)
 (require 'file-functions)

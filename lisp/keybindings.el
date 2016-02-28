@@ -14,9 +14,6 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; copy line or region
-(global-unset-key (kbd "C-z"))
-(define-prefix-command 'user-shortcut-map)
-(global-set-key (kbd "C-z") 'user-shortcut-map)
 (global-set-key (kbd "C-z d") 'duplicate-line-or-region)
 
 ;;make delete button actually delete

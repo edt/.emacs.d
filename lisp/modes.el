@@ -100,8 +100,10 @@
    ("\\README\\'" . markdown-mode)))
 
 
-(add-to-list 'auto-mode-alist '("bashrc\\'" . shell-script-mode))
-(add-to-list 'auto-mode-alist '("bash_aliases\\'" . shell-script-mode))
+(use-package shell-script-mode
+  :mode
+  (("bashrc\\'" . shell-script-mode)
+   ("bash_aliases\\'" . shell-script-mode)))
 
 
 (use-package expand-region

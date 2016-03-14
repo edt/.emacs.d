@@ -176,6 +176,12 @@
     (revive-plus:minimal-setup)))
 
 
+(use-package restart-emacs
+  :defer t
+  :bind
+  ("C-z r" . restart-emacs))
+
+
 (use-package indent-guide
   :diminish indent-guide-mode
   :init

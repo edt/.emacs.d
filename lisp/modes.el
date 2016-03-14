@@ -92,15 +92,13 @@
   (smartparens-global-mode t))
 
 
-(autoload 'markdown-mode "markdown-mode"
-  "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(use-package markdown-mode
+  :mode
+  (("\\.text\\'" . markdown-mode)
+   ("\\.markdown\\'" . markdown-mode)
+   ("\\.md\\'" . markdown-mode)
+   ("\\README\\'" . markdown-mode)))
 
-;; file associations
-
-(add-to-list 'auto-mode-alist '("\\README\\'" . markdown-mode))
 
 (add-to-list 'auto-mode-alist '("bashrc\\'" . shell-script-mode))
 (add-to-list 'auto-mode-alist '("bash_aliases\\'" . shell-script-mode))

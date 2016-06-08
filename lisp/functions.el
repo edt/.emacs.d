@@ -357,4 +357,13 @@ properly."
   (just-one-space-in-region (point-min) (point-max))
   (indent-buffer))
 
+;; source: http://emacsredux.com/blog/2013/04/28/switch-to-previous-buffer/
+(defun edt/switch-to-previous-buffer ()
+  "Switch to previously open buffer.
+Repeated invocations toggle between the two most recently open buffers."
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
+
+(global-set-key (kbd "C-z o") 'edt/switch-to-previous-buffer)
+
 (provide 'functions)

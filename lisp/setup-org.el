@@ -1,9 +1,14 @@
 
+
 (require 'org)
 (require 'org-clock)
 
 
 (setq org-src-fontify-natively t)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((dot . t))) ; this line activates dot
 
 (setq org-agenda-files '("~/todo.org"))
 

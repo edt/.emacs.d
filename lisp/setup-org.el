@@ -2,6 +2,9 @@
 (require 'org)
 (require 'org-clock)
 
+
+(setq org-src-fontify-natively t)
+
 (setq org-agenda-files '("~/todo.org"))
 
 ;; save clock history across sessions

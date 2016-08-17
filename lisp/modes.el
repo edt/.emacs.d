@@ -312,6 +312,10 @@
     (add-hook 'python-mode-hook 'hs-minor-mode)))
 
 
+(use-package fullframe
+  :defer t
+  :ensure t)
+
 (use-package magit
   :defer t
   :config
@@ -342,6 +346,11 @@
     (define-key magit-status-mode-map (kbd "W") 'magit-toggle-whitespace)
 
     (setq diff-switches "-u")
+
+    ;; magit-status will take all space in frame
+    (fullframe projectile-vc magit-mode-quit-window)
+    (fullframe magit-status magit-mode-quit-window)
+
     ))
 
 (use-package fic-ext-mode

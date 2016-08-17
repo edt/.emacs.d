@@ -39,6 +39,7 @@
         cmake-mode
         whick-key
         restart-emacs
+        fullframe
         ))
 
 

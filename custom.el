@@ -11,6 +11,7 @@
  '(c-basic-offset 4)
  '(cmake-ide-rc-executable "/home/edt/.emacs.d/el-get/rtags/bin/rc")
  '(cmake-ide-rdm-executable "/home/edt/.emacs.d/el-get/rtags/bin/rdm")
+ '(compilation-bookmarks-prefix-key (kbd "C-z c"))
  '(custom-safe-themes
    (quote
     ("38f84e8cd10ba4078b50a46f807be579b8f2e5a350bf3649a50a792fa274f8c7" default)))

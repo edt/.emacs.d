@@ -7,15 +7,17 @@
     (setq ido-max-directory-size 1000000)
     (setq ido-default-buffer-method 'selected-window)
     (setq ido-save-directory-list-file "~/.emacs.d/tmp/ido.last")
-    (ido-mode t)
-
-
+    )
+  :config
+  (progn
     (use-package ido-ubiquitous
-      :init
-      (progn
-        (ido-ubiquitous-mode t)))
+      :config
+      (ido-ubiquitous-mode t))
 
-    ))
+    (use-package ido-grid-mode
+      :config
+      (ido-grid-mode t))
+    (ido-mode t)))
 
 
 (use-package yasnippet
@@ -195,8 +197,9 @@
   (progn
     (setq projectile-cache-file (expand-file-name "projectile.cache" user-cache-directory))
     (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
-    (setq projectile-enable-caching t)
-    (projectile-global-mode t)))
+    (setq projectile-enable-caching t))
+  :config
+  (projectile-global-mode t))
 
 
 (use-package browse-kill-ring

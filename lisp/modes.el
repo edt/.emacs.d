@@ -317,7 +317,6 @@
   :ensure t)
 
 (use-package magit
-  :defer t
   :config
   (progn
 

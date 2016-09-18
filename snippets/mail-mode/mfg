@@ -1,6 +1,9 @@
-# name: Mit freundlichen Grüßen,
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Mit freundlichen Grüßen
 # key: mfg
+# binding: direct-keybinding
 # --
+
 Mit freundlichen Grüßen,
 
-Edgar Thier
+`(user-full-name)`

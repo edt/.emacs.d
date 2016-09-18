@@ -19,14 +19,16 @@
       (ido-grid-mode t))
     (ido-mode t)))
 
-
 (use-package yasnippet
+  :ensure t
   :diminish yas-minor-mode
   :init
+  (yas-global-mode 1)
+  :config
   (progn
-    (setq yas-load-directory "~/.emacs.d/snippets")
     (setq yas-indent-line nil) ;disable yasnippet auto-indent
-    (yas-global-mode 1)))
+    (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets"))))
+
 
 
 (use-package smex

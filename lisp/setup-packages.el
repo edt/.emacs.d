@@ -96,6 +96,7 @@
         revive-plus
         doxymacs
         rtags
+        mu4e
 ))
 
 ;; install new packages and init already installed packages

@@ -40,6 +40,9 @@
         whick-key
         restart-emacs
         fullframe
+        bbdb
+        bbdb-
+        bbdb-vcard
         ))
 
 

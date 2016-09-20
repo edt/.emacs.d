@@ -51,6 +51,8 @@
 (require 'setup-debugging)
 (require 'setup-org)
 
+(savehist-mode t)
+
 ;========== Support Wheel Mouse Scrolling ==========
 (mouse-wheel-mode t)
 

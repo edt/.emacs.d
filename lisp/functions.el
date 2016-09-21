@@ -337,6 +337,14 @@ properly."
       (while (re-search-forward "\\s-+" nil t)
         (replace-match " ")))))
 
+;;Remove ^M------------------------------------
+;; Call with M-x strip[TAB]
+(defun strip-^m ()
+  (interactive)
+  (goto-char (point-min))
+  (while (search-forward "\r" nil nil)
+    (replace-match "")))
+
 (defun untabify-buffer ()
   "Convert all tabs in buffer to spaces."
   (interactive)

@@ -314,6 +314,13 @@
     (add-hook 'python-mode-hook 'hs-minor-mode)))
 
 
+(use-package recentf
+  :config
+  (setq recentf-max-saved-items 200
+        recentf-max-menu-items 50)
+  :init
+  (recentf-mode))
+
 (use-package fullframe
   :defer t
   :ensure t)

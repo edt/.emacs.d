@@ -132,28 +132,6 @@
    ( "M-<f3>" . highlight-symbol-remove-all)))
 
 
-(use-package ggtags
-  :defer t
-  :init
-  (progn
-     (add-hook 'c-mode-common-hook
-              (lambda ()
-                (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
-                  (ggtags-mode 1))))
-
-    (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
-
-    )
-  :bind
-  ( ( "C-c g s" . ggtags-find-other-symbol)
-    ( "C-c g h" . ggtags-view-tag-history)
-    ( "C-c g r" . ggtags-find-reference)
-    ( "C-c g f" . ggtags-find-file)
-    ( "C-c g c" . ggtags-create-tags)
-    ( "C-c g u" . ggtags-update-tags)
-
-   ))
-
 (use-package flyspell
   :init
   (progn

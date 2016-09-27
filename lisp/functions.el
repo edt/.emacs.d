@@ -374,4 +374,13 @@ Repeated invocations toggle between the two most recently open buffers."
 
 (global-set-key (kbd "C-z o") 'edt/switch-to-previous-buffer)
 
+
+(defun global-disable-mode (mode-fn)
+  "Disable `MODE-FN' in ALL buffers."
+  (interactive "a")
+  (dolist (buffer (buffer-list))
+    (with-current-buffer buffer
+      (funcall mode-fn -1))))
+
+
 (provide 'functions)

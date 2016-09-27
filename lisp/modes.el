@@ -313,7 +313,7 @@
 (use-package magit
   :config
   (progn
-
+    (add-hook 'git-commit-mode-hook 'flyspell-mode)
     (setq magit-restore-window-configuration t) ; that's the default actually
     (setq magit-status-buffer-switch-function
           (lambda (buffer) ; there might already be an Emacs function which does this

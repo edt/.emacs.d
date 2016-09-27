@@ -139,6 +139,7 @@
      (add-hook hook (lambda () (flyspell-mode t))))
    ))
 
+
 (use-package hippie-exp
   :defer t
   :bind

@@ -430,9 +430,14 @@
 (setq rtags-completions-enabled t)
 (rtags-enable-standard-keybindings c-mode-base-map)
 
+(setq cmake-ide-build-pool-use-persistent-naming t
+      cmake-ide-build-pool-dir user-cache-directory)
 
 (use-package cmake-ide
-  :defer t
+  :config
+  (progn
+    (setq cmake-ide-build-pool-use-persistent-naming t
+          cmake-ide-build-pool-dir user-cache-directory))
   :init
   (cmake-ide-setup))
 

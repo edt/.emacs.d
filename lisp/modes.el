@@ -443,6 +443,10 @@
 
 
 (use-package elpy
+  :config
+  (progn
+    (setq elpy-rpc-python-command "python3")
+    (setq elpy-rpc-backend "jedi"))
   :init
   (elpy-enable))
 

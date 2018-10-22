@@ -10,14 +10,16 @@
     )
   :config
   (progn
-    (use-package ido-ubiquitous
+    (use-package ido-completing-read+
       :config
       (ido-ubiquitous-mode t))
 
-    (use-package ido-grid-mode
-      :config
-      (ido-grid-mode t))
-    (ido-mode t)))
+    ;; (use-package ido-grid-mode
+    ;;   :config
+    ;;   (ido-grid-mode t))
+    (ido-mode t)
+
+    ))
 
 (use-package yasnippet
   :ensure t

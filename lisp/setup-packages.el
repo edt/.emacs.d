@@ -4,7 +4,7 @@
         projectile
         smart-mode-line
         smex
-        ido-ubiquitous
+        ido-completing-read+
         magit
         yasnippet
         browse-kill-ring

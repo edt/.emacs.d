@@ -82,6 +82,25 @@
 (fringe-mode 8)
 
 ;;no extra whitespace after lines
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; (setq max-lisp-eval-depth 10000)
+
+;; (add-hook 'before-save-hook
+;;           (lambda ()
+;;             (unless (eq major-mode 'markdown-mode)
+;;               (delete-trailing-whitespace))))
+
+
+(add-hook 'before-save-hook
+          (lambda ()
+            (unless (or (eq major-mode 'markdown-mode)
+                        (eq major-mode 'rst-mode))
+              (delete-trailing-whitespace))))
+
+(add-hook 'before-save-hook
+          (lambda ()
+            (unless (eq major-mode 'rst-mode)
+              (delete-trailing-whitespace))))
 
 (provide 'defaults)

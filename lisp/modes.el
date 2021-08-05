@@ -56,6 +56,11 @@
     ;; multilpe cursor don't clutter config dir
     (setq mc/list-file "~/.emacs.d/tmp/multiple-cursors-lists.el")))
 
+(use-package groovy-mode
+  :defer t
+  :mode ("\\.g\\(?:ant\\|roovy\\|radle\\)\\'\\|Jenkinsfile\\'" . groovy-mode))
+
+;; (require 'wgrep)
 
 (require 'window-number)
 (window-number-mode t)
@@ -159,7 +164,7 @@
                                              try-complete-lisp-symbol-partially
                                              try-complete-lisp-symbol))))
 
-
+;; restores window layout
 (use-package revive+
   :init
   (progn
@@ -186,10 +191,22 @@
   (progn
     (setq projectile-cache-file (expand-file-name "projectile.cache" user-cache-directory))
     (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
-    (setq projectile-enable-caching t))
-  :config
-  (projectile-global-mode t))
+    (setq projectile-enable-caching t)
 
+    ;; (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+    )
+  :bind ("C-c p" . projectile-command-map)
+  :config
+  (progn
+    (projectile-global-mode t)
+
+    )
+
+  )
+
+(setq compilation-bookmarks-prefix-key (kbd "C-z c"))
+(require 'compilation-bookmarks)
+(compilation-bookmarks-mode)
 
 (use-package browse-kill-ring
   :defer t
@@ -407,25 +424,25 @@
 ;;    ("C-z t r" . timeclock-reread-log)))
 
 
-(use-package emms
-  :defer t
-  :init
-  (progn
-    (require 'emms-setup)
-    (emms-standard)
-    (emms-default-players)
-    (add-hook 'emms-player-started-hook 'emms-show)
-    (setq emms-show-format "NP: %s")
+;; (use-package emms
+;;   :defer t
+;;   :init
+;;   (progn
+;;     (require 'emms-setup)
+;;     (emms-standard)
+;;     (emms-default-players)
+;;     (add-hook 'emms-player-started-hook 'emms-show)
+;;     (setq emms-show-format "NP: %s")
 
-    ;; When asked for emms-play-directory,
-    ;; always start from this one
-    ;; (setq emms-source-file-default-directory "/media/data/misc")
-    )
-  :bind
-  (("C-z m m" . emms)
-   ("C-z m SPC" . emms-pause)
-   ("C-z m ." . emms-next)
-   ("C-z m ," . emms-previous)))
+;;     ;; When asked for emms-play-directory,
+;;     ;; always start from this one
+;;     ;; (setq emms-source-file-default-directory "/media/data/misc")
+;;     )
+;;   :bind
+;;   (("C-z m m" . emms)
+;;    ("C-z m SPC" . emms-pause)
+;;    ("C-z m ." . emms-next)
+;;    ("C-z m ," . emms-previous)))
 
 
 (require 'rtags)
@@ -439,7 +456,9 @@
   :config
   (progn
     (setq cmake-ide-build-pool-use-persistent-naming t
-          cmake-ide-build-pool-dir user-cache-directory))
+          cmake-ide-build-pool-dir user-cache-directory
+          cmake-ide-header-search-other-file nil
+          cmake-ide-header-search-first-including nil))
   :init
   (cmake-ide-setup))
 
@@ -494,8 +513,8 @@
       :init
       (add-to-list 'company-backends 'company-rtags))
 
-    (use-package company-anaconda
-      :config (add-to-list 'company-backends 'company-anaconda))
+    ;; (use-package company-anaconda
+    ;;   :config (add-to-list 'company-backends 'company-anaconda))
 
     (global-company-mode))
   :bind
@@ -505,6 +524,8 @@
 (use-package cmake-mode
   :mode "\\.cmake\\'")
 
+(use-package dockerfile-mode
+  :mode "\\.docker\\'")
 
 (add-to-list 'auto-mode-alist '(".*mutt.*" . mail-mode))
 (add-hook 'mail-mode-hook 'turn-on-auto-fill)
@@ -550,5 +571,25 @@
   :init
   (bbdb-initialize))
 
+(use-package lsp-mode
+  :ensure t
+  :commands lsp
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :hook ((rust-mode . lsp)
+         (c-mode . lsp)
+         (c++-mode . lsp)
+         (lsp-mode . lsp-enable-which-key-integration)))
+
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode
+  :init
+  (setq lsp-ui-sideline-show-hover t))
+
+;; (use-package company-lsp
+;;   :ensure t
+;;   :commands company-lsp
+;;   :config (push 'company-lsp company-backends))
 
 (provide 'modes)

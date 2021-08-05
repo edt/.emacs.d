@@ -22,6 +22,8 @@
         buffer-move
         ack-and-a-half
         indent-guide
+        which-key
+
         ;; org
         use-package
         fic-ext-mode
@@ -42,6 +44,10 @@
         bbdb
         bbdb-
         bbdb-vcard
+        dockerfile-mode
+        lsp-mode
+        lsp-ui
+        company-lsp
         ))
 
 
@@ -49,12 +55,12 @@
 ; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "https://marmalade-repo.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")))
+;; ("marmalade" . "https://marmalade-repo.org/packages/")
 
 
-(package-initialize)
+;; (package-initialize)
 
 
 (when (not package-archive-contents)
@@ -93,9 +99,9 @@
       '(el-get              ; el-get is self-hosting
         irony-mode
         revive-plus
-        doxymacs
-        rtags
-        mu4e
+        ;; doxymacs
+        ;; rtags
+        ;; mu4e
 ))
 
 ;; install new packages and init already installed packages
